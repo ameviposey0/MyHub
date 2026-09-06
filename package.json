@@ -1,0 +1,12 @@
+{
+  "name": "myhub",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Plateforme personnelle — hub de projets, Adjogné en vedette",
+  "scripts": {
+    "start": "npx --yes serve -l 4173"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  }
+}
