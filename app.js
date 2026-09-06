@@ -1,3 +1,8 @@
+const KEYS = {
+  visitors: "myhub.seen",
+  maquette: "myhub.maquette",
+};
+
 const navLinks = document.querySelectorAll('.nav a[href^="#"]');
 const sections = [...navLinks]
   .map((link) => document.querySelector(link.getAttribute("href")))
@@ -20,3 +25,33 @@ const markCurrent = () => {
 
 window.addEventListener("scroll", markCurrent, { passive: true });
 markCurrent();
+
+const once = (storageKey) => {
+  try {
+    return window.localStorage.getItem(storageKey) === "1";
+  } catch {
+    return false;
+  }
+};
+
+const remember = (storageKey) => {
+  try {
+    window.localStorage.setItem(storageKey, "1");
+  } catch {
+    /* ignore private-mode write errors */
+  }
+};
+
+const trackUnique = async (kind) => {
+  if (once(KEYS[kind])) return;
+  await hitCount(kind);
+  remember(KEYS[kind]);
+};
+
+document.addEventListener("click", (event) => {
+  const trigger = event.target.closest("[data-track='maquette']");
+  if (!trigger) return;
+  trackUnique("maquette").catch(() => {});
+});
+
+trackUnique("visitors").catch(() => {});

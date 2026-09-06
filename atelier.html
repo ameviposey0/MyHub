@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <title>Atelier — MyHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,420;0,9..144,560;0,9..144,700;1,9..144,420&family=Outfit:wght@360;440;560;650&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="atelier">
+    <div class="grain" aria-hidden="true"></div>
+
+    <section class="gate" id="gate" hidden>
+      <p class="stamp">Accès privé</p>
+      <h1>Atelier</h1>
+      <p>Cette page n’est pas publique. Entre le mot de passe pour voir la fréquentation.</p>
+      <form id="gate-form">
+        <label class="sr-only" for="pass">Mot de passe</label>
+        <input id="pass" name="password" type="password" autocomplete="current-password" required />
+        <button class="btn btn-soleil" type="submit">Entrer</button>
+        <p class="gate-error" id="gate-error" hidden>Mot de passe incorrect.</p>
+      </form>
+    </section>
+
+    <div id="studio" hidden>
+      <header class="top">
+        <a class="mark" href="index.html">
+          <span class="mark-sun" aria-hidden="true"></span>
+          MyHub
+        </a>
+        <nav class="nav" aria-label="Navigation privée">
+          <a href="index.html">Retour au site</a>
+          <button class="nav-ext" type="button" id="logout">Sortir</button>
+        </nav>
+      </header>
+
+      <main class="traffic">
+        <p class="stamp">Privé — Fréquentation</p>
+        <h2>Qui est passé ici</h2>
+        <p>
+          Visiteurs uniques sur MyHub, et ceux qui ont ouvert la maquette
+          Adjogné. Cette page n’apparaît pas sur le site public.
+        </p>
+        <div class="traffic-grid">
+          <article>
+            <p>Visiteurs</p>
+            <b data-count="visitors">…</b>
+            <span>Navigateurs uniques sur le site</span>
+          </article>
+          <article>
+            <p>Ont vu la maquette</p>
+            <b data-count="maquette">…</b>
+            <span>Ont ouvert le prototype Adjogné</span>
+          </article>
+          <article>
+            <p>Taux d’ouverture</p>
+            <b data-count="rate">…</b>
+            <span>Part des visiteurs allés à la maquette</span>
+          </article>
+        </div>
+      </main>
+    </div>
+
+    <script src="counts.js"></script>
+    <script src="stats.js"></script>
+  </body>
+</html>

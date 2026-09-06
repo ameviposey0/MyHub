@@ -120,6 +120,15 @@ body {
   color: var(--soleil) !important;
 }
 
+.nav button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--soleil);
+  font: inherit;
+  cursor: pointer;
+}
+
 .hero {
   padding: 7.5rem 6vw 5rem;
   max-width: 78rem;
@@ -415,6 +424,103 @@ body {
   color: var(--muted);
 }
 
+.gate {
+  max-width: 28rem;
+  min-height: 100vh;
+  padding: 18vh 6vw 4rem;
+}
+
+.gate h1 {
+  margin: 0 0 0.8rem;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  font-weight: 560;
+}
+
+.gate p {
+  color: var(--muted);
+}
+
+.gate form {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 1.8rem;
+}
+
+.gate input {
+  width: 100%;
+  min-height: 2.85rem;
+  padding: 0.7rem 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--ink-2);
+  color: var(--paper);
+  font: inherit;
+}
+
+.gate input:focus {
+  outline: 2px solid var(--soleil);
+  outline-offset: 2px;
+}
+
+.gate-error {
+  margin: 0;
+  color: #e8a39a;
+}
+
+.traffic {
+  padding: 5rem 6vw 4rem;
+}
+
+.traffic h2 {
+  font-size: clamp(2rem, 4vw, 3.3rem);
+}
+
+.traffic > p {
+  max-width: 40rem;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.traffic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.traffic-grid article {
+  min-height: 12rem;
+  padding: 1.3rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 1.1rem;
+  background: var(--ink-2);
+}
+
+.traffic-grid p {
+  margin: 0;
+  color: var(--soleil);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.74rem;
+  font-weight: 650;
+}
+
+.traffic-grid b {
+  display: block;
+  margin: 1.4rem 0 0.45rem;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.traffic-grid span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
 .foot {
   display: flex;
   flex-wrap: wrap;
@@ -424,6 +530,11 @@ body {
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+.foot a {
+  color: var(--soleil);
+  text-decoration: none;
 }
 
 @media (max-width: 720px) {
@@ -457,9 +568,15 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .cards {
+  .cards,
+  .traffic-grid {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .traffic {
+    padding-left: 5vw;
+    padding-right: 5vw;
   }
 
   .viewer-head .btn {
