@@ -8,14 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,420;0,9..144,560;0,9..144,700;1,9..144,420&family=Outfit:wght@360;440;560;650&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="atelier">
-    <div class="grain" aria-hidden="true"></div>
-
     <section class="gate" id="gate" hidden>
       <p class="stamp">Accès privé</p>
       <h1>Atelier</h1>
@@ -23,17 +21,14 @@
       <form id="gate-form">
         <label class="sr-only" for="pass">Mot de passe</label>
         <input id="pass" name="password" type="password" autocomplete="current-password" required />
-        <button class="btn btn-soleil" type="submit">Entrer</button>
+        <button class="btn btn-primary" type="submit">Entrer</button>
         <p class="gate-error" id="gate-error" hidden>Mot de passe incorrect.</p>
       </form>
     </section>
 
     <div id="studio" hidden>
       <header class="top">
-        <a class="mark" href="index.html">
-          <span class="mark-sun" aria-hidden="true"></span>
-          MyHub
-        </a>
+        <a class="mark" href="index.html">MyHub</a>
         <nav class="nav" aria-label="Navigation privée">
           <a href="index.html">Retour au site</a>
           <button class="nav-ext" type="button" id="logout">Sortir</button>

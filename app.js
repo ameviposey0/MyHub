@@ -1,6 +1,7 @@
 const KEYS = {
   visitors: "myhub.seen",
   maquette: "myhub.maquette",
+  bootcamp: "myhub.bootcamp",
 };
 
 const navLinks = document.querySelectorAll('.nav a[href^="#"]');
@@ -49,9 +50,11 @@ const trackUnique = async (kind) => {
 };
 
 document.addEventListener("click", (event) => {
-  const trigger = event.target.closest("[data-track='maquette']");
-  if (!trigger) return;
-  trackUnique("maquette").catch(() => {});
+  const maquette = event.target.closest("[data-track='maquette']");
+  if (maquette) trackUnique("maquette").catch(() => {});
+
+  const bootcamp = event.target.closest("[data-track='bootcamp']");
+  if (bootcamp) trackUnique("bootcamp").catch(() => {});
 });
 
 trackUnique("visitors").catch(() => {});

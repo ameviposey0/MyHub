@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,420;0,9..144,560;0,9..144,700;1,9..144,420&family=Outfit:wght@360;440;560;650&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -19,17 +19,13 @@
   <body>
     <a class="skip" href="#contenu">Aller au contenu</a>
 
-    <div class="grain" aria-hidden="true"></div>
-
     <header class="top">
-      <a class="mark" href="#accueil">
-        <span class="mark-sun" aria-hidden="true"></span>
-        MyHub
-      </a>
+      <a class="mark" href="#accueil">MyHub</a>
       <nav class="nav" aria-label="Navigation principale">
         <a href="#accueil">Accueil</a>
         <a href="#vedette">Adjogné</a>
         <a href="#projets">Projets</a>
+        <a href="bootcamp.html">Bootcamp</a>
         <a
           class="nav-ext"
           data-track="maquette"
@@ -40,23 +36,43 @@
           Maquette
         </a>
       </nav>
+      <a
+        class="btn btn-whatsapp"
+        data-track="bootcamp"
+        href="https://wa.me/22891959720?text=Bonjour%2C%20je%20souhaite%20m%27inscrire%20au%20bootcamp%20MyHub%20(5%20jours%2C%202%20h%20par%20soir%2C%20gratuit)."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.22 8.22 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.39-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.32a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24m-2.73 4.3c-.16 0-.43.06-.66.31-.22.25-.87.85-.87 2.07 0 1.22.89 2.39 1.01 2.56.12.17 1.76 2.67 4.25 3.73 1.87.8 2.29.73 2.71.68.42-.05 1.37-.56 1.56-1.1.19-.54.19-1 .13-1.1-.06-.09-.22-.15-.43-.26-.22-.12-1.37-.67-1.58-.75-.22-.08-.37-.12-.53.12-.16.25-.62.75-.76.9-.14.15-.28.17-.5.06-.22-.12-.94-.35-1.8-1.1-.66-.59-1.11-1.32-1.24-1.54-.13-.22-.01-.34.1-.45.1-.1.22-.26.33-.39.11-.13.14-.22.22-.37.07-.15.04-.28-.02-.39-.06-.12-.53-1.28-.73-1.75-.19-.44-.38-.38-.53-.39-.13 0-.28-.01-.43-.01"
+          />
+        </svg>
+        S’inscrire au bootcamp
+      </a>
     </header>
 
     <main id="contenu">
       <section class="hero" id="accueil">
         <p class="kicker">Plateforme personnelle · 2026</p>
-        <h1>
-          Ceci est mon <em>hub</em>.<br />
-          Ici, je dépose mes projets.
-        </h1>
+        <h1>Ici, je dépose ce que je construis.</h1>
         <p class="lead">
-          MyHub n’est pas une vitrine figée. C’est l’endroit où je rassemble ce
-          que je construis — maquettes, produits, essais. Le premier à
-          s’installer au centre&nbsp;: <strong>Adjogné</strong>.
+          MyHub rassemble mes projets — maquettes, produits, ateliers. En
+          vedette&nbsp;: <strong>Adjogné</strong>. Et un bootcamp informatique
+          gratuit, cinq soirs.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-soleil" href="#vedette">Voir Adjogné</a>
-          <a class="btn btn-ghost" href="#projets">Les prochains projets</a>
+          <a class="btn btn-primary" href="#vedette">Voir Adjogné</a>
+          <a
+            class="btn btn-whatsapp"
+            data-track="bootcamp"
+            href="https://wa.me/22891959720?text=Bonjour%2C%20je%20souhaite%20m%27inscrire%20au%20bootcamp%20MyHub%20(5%20jours%2C%202%20h%20par%20soir%2C%20gratuit)."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            S’inscrire au bootcamp
+          </a>
         </div>
         <dl class="stats">
           <div>
@@ -64,12 +80,12 @@
             <dd>Adjogné v13</dd>
           </div>
           <div>
-            <dt>Type</dt>
-            <dd>Caisse &amp; boutique</dd>
+            <dt>Bootcamp</dt>
+            <dd>5 jours · 2 h</dd>
           </div>
           <div>
-            <dt>Maquette</dt>
-            <dd>Penpot interactive</dd>
+            <dt>Prix</dt>
+            <dd>Gratuit</dd>
           </div>
         </dl>
       </section>
@@ -93,12 +109,9 @@
             <li>Rapports</li>
             <li>Mobile Money</li>
           </ul>
-          <p class="meta">
-            Maquette Penpot · Adjogne v13 · Ivoire &amp; soleil · FCFA
-          </p>
           <div class="hero-actions">
             <a
-              class="btn btn-soleil"
+              class="btn btn-primary"
               data-track="maquette"
               href="https://design.penpot.app/#/view?file-id=40e06342-8830-80d6-8008-8d6bbfbfdbdd&page-id=d6d28c86-3e00-800c-8008-8d7589a07996&section=interactions&index=0&share-id=c828d3cf-7d4e-8145-8008-8d81a6a99f78"
               target="_blank"
@@ -171,11 +184,11 @@
 
       <section class="projects" id="projets">
         <div class="projects-head">
-          <p class="stamp">03 — Le reste du hub</p>
-          <h2>D’autres projets arriveront ici</h2>
+          <p class="stamp">03 — Le hub</p>
+          <h2>Adjogné, et le bootcamp</h2>
           <p>
-            Cette page est le point d’entrée. Adjogné ouvre la voie — les
-            suivants prendront place à côté.
+            Adjogné ouvre la voie. Le bootcamp gratuit de 5 jours s’installe
+            à côté — les suivants prendront place ici.
           </p>
         </div>
         <div class="cards">
@@ -185,11 +198,21 @@
             <p>Caisse de boutique, hors-ligne, FCFA, Mixx / Flooz.</p>
             <a href="#vedette">Déjà en vedette</a>
           </article>
-          <article class="card card-empty">
+          <article class="card card-live">
             <p class="card-no">02</p>
-            <h3>Prochain projet</h3>
-            <p>Emplacement libre. Une idée, une maquette, une app.</p>
-            <span>Bientôt</span>
+            <h3>Bootcamp 5 jours</h3>
+            <p>Gratuit. 2 h par soir. Cinq domaines, détails encore sous cadenas.</p>
+            <div class="card-actions">
+              <a href="bootcamp.html">Voir le programme</a>
+              <a
+                data-track="bootcamp"
+                href="https://wa.me/22891959720?text=Bonjour%2C%20je%20souhaite%20m%27inscrire%20au%20bootcamp%20MyHub%20(5%20jours%2C%202%20h%20par%20soir%2C%20gratuit)."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                S’inscrire
+              </a>
+            </div>
           </article>
           <article class="card card-empty">
             <p class="card-no">03</p>
