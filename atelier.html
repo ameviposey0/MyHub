@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#efe6d6" />
     <meta name="robots" content="noindex, nofollow, noarchive" />
-    <title>Atelier — MyHub</title>
+    <title>Atelier · MyHub</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,24 +20,31 @@
       <h1>Atelier</h1>
       <p>Cette page n’est pas publique. Entre le mot de passe pour voir la fréquentation.</p>
       <form id="gate-form">
-        <label class="sr-only" for="pass">Mot de passe</label>
-        <input id="pass" name="password" type="password" autocomplete="current-password" required />
+        <label for="pass">Mot de passe</label>
+        <input
+          id="pass"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          aria-describedby="gate-error"
+          required
+        />
         <button class="btn btn-primary" type="submit">Entrer</button>
-        <p class="gate-error" id="gate-error" hidden>Mot de passe incorrect.</p>
+        <p class="gate-error" id="gate-error" hidden aria-live="polite">Mot de passe incorrect.</p>
       </form>
     </section>
 
     <div id="studio" hidden>
       <header class="top">
         <a class="mark" href="index.html">MyHub</a>
-        <nav class="nav" aria-label="Navigation privée">
+        <nav class="nav nav-bar" aria-label="Navigation privée">
           <a href="index.html">Retour au site</a>
           <button class="nav-ext" type="button" id="logout">Sortir</button>
         </nav>
       </header>
 
-      <main class="traffic">
-        <p class="stamp">Privé — Fréquentation</p>
+      <main class="traffic" id="contenu" tabindex="-1">
+        <p class="stamp">Privé · Fréquentation</p>
         <h2>Qui est passé ici</h2>
         <p>
           Visiteurs uniques sur MyHub, et ceux qui ont ouvert la maquette

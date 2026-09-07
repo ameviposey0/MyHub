@@ -4,12 +4,51 @@ const KEYS = {
   bootcamp: "myhub.bootcamp",
 };
 
+const DESKTOP_NAV = window.matchMedia("(min-width: 64rem)");
+const header = document.querySelector(".top");
+const toggle = document.querySelector(".nav-toggle");
+const panel = document.getElementById("menu");
+const backdrop = document.getElementById("nav-backdrop");
+
+const isDesktopNav = () => DESKTOP_NAV.matches;
+
+const setMenuOpen = (open) => {
+  const next = open && !isDesktopNav();
+  document.body.classList.toggle("nav-open", next);
+  toggle?.setAttribute("aria-expanded", String(next));
+  toggle?.setAttribute("aria-label", next ? "Fermer le menu" : "Ouvrir le menu");
+  if (backdrop) backdrop.hidden = !next;
+  if (panel) panel.inert = !isDesktopNav() && !next;
+};
+
+toggle?.addEventListener("click", () => {
+  setMenuOpen(!document.body.classList.contains("nav-open"));
+});
+
+backdrop?.addEventListener("click", () => setMenuOpen(false));
+
+panel?.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => setMenuOpen(false));
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape") return;
+  if (!document.body.classList.contains("nav-open")) return;
+  setMenuOpen(false);
+  toggle?.focus();
+});
+
+DESKTOP_NAV.addEventListener("change", () => setMenuOpen(false));
+setMenuOpen(false);
+
 const navLinks = document.querySelectorAll('.nav a[href^="#"]');
 const sections = [...navLinks]
   .map((link) => document.querySelector(link.getAttribute("href")))
   .filter(Boolean);
 
 const markCurrent = () => {
+  if (!sections.length) return;
+
   const y = window.scrollY + 120;
   let current = sections[0];
 
@@ -19,13 +58,27 @@ const markCurrent = () => {
 
   navLinks.forEach((link) => {
     const active = link.getAttribute("href") === `#${current.id}`;
-    link.toggleAttribute("aria-current", active);
+    if (active) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
     link.classList.toggle("is-current", active);
   });
 };
 
-window.addEventListener("scroll", markCurrent, { passive: true });
+const markStuck = () => {
+  header?.classList.toggle("is-stuck", window.scrollY > 8);
+};
+
+window.addEventListener(
+  "scroll",
+  () => {
+    markCurrent();
+    markStuck();
+  },
+  { passive: true },
+);
+
 markCurrent();
+markStuck();
 
 const once = (storageKey) => {
   try {

@@ -84,7 +84,10 @@ const showGate = () => {
   studio.hidden = true;
   gate.hidden = false;
   errorEl.hidden = true;
+  passInput?.removeAttribute("aria-invalid");
 };
+
+const passInput = document.getElementById("pass");
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -93,9 +96,12 @@ form.addEventListener("submit", async (event) => {
 
   if (hash !== PASS_HASH) {
     errorEl.hidden = false;
+    passInput?.setAttribute("aria-invalid", "true");
+    passInput?.focus();
     return;
   }
 
+  passInput?.removeAttribute("aria-invalid");
   openSession();
   showStudio();
 });
