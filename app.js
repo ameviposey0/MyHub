@@ -27,8 +27,8 @@ toggle?.addEventListener("click", () => {
 
 backdrop?.addEventListener("click", () => setMenuOpen(false));
 
-panel?.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => setMenuOpen(false));
+panel?.querySelectorAll("a, button").forEach((item) => {
+  item.addEventListener("click", () => setMenuOpen(false));
 });
 
 document.addEventListener("keydown", (event) => {
@@ -102,12 +102,28 @@ const trackUnique = async (kind) => {
   remember(KEYS[kind]);
 };
 
+const fullDialog = document.getElementById("bootcamp-full");
+
+document.querySelectorAll("[data-track='bootcamp']").forEach((el) => {
+  el.setAttribute("aria-haspopup", "dialog");
+  el.setAttribute("aria-controls", "bootcamp-full");
+});
+
+fullDialog?.addEventListener("click", (event) => {
+  if (event.target === fullDialog) fullDialog.close();
+});
+
 document.addEventListener("click", (event) => {
   const maquette = event.target.closest("[data-track='maquette']");
   if (maquette) trackUnique("maquette").catch(() => {});
 
   const bootcamp = event.target.closest("[data-track='bootcamp']");
-  if (bootcamp) trackUnique("bootcamp").catch(() => {});
+  if (!bootcamp) return;
+
+  event.preventDefault();
+  trackUnique("bootcamp").catch(() => {});
+  setMenuOpen(false);
+  fullDialog?.showModal();
 });
 
 trackUnique("visitors").catch(() => {});
