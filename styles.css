@@ -902,6 +902,15 @@ body.nav-open .nav-panel {
   font-size: var(--step-1);
 }
 
+.coords-card > p + p {
+  margin-top: 0.85rem;
+}
+
+.coords-card > p strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
 .coords-form {
   display: grid;
   gap: 0.9rem;
