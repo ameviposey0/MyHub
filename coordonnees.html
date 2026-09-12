@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#efe6d6" />
+    <title>Tes coordonnées · MyHub</title>
+    <meta
+      name="description"
+      content="Si tu avais déjà contacté MyHub avant la fermeture des places, envoie ton prénom, ton nom et ton email."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#contenu">Aller au contenu</a>
+
+    <header class="top">
+      <a class="mark" href="index.html">MyHub</a>
+      <nav class="nav nav-bar" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="bootcamp.html">Bootcamp</a>
+        <a href="coordonnees.html" aria-current="page">Coordonnées</a>
+      </nav>
+    </header>
+
+    <main class="coords" id="contenu" tabindex="-1">
+      <section class="coords-card" aria-labelledby="coords-title">
+        <p class="stamp">Déjà contacté</p>
+        <h1 id="coords-title">Tes nom, prénom et email</h1>
+        <p>
+          Cette page est pour celles et ceux qui m’avaient déjà envoyé un
+          message avant la fermeture des places. Laisse tes infos : je
+          les recevrai comme un message de ta part.
+        </p>
+
+        <form class="coords-form" id="coords-form" novalidate>
+          <div class="field">
+            <label for="prenom">Prénom</label>
+            <input
+              id="prenom"
+              name="prenom"
+              type="text"
+              autocomplete="given-name"
+              autocapitalize="words"
+              spellcheck="false"
+              enterkeyhint="next"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="nom">Nom</label>
+            <input
+              id="nom"
+              name="nom"
+              type="text"
+              autocomplete="family-name"
+              autocapitalize="words"
+              spellcheck="false"
+              enterkeyhint="next"
+              required
+            />
+          </div>
+
+          <div class="field field-email">
+            <label for="email">Email <span class="need">indispensable</span></label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              inputmode="email"
+              autocomplete="email"
+              spellcheck="false"
+              enterkeyhint="send"
+              aria-describedby="email-hint"
+              required
+            />
+            <p class="field-hint" id="email-hint">
+              C’est par cette adresse que je te recontacte. Vérifie-la
+              avant d’envoyer.
+            </p>
+          </div>
+
+          <p class="form-error" id="coords-error" hidden aria-live="polite"></p>
+
+          <button class="btn btn-primary" type="submit">Envoyer</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p>MyHub, bootcamp informatique gratuit.</p>
+      <nav class="foot-nav" aria-label="Pied de page">
+        <a href="index.html">Accueil</a>
+        <a href="bootcamp.html">Bootcamp</a>
+      </nav>
+    </footer>
+
+    <script src="counts.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

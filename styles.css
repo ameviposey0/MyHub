@@ -293,6 +293,7 @@ body.nav-open .nav-panel {
 .projects h2,
 .bootcamp-why h2,
 .bootcamp-join h2,
+.coords h1,
 .traffic h2,
 .gate h1 {
   margin: 0 0 0.9rem;
@@ -815,6 +816,13 @@ body.nav-open .nav-panel {
   margin: 0;
 }
 
+.full-dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  align-items: center;
+}
+
 .full-dialog .btn {
   min-width: 8rem;
 }
@@ -864,10 +872,85 @@ body.nav-open .nav-panel {
   min-width: 8.5rem;
 }
 
-.gate-error {
+.gate-error,
+.form-error {
   margin: 0;
   color: #b42318;
   font-weight: 600;
+}
+
+.coords {
+  padding: clamp(2.4rem, 7vw, 4.5rem) var(--gutter) 3rem;
+}
+
+.coords-card {
+  max-width: 28rem;
+  padding: 1.5rem 1.35rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.coords h1 {
+  font-size: var(--step-4);
+}
+
+.coords-card > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--step-1);
+}
+
+.coords-form {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1.5rem;
+}
+
+.coords-form .field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.coords-form label {
+  font-weight: 700;
+}
+
+.need {
+  margin-left: 0.25rem;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.coords-form input {
+  width: 100%;
+  min-height: var(--touch);
+  padding: 0.7rem 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+}
+
+.coords-form input[aria-invalid="true"] {
+  border-color: #b42318;
+}
+
+.field-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.coords-form .btn {
+  justify-self: stretch;
+  margin-top: 0.2rem;
+  min-height: 3.15rem;
 }
 
 .traffic {
@@ -977,7 +1060,8 @@ body.nav-open .nav-panel {
   }
 
   .prototype-card,
-  .bootcamp-join {
+  .bootcamp-join,
+  .coords-card {
     padding: 2rem;
   }
 }

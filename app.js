@@ -126,4 +126,63 @@ document.addEventListener("click", (event) => {
   fullDialog?.showModal();
 });
 
+const coordsForm = document.getElementById("coords-form");
+const coordsError = document.getElementById("coords-error");
+const WA_INBOX = "22891959720";
+const EMAIL_OK = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+const markField = (input, invalid) => {
+  input.setAttribute("aria-invalid", String(invalid));
+};
+
+coordsForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const prenom = coordsForm.elements.namedItem("prenom");
+  const nom = coordsForm.elements.namedItem("nom");
+  const email = coordsForm.elements.namedItem("email");
+  const values = {
+    prenom: prenom.value.trim(),
+    nom: nom.value.trim(),
+    email: email.value.trim(),
+  };
+
+  const emailBad = !values.email || !EMAIL_OK.test(values.email);
+  markField(prenom, !values.prenom);
+  markField(nom, !values.nom);
+  markField(email, emailBad);
+
+  let message = "";
+  if (!values.prenom || !values.nom) {
+    message = "Indique ton prénom et ton nom.";
+    (values.prenom ? nom : prenom).focus();
+  } else if (emailBad) {
+    message = "Indique un email valide. J’en ai besoin pour te répondre.";
+    email.focus();
+  }
+
+  if (message) {
+    if (coordsError) {
+      coordsError.hidden = false;
+      coordsError.textContent = message;
+    }
+    return;
+  }
+
+  if (coordsError) {
+    coordsError.hidden = true;
+    coordsError.textContent = "";
+  }
+
+  const text = [
+    "Bonjour, je t'avais déjà contacté pour le bootcamp MyHub avant la fermeture des places.",
+    "",
+    `Prénom : ${values.prenom}`,
+    `Nom : ${values.nom}`,
+    `Email : ${values.email}`,
+  ].join("\n");
+
+  window.location.href = `https://wa.me/${WA_INBOX}?text=${encodeURIComponent(text)}`;
+});
+
 trackUnique("visitors").catch(() => {});
