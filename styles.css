@@ -738,6 +738,27 @@ body.nav-open .nav-panel {
   margin: 0 0 0.85rem;
 }
 
+.day.is-open {
+  background:
+    linear-gradient(180deg, rgba(198, 69, 32, 0.08), transparent 48%),
+    var(--card);
+}
+
+.day-program {
+  margin: 0;
+  padding: 0.15rem 0 0 1.15rem;
+}
+
+.day-program li {
+  margin: 0.45rem 0;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.day-program li + li {
+  margin-top: 0.35rem;
+}
+
 .day-locked-block {
   position: relative;
   overflow: hidden;
