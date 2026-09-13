@@ -490,6 +490,17 @@ body.nav-open .nav-panel {
   color: var(--sun);
 }
 
+.feature.is-bootcamp {
+  background:
+    linear-gradient(180deg, rgba(198, 69, 32, 0.08), transparent 42%),
+    var(--card);
+}
+
+.feature.is-bootcamp .stamp,
+.feature.is-bootcamp .brand-line {
+  color: var(--accent);
+}
+
 .brand-line {
   margin: 0;
   color: var(--sun);
@@ -558,6 +569,16 @@ body.nav-open .nav-panel {
   aspect-ratio: 16 / 10;
   object-fit: cover;
   object-position: top center;
+}
+
+.shot-poster {
+  background: #f4e6d2;
+}
+
+.shot-poster img {
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
 }
 
 .shot-cta {
