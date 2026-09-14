@@ -55,13 +55,18 @@ module.exports = async (req, res) => {
         error.status = 400;
         throw error;
       }
-      store.submissions[`${session.key}|${assignmentId}`] = {
+      const copyKey = `${session.key}|${assignmentId}`;
+      const previous = store.submissions[copyKey] || {};
+      store.submissions[copyKey] = {
         studentKey: session.key,
         assignmentId,
         courseId: course.id,
         content,
         filename,
         link,
+        feedback: previous.feedback || "",
+        grade: previous.grade || "",
+        reviewedAt: null,
         at: Date.now(),
       };
       return studentView(store, session.key);

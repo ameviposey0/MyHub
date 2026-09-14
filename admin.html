@@ -18,7 +18,7 @@
     <section class="gate" id="gate">
       <p class="stamp">Admin</p>
       <h1>Espace admin</h1>
-      <p>Cours, devoirs et copies des étudiants. Même mot de passe que l’atelier.</p>
+      <p>Cours, devoirs, copies, étudiants et annonces. Même mot de passe que l’atelier.</p>
       <form id="admin-login">
         <label for="admin-pass">Mot de passe</label>
         <input
@@ -34,92 +34,149 @@
     </section>
 
     <div id="desk" hidden>
-      <header class="top">
+      <button
+        class="nav-toggle hub-toggle"
+        type="button"
+        id="hub-toggle"
+        aria-controls="hub-side"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Menu</span>
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+      <div class="nav-backdrop" id="hub-backdrop" hidden></div>
+
+      <aside class="hub-side" id="hub-side">
         <a class="mark" href="index.html">MyHub</a>
-        <nav class="nav nav-bar" aria-label="Navigation admin">
+        <p class="hub-who">Administration</p>
+        <nav class="hub-nav" aria-label="Espace admin">
+          <button type="button" data-go="vue" aria-current="page">Vue</button>
+          <button type="button" data-go="cours">Cours</button>
+          <button type="button" data-go="devoirs">Devoirs</button>
+          <button type="button" data-go="copies">Copies</button>
+          <button type="button" data-go="etudiants">Étudiants</button>
+          <button type="button" data-go="annonces">Annonces</button>
           <a href="atelier.html">Fréquentation</a>
-          <a href="admin.html" aria-current="page">Admin</a>
-          <button class="nav-ext" type="button" id="admin-logout">Sortir</button>
         </nav>
-      </header>
+        <button class="btn btn-ghost hub-exit" type="button" id="admin-logout">
+          Sortir
+        </button>
+      </aside>
 
-      <main class="studio" id="contenu" tabindex="-1">
-        <section class="studio-board dash">
-          <header class="studio-hello">
-            <div>
-              <p class="stamp">Admin</p>
-              <h1>Bootcamp, en coulisses</h1>
-              <p id="admin-stats"></p>
-            </div>
-          </header>
+      <div class="hub-wrap">
+        <header class="hub-head">
+          <p class="stamp">Admin</p>
+          <h1 id="hub-title">Vue</h1>
+          <p id="hub-lead">Bootcamp, en coulisses.</p>
+        </header>
 
-          <div class="dash-tabs" role="tablist" aria-label="Sections admin">
-            <button type="button" role="tab" id="tab-cours" data-tab="cours" aria-controls="panel-cours" aria-selected="true">Cours</button>
-            <button type="button" role="tab" id="tab-devoirs" data-tab="devoirs" aria-controls="panel-devoirs" aria-selected="false" tabindex="-1">Devoirs</button>
-            <button type="button" role="tab" id="tab-copies" data-tab="copies" aria-controls="panel-copies" aria-selected="false" tabindex="-1">Copies</button>
-            <button type="button" role="tab" id="tab-etudiants" data-tab="etudiants" aria-controls="panel-etudiants" aria-selected="false" tabindex="-1">Étudiants</button>
-          </div>
+        <main id="contenu" tabindex="-1">
+          <section data-view="vue">
+            <div class="stat-grid" id="admin-stats-grid"></div>
+            <article class="hub-card">
+              <h2>Copies à relire</h2>
+              <div id="pending-list"></div>
+            </article>
+          </section>
 
-          <section class="studio-block" id="panel-cours" data-panel="cours" role="tabpanel" aria-labelledby="tab-cours">
-            <h2>Créer un cours</h2>
-            <form class="coords-form" id="course-form">
-              <div class="field">
-                <label for="course-title">Titre</label>
-                <input id="course-title" name="title" type="text" required />
-              </div>
-              <div class="field">
-                <label for="course-summary">Résumé</label>
-                <textarea id="course-summary" name="summary" rows="3"></textarea>
-              </div>
-              <div class="field">
-                <label for="course-support">Lien du support (PDF ou page)</label>
-                <input id="course-support" name="support" type="text" placeholder="supports/jour-1-apprenants.pdf" />
-              </div>
-              <label class="check-line">
-                <input id="course-published" name="published" type="checkbox" checked />
-                Visible pour les étudiants
-              </label>
-              <p class="form-error" id="course-error" hidden aria-live="polite"></p>
-              <button class="btn btn-primary" type="submit">Publier le cours</button>
-            </form>
-            <h3 class="works-title">Cours déjà créés</h3>
+          <section data-view="cours" hidden>
+            <article class="hub-card">
+              <h2 id="course-form-title">Créer un cours</h2>
+              <form class="coords-form" id="course-form">
+                <input id="course-id" name="id" type="hidden" />
+                <div class="field">
+                  <label for="course-title">Titre</label>
+                  <input id="course-title" name="title" type="text" required />
+                </div>
+                <div class="field">
+                  <label for="course-summary">Résumé</label>
+                  <textarea id="course-summary" name="summary" rows="3"></textarea>
+                </div>
+                <div class="field">
+                  <label for="course-support">Lien du support</label>
+                  <input id="course-support" name="support" type="text" placeholder="supports/jour-1-apprenants.pdf" />
+                </div>
+                <div class="field">
+                  <label for="course-meet">Lien Meet (optionnel)</label>
+                  <input id="course-meet" name="meet" type="url" placeholder="https://" />
+                </div>
+                <label class="check-line">
+                  <input id="course-published" name="published" type="checkbox" checked />
+                  Visible pour les étudiants
+                </label>
+                <p class="form-error" id="course-error" hidden aria-live="polite"></p>
+                <div class="hub-actions">
+                  <button class="btn btn-primary" type="submit">Enregistrer le cours</button>
+                  <button class="btn btn-ghost" type="button" id="course-reset">Nouveau cours</button>
+                </div>
+              </form>
+            </article>
             <div id="course-list"></div>
           </section>
 
-          <section class="studio-block" id="panel-devoirs" data-panel="devoirs" role="tabpanel" aria-labelledby="tab-devoirs" hidden>
-            <h2>Créer un devoir</h2>
-            <form class="coords-form" id="work-form">
-              <div class="field">
-                <label for="work-course">Cours lié</label>
-                <select id="work-course" name="courseId" required></select>
-              </div>
-              <div class="field">
-                <label for="work-title">Titre du devoir</label>
-                <input id="work-title" name="title" type="text" required />
-              </div>
-              <div class="field">
-                <label for="work-brief">Consigne</label>
-                <textarea id="work-brief" name="brief" rows="4"></textarea>
-              </div>
-              <p class="form-error" id="work-error" hidden aria-live="polite"></p>
-              <button class="btn btn-primary" type="submit">Ajouter le devoir</button>
-            </form>
-            <h3 class="works-title">Devoirs déjà créés</h3>
+          <section data-view="devoirs" hidden>
+            <article class="hub-card">
+              <h2 id="work-form-title">Créer un devoir</h2>
+              <form class="coords-form" id="work-form">
+                <input id="work-id" name="id" type="hidden" />
+                <div class="field">
+                  <label for="work-course">Cours lié</label>
+                  <select id="work-course" name="courseId" required></select>
+                </div>
+                <div class="field">
+                  <label for="work-title">Titre du devoir</label>
+                  <input id="work-title" name="title" type="text" required />
+                </div>
+                <div class="field">
+                  <label for="work-brief">Consigne</label>
+                  <textarea id="work-brief" name="brief" rows="4"></textarea>
+                </div>
+                <div class="field">
+                  <label for="work-due">Date limite (optionnel)</label>
+                  <input id="work-due" name="dueAt" type="date" />
+                </div>
+                <p class="form-error" id="work-error" hidden aria-live="polite"></p>
+                <div class="hub-actions">
+                  <button class="btn btn-primary" type="submit">Enregistrer le devoir</button>
+                  <button class="btn btn-ghost" type="button" id="work-reset">Nouveau devoir</button>
+                </div>
+              </form>
+            </article>
             <div id="work-list"></div>
           </section>
 
-          <section class="studio-block" id="panel-copies" data-panel="copies" role="tabpanel" aria-labelledby="tab-copies" hidden>
-            <h2>Copies déposées</h2>
-            <p>Ouvre une copie pour lire le rendu et le télécharger.</p>
+          <section data-view="copies" hidden>
+            <div class="hub-toolbar">
+              <label class="sr-only" for="copy-search">Rechercher une copie</label>
+              <input id="copy-search" type="search" placeholder="Prénom, cours, devoir" />
+            </div>
             <div id="copy-list"></div>
           </section>
 
-          <section class="studio-block" id="panel-etudiants" data-panel="etudiants" role="tabpanel" aria-labelledby="tab-etudiants" hidden>
-            <h2>Étudiants inscrits</h2>
+          <section data-view="etudiants" hidden>
             <div id="student-list"></div>
           </section>
-        </section>
-      </main>
+
+          <section data-view="annonces" hidden>
+            <article class="hub-card">
+              <h2>Publier une annonce</h2>
+              <form class="coords-form" id="notice-form">
+                <div class="field">
+                  <label for="notice-title">Titre</label>
+                  <input id="notice-title" name="title" type="text" required />
+                </div>
+                <div class="field">
+                  <label for="notice-body">Message</label>
+                  <textarea id="notice-body" name="body" rows="4" required></textarea>
+                </div>
+                <p class="form-error" id="notice-error" hidden aria-live="polite"></p>
+                <button class="btn btn-primary" type="submit">Publier</button>
+              </form>
+            </article>
+            <div id="notice-list"></div>
+          </section>
+        </main>
+      </div>
     </div>
 
     <dialog class="full-dialog" id="copy-dialog" aria-labelledby="copy-dialog-title">
@@ -130,12 +187,25 @@
         <pre id="copy-dialog-code" class="copy-code"></pre>
         <iframe id="copy-dialog-frame" class="copy-frame" title="Aperçu du rendu" sandbox hidden></iframe>
         <p id="copy-dialog-link"></p>
-        <div class="full-dialog-actions">
-          <button class="btn btn-primary" type="button" id="copy-download">Télécharger</button>
-          <form method="dialog">
-            <button class="btn btn-ghost" type="submit">Fermer</button>
-          </form>
-        </div>
+        <form class="coords-form" id="review-form">
+          <div class="field">
+            <label for="review-grade">Note ou appréciation courte</label>
+            <input id="review-grade" name="grade" type="text" placeholder="Bien, à retravailler…" />
+          </div>
+          <div class="field">
+            <label for="review-feedback">Retour à l’étudiant</label>
+            <textarea id="review-feedback" name="feedback" rows="4"></textarea>
+          </div>
+          <p class="form-error" id="review-error" hidden aria-live="polite"></p>
+          <p class="form-ok" id="review-ok" hidden aria-live="polite"></p>
+          <div class="hub-actions">
+            <button class="btn btn-primary" type="submit">Envoyer le retour</button>
+            <button class="btn btn-ghost" type="button" id="copy-download">Télécharger</button>
+          </div>
+        </form>
+        <form method="dialog">
+          <button class="btn btn-ghost" type="submit">Fermer</button>
+        </form>
       </div>
     </dialog>
 

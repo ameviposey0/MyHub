@@ -15,38 +15,74 @@ module.exports = async (req, res) => {
 
   try {
     const body = await readBody(req);
+    const action = String(body.action || "create");
+    const id = String(body.id || "").trim();
     const courseId = String(body.courseId || "").trim();
     const title = String(body.title || "").trim().slice(0, 80);
     const brief = String(body.brief || "").trim().slice(0, 800);
-
-    if (!title) {
-      sendJson(res, 400, { error: "Donne un titre au devoir." });
-      return;
-    }
+    const dueAt = String(body.dueAt || "").trim().slice(0, 32);
 
     const view = await updateStore((store) => {
-      const course = store.courses.find((item) => item.id === courseId);
-      if (!course) {
-        const error = new Error("missing-course");
+      if (action === "delete") {
+        const work = store.assignments.find((item) => item.id === id);
+        if (!work) {
+          const error = new Error("missing");
+          error.status = 400;
+          throw error;
+        }
+        store.assignments = store.assignments.filter((item) => item.id !== id);
+        return adminOverview(store);
+      }
+
+      if (!title) {
+        const error = new Error("title");
         error.status = 400;
         throw error;
       }
+
+      const course = store.courses.find((item) => item.id === courseId);
+      if (!course) {
+        const error = new Error("course");
+        error.status = 400;
+        throw error;
+      }
+
+      if (action === "update" || id) {
+        const work = store.assignments.find((item) => item.id === id);
+        if (!work) {
+          const error = new Error("missing");
+          error.status = 400;
+          throw error;
+        }
+        work.courseId = courseId;
+        work.title = title;
+        work.brief = brief;
+        work.dueAt = dueAt;
+        return adminOverview(store);
+      }
+
       store.assignments.push({
         id: makeId("a"),
         courseId,
         title,
         brief,
+        dueAt,
         createdAt: Date.now(),
       });
       return adminOverview(store);
     });
 
-    sendJson(res, 201, view);
+    sendJson(res, action === "create" && !id ? 201 : 200, view);
   } catch (error) {
     if (error.status === 400) {
-      sendJson(res, 400, { error: "Choisis un cours existant." });
+      const messages = {
+        title: "Donne un titre au devoir.",
+        course: "Choisis un cours existant.",
+        missing: "Devoir introuvable.",
+      };
+      sendJson(res, 400, { error: messages[error.message] || "Devoir impossible." });
       return;
     }
-    sendCaught(res, error, "Impossible de créer le devoir.");
+    sendCaught(res, error, "Impossible d’enregistrer le devoir.");
   }
 };

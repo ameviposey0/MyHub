@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#efe6d6" />
-    <title>Tableau de bord · MyHub</title>
+    <title>Espace étudiant · MyHub</title>
     <meta
       name="description"
-      content="Tableau de bord étudiant MyHub : cours, devoirs, supports et dépôt des exercices."
+      content="Tableau de bord étudiant MyHub : cours, devoirs, copies, infos de séance."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,54 +17,112 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="hub">
     <a class="skip" href="#contenu">Aller au contenu</a>
 
-    <header class="top">
+    <button
+      class="nav-toggle hub-toggle"
+      type="button"
+      id="hub-toggle"
+      aria-controls="hub-side"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Menu</span>
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+    </button>
+    <div class="nav-backdrop" id="hub-backdrop" hidden></div>
+
+    <aside class="hub-side" id="hub-side">
       <a class="mark" href="index.html">MyHub</a>
-      <nav class="nav nav-bar" aria-label="Navigation principale">
-        <a href="index.html">Accueil</a>
-        <a href="bootcamp.html">Bootcamp</a>
-        <a href="espace.html" aria-current="page">Espace étudiant</a>
+      <p class="hub-who" id="hub-who">Espace étudiant</p>
+      <nav class="hub-nav" aria-label="Espace étudiant">
+        <button type="button" data-go="accueil" aria-current="page">Accueil</button>
+        <button type="button" data-go="cours">Cours</button>
+        <button type="button" data-go="devoirs">Devoirs</button>
+        <button type="button" data-go="copies">Mes copies</button>
+        <button type="button" data-go="infos">Infos</button>
+        <button type="button" data-go="profil">Profil</button>
       </nav>
-    </header>
+      <button class="btn btn-ghost hub-exit" type="button" id="logout-student">
+        Sortir
+      </button>
+    </aside>
 
-    <main class="studio" id="contenu" tabindex="-1">
-      <section class="studio-board dash">
-        <header class="studio-hello">
-          <div>
-            <p class="stamp">Tableau de bord</p>
-            <h1 id="hello-title">Bonjour</h1>
-            <p id="hello-meta"></p>
-          </div>
-          <button class="btn btn-ghost" type="button" id="logout-student">
-            Sortir
-          </button>
-        </header>
+    <div class="hub-wrap">
+      <header class="hub-head">
+        <p class="stamp">Espace étudiant</p>
+        <h1 id="hub-title">Accueil</h1>
+        <p id="hub-lead">Tes cours, tes devoirs, tes copies.</p>
+      </header>
 
-        <section class="studio-block" aria-labelledby="progress-title">
-          <h2 id="progress-title">Ta progression</h2>
-          <p id="progress-copy">Chargement…</p>
-          <p class="progress-meter" id="progress-meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="progress-title">
-            <span id="progress-fill"></span>
-          </p>
+      <main id="contenu" tabindex="-1">
+        <section data-view="accueil">
+          <div class="stat-grid" id="home-stats"></div>
+          <article class="hub-card" id="home-next"></article>
+          <section class="hub-card" aria-labelledby="home-news-title">
+            <h2 id="home-news-title">Annonces</h2>
+            <div id="home-news"></div>
+          </section>
         </section>
 
-        <section aria-labelledby="courses-title">
-          <h2 class="dash-title" id="courses-title">Tes cours</h2>
+        <section data-view="cours" hidden>
           <div id="courses-root"></div>
         </section>
-      </section>
-    </main>
 
-    <footer class="foot">
-      <p>MyHub, espace étudiant du bootcamp.</p>
-      <nav class="foot-nav" aria-label="Pied de page">
-        <a href="index.html">Accueil</a>
-        <a href="bootcamp.html">Bootcamp</a>
-        <a href="espace.html" aria-current="page">Espace étudiant</a>
-      </nav>
-    </footer>
+        <section data-view="devoirs" hidden>
+          <div class="hub-toolbar">
+            <label class="sr-only" for="work-filter">Filtrer par cours</label>
+            <select id="work-filter"></select>
+          </div>
+          <div id="works-root"></div>
+        </section>
+
+        <section data-view="copies" hidden>
+          <div id="copies-root"></div>
+        </section>
+
+        <section data-view="infos" hidden>
+          <article class="hub-card">
+            <h2>Séances</h2>
+            <p>Bootcamp en visio Google Meet, lundi à vendredi, 12 h GMT.</p>
+            <p>Le lien Meet arrive 15 min avant la séance.</p>
+          </article>
+          <article class="hub-card">
+            <h2>WhatsApp du formateur</h2>
+            <p>Pour une urgence ou un souci de connexion, pas pour déposer un devoir.</p>
+            <a class="btn btn-whatsapp" href="https://wa.me/22891959720">Écrire sur WhatsApp</a>
+          </article>
+          <article class="hub-card">
+            <h2>Comment déposer</h2>
+            <p>Va dans Devoirs, choisis l’exo, envoie un fichier, un texte, ou un lien https.</p>
+            <p>Tu peux renvoyer une version plus tard. Le retour du formateur apparaît dans Mes copies.</p>
+          </article>
+        </section>
+
+        <section data-view="profil" hidden>
+          <article class="hub-card">
+            <h2>Ton compte</h2>
+            <form class="coords-form" id="profile-form">
+              <div class="field">
+                <label for="profile-prenom">Prénom</label>
+                <input id="profile-prenom" name="prenom" type="text" readonly />
+              </div>
+              <div class="field">
+                <label for="profile-nom">Nom</label>
+                <input id="profile-nom" name="nom" type="text" required />
+              </div>
+              <div class="field">
+                <label for="profile-phone">Téléphone</label>
+                <input id="profile-phone" name="phone" type="tel" readonly />
+              </div>
+              <p class="form-error" id="profile-error" hidden aria-live="polite"></p>
+              <p class="form-ok" id="profile-ok" hidden aria-live="polite"></p>
+              <button class="btn btn-primary" type="submit">Enregistrer</button>
+            </form>
+          </article>
+        </section>
+      </main>
+    </div>
 
     <script src="studio-api.js"></script>
     <script src="espace.js"></script>

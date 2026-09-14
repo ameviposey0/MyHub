@@ -1240,6 +1240,7 @@ body.nav-open .nav-panel {
   gap: 0.4rem 1rem;
 }
 
+.work-card h3,
 .work-card h4 {
   margin: 0;
   font-family: "Bricolage Grotesque", Georgia, serif;
@@ -1534,6 +1535,234 @@ body.nav-open .nav-panel {
 
   body.nav-open {
     overflow: auto;
+  }
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.copy-feedback {
+  margin: 0.6rem 0;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--whatsapp) 12%, var(--card));
+  color: var(--ink);
+}
+
+.hub {
+  display: block;
+}
+
+.hub-toggle {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 22;
+}
+
+.hub-side {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 21;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: min(20rem, 88vw);
+  padding: 4.5rem 1.1rem 1.4rem;
+  background: var(--paper);
+  border-right: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  transform: translateX(-110%);
+  transition: transform 0.2s ease;
+}
+
+body.hub-open .hub-side {
+  transform: none;
+}
+
+body.hub-open {
+  overflow: hidden;
+}
+
+.hub-who {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.hub-nav {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.hub-nav button,
+.hub-nav a {
+  display: flex;
+  align-items: center;
+  min-height: var(--touch);
+  padding: 0.55rem 0.9rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.hub-nav button:hover,
+.hub-nav a:hover,
+.hub-nav button:focus-visible,
+.hub-nav a:focus-visible,
+.hub-nav button[aria-current="page"] {
+  background: color-mix(in srgb, var(--accent) 12%, var(--card));
+}
+
+.hub-exit {
+  margin-top: auto;
+  justify-self: stretch;
+}
+
+.hub-wrap {
+  padding: 4.5rem var(--gutter) 2.5rem;
+}
+
+.hub-head {
+  margin-bottom: 1.4rem;
+}
+
+.hub-head h1 {
+  margin: 0.15rem 0 0.3rem;
+  font-size: var(--step-4);
+}
+
+.hub-head p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1.2rem;
+}
+
+.stat-card {
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.stat-card b {
+  display: block;
+  font-family: "Bricolage Grotesque", Georgia, serif;
+  font-size: var(--step-3);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.stat-card span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.hub-card,
+.notice-card {
+  margin-bottom: 1rem;
+  padding: 1.25rem 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+}
+
+.hub-card h2,
+.hub-card h3,
+.notice-card h3,
+.course-card h2,
+.admin-item h3 {
+  margin: 0 0 0.4rem;
+  font-family: "Bricolage Grotesque", Georgia, serif;
+}
+
+.hub-card .btn {
+  margin-top: 0.8rem;
+}
+
+.hub-toolbar {
+  margin-bottom: 1rem;
+}
+
+.hub-toolbar input,
+.hub-toolbar select {
+  width: 100%;
+  min-height: var(--touch);
+  padding: 0.7rem 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+}
+
+.hub-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.8rem;
+  align-items: center;
+  margin-top: 0.7rem;
+}
+
+.coords-form input[readonly] {
+  color: var(--muted);
+  background: var(--paper);
+}
+
+#desk:not([hidden]) {
+  display: contents;
+}
+
+@media (min-width: 64rem) {
+  .hub-toggle {
+    display: none;
+  }
+
+  body.hub {
+    display: grid;
+    grid-template-columns: 16.5rem minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .hub-side {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    grid-column: 1;
+    width: 16.5rem;
+    height: 100dvh;
+    padding-top: 1.5rem;
+    transform: none;
+    box-shadow: none;
+  }
+
+  body.hub-open {
+    overflow: auto;
+  }
+
+  .hub-wrap {
+    grid-column: 2;
+    min-width: 0;
+    max-width: 56rem;
+    padding-top: 2rem;
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
