@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#efe6d6" />
+    <title>Inscription · Espace étudiant · MyHub</title>
+    <meta
+      name="description"
+      content="Créer un espace étudiant MyHub : prénom, nom et numéro de téléphone."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#contenu">Aller au contenu</a>
+
+    <header class="top">
+      <a class="mark" href="index.html">MyHub</a>
+      <nav class="nav nav-bar" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="bootcamp.html">Bootcamp</a>
+        <a href="etudiant.html">Espace étudiant</a>
+      </nav>
+    </header>
+
+    <main class="studio" id="contenu" tabindex="-1">
+      <section class="studio-card is-register">
+        <p class="stamp">Inscription</p>
+        <h1>Créer ton espace</h1>
+        <p>
+          Une seule fois. Ensuite tu te connectes avec ton prénom et ton
+          numéro. Tu pourras déposer tes exos et télécharger les supports.
+        </p>
+
+        <form class="coords-form" id="register-form" novalidate>
+          <div class="field">
+            <label for="reg-prenom">Prénom</label>
+            <input
+              id="reg-prenom"
+              name="prenom"
+              type="text"
+              autocomplete="given-name"
+              autocapitalize="words"
+              spellcheck="false"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="reg-nom">Nom</label>
+            <input
+              id="reg-nom"
+              name="nom"
+              type="text"
+              autocomplete="family-name"
+              autocapitalize="words"
+              spellcheck="false"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="reg-phone">Numéro de téléphone</label>
+            <input
+              id="reg-phone"
+              name="phone"
+              type="tel"
+              inputmode="tel"
+              autocomplete="tel"
+              placeholder="228 90 12 34 56"
+              required
+            />
+            <p class="field-hint">Indicatif 228, sans + si tu veux.</p>
+          </div>
+          <p class="form-error" id="register-error" hidden aria-live="polite"></p>
+          <button class="btn btn-primary" type="submit">Créer mon espace</button>
+        </form>
+
+        <p class="auth-alt">
+          Déjà inscrit ?
+          <a href="etudiant.html">Se connecter</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p>MyHub, espace étudiant du bootcamp.</p>
+      <nav class="foot-nav" aria-label="Pied de page">
+        <a href="index.html">Accueil</a>
+        <a href="inscription.html" aria-current="page">Inscription</a>
+        <a href="etudiant.html">Connexion</a>
+      </nav>
+    </footer>
+
+    <script src="studio-api.js"></script>
+    <script src="inscription.js"></script>
+  </body>
+</html>

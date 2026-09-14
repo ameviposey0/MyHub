@@ -2,9 +2,13 @@
   "name": "myhub",
   "version": "1.0.0",
   "private": true,
-  "description": "Plateforme personnelle — hub de projets, Adjogné en vedette",
+  "description": "Plateforme personnelle, hub de projets, Adjogné et bootcamp",
   "scripts": {
-    "start": "npx --yes serve -l 4173"
+    "start": "npx --yes serve -l 4173",
+    "dev": "npx --yes vercel dev"
+  },
+  "dependencies": {
+    "@vercel/blob": "^2.0.0"
   },
   "devDependencies": {
     "playwright": "^1.63.0"

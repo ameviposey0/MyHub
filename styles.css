@@ -294,6 +294,7 @@ body.nav-open .nav-panel {
 .bootcamp-why h2,
 .bootcamp-join h2,
 .coords h1,
+.studio h1,
 .traffic h2,
 .gate h1 {
   margin: 0 0 0.9rem;
@@ -737,6 +738,10 @@ body.nav-open .nav-panel {
   box-shadow: var(--shadow);
 }
 
+.bootcamp-join .btn {
+  margin: 1.1rem 0.65rem 0 0;
+}
+
 .day-head {
   display: flex;
   align-items: baseline;
@@ -977,7 +982,8 @@ body.nav-open .nav-panel {
   font-weight: 700;
 }
 
-.coords-form input {
+.coords-form input,
+.coords-form select {
   width: 100%;
   min-height: var(--touch);
   padding: 0.7rem 0.95rem;
@@ -1002,6 +1008,338 @@ body.nav-open .nav-panel {
   justify-self: stretch;
   margin-top: 0.2rem;
   min-height: 3.15rem;
+}
+
+.coords-form textarea {
+  width: 100%;
+  min-height: 10rem;
+  padding: 0.7rem 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  resize: vertical;
+}
+
+.form-ok {
+  margin: 0;
+  color: var(--whatsapp);
+  font-weight: 600;
+}
+
+.studio {
+  padding: clamp(2.4rem, 7vw, 4.5rem) var(--gutter) 3rem;
+}
+
+.studio-card,
+.studio-board {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.studio-board.dash {
+  max-width: 52rem;
+}
+
+.studio-card {
+  padding: 1.5rem 1.35rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.studio h1 {
+  font-size: var(--step-4);
+}
+
+.studio-card > p,
+.studio-hello p,
+.studio-block > p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.studio-hello .field-hint {
+  margin-top: 0.5rem;
+}
+
+.studio-card > p + p,
+.studio-block > p + p {
+  margin-top: 0.7rem;
+}
+
+.auth-alt {
+  margin: 1.2rem 0 0;
+  color: var(--muted);
+}
+
+.auth-alt a {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.studio-card.is-register {
+  background:
+    linear-gradient(180deg, rgba(198, 69, 32, 0.08), transparent 42%),
+    var(--card);
+}
+
+.studio-hello {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+}
+
+.studio-hello h1 {
+  margin: 0 0 0.35rem;
+}
+
+.studio-block {
+  margin-bottom: 1.6rem;
+  padding: 1.35rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+}
+
+.studio-block h2 {
+  margin: 0 0 0.55rem;
+  font-family: "Bricolage Grotesque", Georgia, serif;
+  font-size: var(--step-2);
+  font-weight: 800;
+}
+
+.progress-meter {
+  display: block;
+  height: 0.55rem;
+  margin: 0.9rem 0 1.1rem;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+}
+
+.progress-meter span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+}
+
+.studio-days {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.studio-day {
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--paper);
+}
+
+.studio-day.is-open {
+  background:
+    linear-gradient(180deg, rgba(198, 69, 32, 0.08), transparent 48%),
+    var(--card);
+}
+
+.studio-day.is-done {
+  background:
+    linear-gradient(180deg, rgba(22, 122, 57, 0.1), transparent 48%),
+    var(--card);
+}
+
+.studio-day.is-locked {
+  opacity: 0.72;
+}
+
+.studio-day h3 {
+  margin: 0.25rem 0 0.2rem;
+  font-family: "Bricolage Grotesque", Georgia, serif;
+  font-size: var(--step-2);
+}
+
+.studio-day p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.studio-day .text-link {
+  margin-top: 0.35rem;
+}
+
+.dash-title {
+  margin: 0 0 1rem;
+  font-family: "Bricolage Grotesque", Georgia, serif;
+  font-size: var(--step-2);
+  font-weight: 800;
+}
+
+.dash-empty {
+  color: var(--muted);
+}
+
+.course-card {
+  margin-bottom: 1.1rem;
+  padding: 1.35rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.course-card h3 {
+  margin: 0 0 0.4rem;
+  font-family: "Bricolage Grotesque", Georgia, serif;
+  font-size: var(--step-2);
+}
+
+.course-card > p {
+  margin: 0 0 0.7rem;
+  color: var(--muted);
+}
+
+.works-title {
+  margin: 1.1rem 0 0.7rem;
+  font-size: 0.92rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.work-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.work-card {
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--paper);
+}
+
+.work-card.is-done {
+  background:
+    linear-gradient(180deg, rgba(22, 122, 57, 0.1), transparent 48%),
+    var(--card);
+}
+
+.work-card header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.4rem 1rem;
+}
+
+.work-card h4 {
+  margin: 0;
+  font-family: "Bricolage Grotesque", Georgia, serif;
+}
+
+.work-status {
+  margin: 0;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.work-card.is-done .work-status {
+  color: var(--whatsapp);
+}
+
+.work-form {
+  margin-top: 0.85rem;
+}
+
+.work-form textarea {
+  min-height: 7rem;
+}
+
+.dash-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.dash-tabs button {
+  min-height: var(--touch);
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.dash-tabs button[aria-selected="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fffdf8;
+}
+
+.admin-item {
+  margin-bottom: 0.75rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--paper);
+}
+
+.admin-item h4 {
+  margin: 0 0 0.25rem;
+  font-family: "Bricolage Grotesque", Georgia, serif;
+}
+
+.admin-item p {
+  margin: 0.15rem 0;
+  color: var(--muted);
+}
+
+.check-line {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: var(--touch);
+  font-weight: 700;
+}
+
+.check-line input {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.copy-dialog-inner {
+  max-width: min(42rem, calc(100vw - 2rem));
+}
+
+.copy-code {
+  max-height: 16rem;
+  overflow: auto;
+  padding: 0.8rem;
+  border-radius: var(--radius-sm);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.82rem;
+  white-space: pre-wrap;
+}
+
+.copy-frame {
+  width: 100%;
+  min-height: 16rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #fff;
 }
 
 .traffic {
@@ -1096,6 +1434,10 @@ body.nav-open .nav-panel {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .studio-days {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .day:nth-child(5) {
     grid-column: 1 / -1;
   }
@@ -1112,7 +1454,9 @@ body.nav-open .nav-panel {
 
   .prototype-card,
   .bootcamp-join,
-  .coords-card {
+  .coords-card,
+  .studio-card,
+  .studio-block {
     padding: 2rem;
   }
 }
@@ -1126,6 +1470,10 @@ body.nav-open .nav-panel {
 
   .cards {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .dash-tabs {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 

@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Jour 1 · Support de cours · Bootcamp KoffieDev</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Code+Pro:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #efe6d6;
+        --card: #fffdf8;
+        --ink: #1a1612;
+        --muted: #5a534b;
+        --line: #e2d6c4;
+        --accent: #c64520;
+        --accent-deep: #9e3416;
+        --sun: #8a6414;
+        --whatsapp: #167a39;
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        color: var(--ink);
+        background: var(--bg);
+        font-family: Figtree, "Segoe UI", sans-serif;
+        font-size: 11pt;
+        line-height: 1.5;
+      }
+
+      @page { size: A4; margin: 14mm 13mm 16mm; }
+
+      .cover {
+        min-height: 260mm;
+        padding: 18mm 14mm;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background:
+          radial-gradient(28rem 16rem at 100% -8%, rgba(198, 69, 32, 0.16), transparent 55%),
+          radial-gradient(22rem 14rem at -8% 10%, rgba(232, 184, 74, 0.28), transparent 52%),
+          var(--bg);
+        page-break-after: always;
+      }
+
+      .kicker {
+        margin: 0 0 0.4rem;
+        color: var(--accent);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+      }
+
+      h1, h2, h3, h4 {
+        font-family: "Bricolage Grotesque", Georgia, serif;
+        line-height: 1.15;
+        margin: 0 0 0.55rem;
+      }
+
+      .cover h1 {
+        font-size: 2.45rem;
+        font-weight: 800;
+        max-width: 16ch;
+      }
+
+      .cover .lead {
+        font-size: 1.12rem;
+        max-width: 40ch;
+        color: var(--muted);
+      }
+
+      .pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        padding: 0;
+        margin: 1rem 0 0;
+        list-style: none;
+      }
+
+      .pills li {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.22rem 0.7rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+
+      .wrap { padding: 0 1mm 4mm; }
+
+      h2 {
+        font-size: 1.45rem;
+        margin-top: 0;
+        padding-bottom: 0.35rem;
+        border-bottom: 2px solid var(--accent);
+      }
+
+      h3 { font-size: 1.12rem; margin-top: 1.1rem; color: var(--accent-deep); }
+      h4 { font-size: 1rem; margin-top: 0.85rem; }
+
+      p { margin: 0 0 0.65rem; }
+      ul, ol { margin: 0 0 0.75rem; padding-left: 1.2rem; }
+      li { margin: 0.18rem 0; }
+
+      .stamp {
+        display: inline-block;
+        margin: 0 0 0.45rem;
+        color: var(--sun);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .box, .exo, .tip, .warn, .ok {
+        border-radius: 0.75rem;
+        padding: 0.75rem 0.9rem;
+        margin: 0.7rem 0;
+        border: 1px solid var(--line);
+        background: var(--card);
+        break-inside: avoid;
+      }
+
+      .exo { border-left: 4px solid #2c5aa0; background: #f3f7fd; }
+      .tip { border-left: 4px solid var(--sun); background: #fff8e8; }
+      .warn { border-left: 4px solid var(--accent); background: #fdf3ee; }
+      .ok { border-left: 4px solid var(--whatsapp); background: #f1f8f3; }
+
+      .label {
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 0.28rem;
+      }
+
+      .exo .label { color: #2c5aa0; }
+      .tip .label { color: var(--sun); }
+      .warn .label { color: var(--accent-deep); }
+      .ok .label { color: var(--whatsapp); }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0.6rem 0 1rem;
+        font-size: 0.95rem;
+        background: var(--card);
+      }
+
+      th, td {
+        border: 1px solid var(--line);
+        padding: 0.42rem 0.55rem;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: #f3eadc;
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      pre, code { font-family: "Source Code Pro", Consolas, monospace; }
+
+      code {
+        font-size: 0.86em;
+        background: #f3eadc;
+        padding: 0.05rem 0.28rem;
+        border-radius: 0.25rem;
+      }
+
+      pre {
+        background: #1a1612;
+        color: #faf6ef;
+        padding: 0.8rem 0.9rem;
+        border-radius: 0.7rem;
+        font-size: 0.78rem;
+        line-height: 1.45;
+        white-space: pre-wrap;
+        break-inside: avoid;
+      }
+
+      .flow {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.35rem;
+        margin: 0.8rem 0 1rem;
+        break-inside: avoid;
+      }
+
+      .flow span {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 0.55rem;
+        padding: 0.45rem 0.35rem;
+        text-align: center;
+        font-size: 0.78rem;
+        font-weight: 600;
+      }
+
+      .two {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.7rem;
+      }
+
+      .blank {
+        border-bottom: 1px dotted #8a7d6d;
+        min-height: 1.2rem;
+        margin: 0.28rem 0 0.5rem;
+      }
+
+      .page { page-break-before: always; padding-top: 1mm; }
+
+      .check li { list-style: none; margin-left: -1.2rem; }
+      .check li::before { content: "☐  "; }
+
+      .footer-note {
+        margin-top: 1.2rem;
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="cover">
+      <div>
+        <p class="kicker">Bootcamp KoffieDev · Support de cours</p>
+        <h1>Jour 1. Réseaux et développement web.</h1>
+        <p class="lead">
+          Support de cours à lire, annoter et garder. Imprime-le ou
+          suis-le à l’écran. Les corrigés se font ensemble, pendant la séance.
+        </p>
+        <ul class="pills">
+          <li>Gratuit</li>
+          <li>Jour 1 · 2 h</li>
+          <li>Débutant bienvenu</li>
+          <li>En visio · 12 h GMT</li>
+        </ul>
+      </div>
+      <div>
+        <p class="kicker">Aujourd’hui tu repars avec</p>
+        <p>
+          La notion client / serveur, le nom de domaine, les protocoles
+          d’envoi d’une page, et une vitrine HTML avec un lien WhatsApp.
+        </p>
+        <p class="footer-note">Garde ce support toute la semaine. Il servira encore.</p>
+      </div>
+    </section>
+
+    <main class="wrap">
+      <p class="stamp">Avant la séance</p>
+      <h2>Prépare ça, rien de plus</h2>
+      <ul class="check">
+        <li>Un ordinateur (le téléphone seul ne suffit pas pour coder).</li>
+        <li>Chrome, Edge ou Firefox.</li>
+        <li>Un dossier vide sur le Bureau, nommé <code>vitrine</code>.</li>
+        <li>WhatsApp, pour tester ton lien à la fin.</li>
+      </ul>
+      <div class="tip">
+        <span class="label">Pas d’éditeur installé ?</span>
+        On peut tout faire dans le Bloc-notes, ou sur
+        <strong>https://codepen.io/pen</strong> (onglets HTML et CSS).
+      </div>
+      <div class="ok">
+        <span class="label">Objectif du jour</span>
+        Comprendre comment une page est demandée et envoyée sur Internet,
+        puis en créer une. Pas besoin d’avoir déjà codé.
+      </div>
+
+      <h3>Les trois temps du jour</h3>
+      <table>
+        <thead>
+          <tr><th></th><th>On travaille</th><th>Tu repars avec</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Client / serveur, domaine, protocoles d’envoi</td>
+            <td>Le voyage d’une page, dans l’ordre</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>HTML et un peu de CSS</td>
+            <td>Les balises pour une vraie page</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Mini-projet vitrine</td>
+            <td>Ton fichier <code>index.html</code> + lien WhatsApp</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+
+    <section class="wrap page">
+      <p class="stamp">Partie 1 · Cours</p>
+      <h2>1. Client et serveur</h2>
+      <p>
+        Sur Internet, presque tout est un dialogue entre deux rôles.
+        L’un <strong>demande</strong>, l’autre <strong>répond</strong>.
+        C’est le modèle <strong>client / serveur</strong>.
+      </p>
+
+      <div class="two">
+        <div class="box">
+          <h4>Le client</h4>
+          <p>
+            Le programme qui <strong>initie</strong> la demande.
+            Exemples : Chrome, Firefox, l’app WhatsApp, ton téléphone.
+            Il n’a pas la page en réserve : il la réclame.
+          </p>
+        </div>
+        <div class="box">
+          <h4>Le serveur</h4>
+          <p>
+            Le programme (sur une machine souvent allumée en continu) qui
+            <strong>attend</strong> les demandes et envoie la réponse :
+            fichier HTML, image, vidéo, message.
+          </p>
+        </div>
+      </div>
+
+      <h3>Le dialogue, à chaque fois</h3>
+      <ol>
+        <li>Le client ouvre une connexion vers le serveur.</li>
+        <li>Il envoie une <strong>requête</strong> : « donne-moi telle ressource ».</li>
+        <li>Le serveur traite, puis envoie une <strong>réponse</strong> (succès ou erreur).</li>
+        <li>Le client reçoit et affiche (ou enregistre) le résultat.</li>
+      </ol>
+      <p>
+        Analogie resto : tu commandes (client), la cuisine prépare (serveur),
+        le plateau arrive. Cuisine fermée → pas de réponse. Plat introuvable →
+        <code>404</code>. Commande OK → <code>200</code>.
+      </p>
+
+      <h3>Points à bien verrouiller</h3>
+      <ul>
+        <li>Le <strong>client n’est pas « toi »</strong> : c’est le logiciel qui demande (le navigateur).</li>
+        <li>Le <strong>serveur n’est pas « Internet »</strong> : c’est une machine précise, avec une adresse.</li>
+        <li>Une même machine peut être les deux : aujourd’hui, ton PC est serveur (fichier local) et client (Chrome).</li>
+        <li>Un serveur peut répondre à des milliers de clients en même temps.</li>
+        <li>Sans serveur joignable, le plus bel HTML du monde n’arrive nulle part.</li>
+      </ul>
+      <table>
+        <thead><tr><th>Situation</th><th>Client</th><th>Serveur</th></tr></thead>
+        <tbody>
+          <tr><td>Tu ouvres YouTube</td><td>Chrome</td><td>Les machines de YouTube</td></tr>
+          <tr><td>Tu envoies « salut » sur WhatsApp</td><td>L’app sur ton téléphone</td><td>Les machines de WhatsApp</td></tr>
+          <tr><td>Tu ouvres <code>index.html</code> en local</td><td>Le navigateur</td><td>Ton propre disque / ordi</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">Partie 1 · Cours</p>
+      <h2>2. Nom de domaine</h2>
+      <p>
+        Une machine se trouve par une <strong>adresse IP</strong>
+        (ex. <code>142.250.200.78</code>). Quatre nombres entre 0 et 255,
+        séparés par des points. C’est lisible pour une machine, pénible pour toi.
+      </p>
+      <p>
+        Le <strong>nom de domaine</strong> est le nom humain de ce lieu :
+        <code>google.com</code>, <code>whatsapp.com</code>, <code>wa.me</code>.
+        Comme le nom d’une boutique, au lieu du numéro de parcelle.
+      </p>
+
+      <h3>Anatomie d’un nom</h3>
+      <p>Prends <code>www.koffiedev.com</code> (exemple) :</p>
+      <table>
+        <thead><tr><th>Morceau</th><th>Exemple</th><th>Rôle</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Sous-domaine</td>
+            <td><code>www</code></td>
+            <td>Souvent le site web public. On peut avoir <code>mail.</code>, <code>api.</code>, etc.</td>
+          </tr>
+          <tr>
+            <td>Domaine</td>
+            <td><code>koffiedev</code></td>
+            <td>Le nom choisi, unique pour cette zone.</td>
+          </tr>
+          <tr>
+            <td>Extension (TLD)</td>
+            <td><code>.com</code></td>
+            <td>La « zone » : <code>.com</code>, <code>.ci</code>, <code>.org</code>, <code>.edu</code>…</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        On lit un domaine <strong>de droite à gauche</strong> : d’abord la zone
+        (<code>.com</code>), puis le nom, puis éventuellement <code>www</code>.
+      </p>
+
+      <h3>Le DNS : l’annuaire du domaine</h3>
+      <p>
+        Le <strong>DNS</strong> (Domain Name System) traduit un nom en IP.
+        Sans lui, tu devrais retenir des chiffres pour chaque site.
+      </p>
+      <ol>
+        <li>Tu tapes <code>google.com</code> dans Chrome.</li>
+        <li>Le client demande à un serveur DNS : « quelle IP pour ce nom ? »</li>
+        <li>Le DNS répond, par exemple une adresse IPv4.</li>
+        <li>Ensuite seulement, Chrome va frapper à <em>cette</em> IP.</li>
+      </ol>
+      <p>
+        Analogie taxi : tu dis « emmène-moi chez Awa ». Le taxi ne connaît pas Awa.
+        Il demande l’adresse (DNS), puis il y va (connexion vers l’IP).
+      </p>
+      <div class="warn">
+        <span class="label">Si le DNS échoue</span>
+        Le navigateur affiche « introuvable » / « DNS_PROBE_FINISHED_NXDOMAIN ».
+        Ce n’est pas encore le serveur web qui a parlé : le nom n’a pas d’IP connue.
+      </div>
+      <div class="tip">
+        <span class="label">À retenir</span>
+        Le domaine est un <strong>nom</strong>. L’IP est une <strong>adresse</strong>.
+        Le DNS est le <strong>carnet d’adresses</strong> qui relie les deux.
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">Partie 1 · Cours</p>
+      <h2>3. Protocoles d’envoi</h2>
+      <p>
+        Un <strong>protocole</strong> est un accord : comment on parle, dans quel
+        ordre, avec quels mots. Sans protocole commun, le client et le serveur
+        ne se comprennent pas, comme deux personnes sans langue partagée.
+      </p>
+      <p>
+        Pour envoyer une <strong>page web</strong>, trois protocoles se relaient.
+        Tu n’as pas à les configurer aujourd’hui, mais tu dois savoir qui fait quoi.
+      </p>
+
+      <table>
+        <thead><tr><th>Protocole</th><th>Rôle, en une phrase</th><th>Quand tu le vois</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>DNS</strong></td>
+            <td>Demande l’IP qui correspond au nom de domaine.</td>
+            <td>Avant même d’ouvrir la page.</td>
+          </tr>
+          <tr>
+            <td><strong>TCP</strong></td>
+            <td>Ouvre une connexion fiable et envoie les données sans les perdre.</td>
+            <td>Invisible. C’est la route.</td>
+          </tr>
+          <tr>
+            <td><strong>HTTP</strong></td>
+            <td>La langue de la requête et de la réponse web (« donne-moi la page »).</td>
+            <td>Dans l’URL : <code>http://</code></td>
+          </tr>
+          <tr>
+            <td><strong>HTTPS</strong></td>
+            <td>HTTP + chiffrement. Personne au milieu ne lit facilement.</td>
+            <td>Cadenas et <code>https://</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>HTTP : la langue d’envoi de la page</h3>
+      <p>
+        HTTP = HyperText Transfer Protocol, le protocole de transfert de pages.
+        Le client envoie une requête. Le plus courant aujourd’hui : <strong>GET</strong>
+        (« donne-moi ce fichier »).
+      </p>
+      <pre>GET /index.html HTTP/1.1
+Host: exemple.com</pre>
+      <p>Le serveur répond avec un <strong>code</strong> et le contenu :</p>
+      <pre>HTTP/1.1 200 OK
+Content-Type: text/html
+
+&lt;!DOCTYPE html&gt; ...</pre>
+      <table>
+        <thead><tr><th>Code</th><th>Signification</th></tr></thead>
+        <tbody>
+          <tr><td><code>200</code></td><td>OK. Voici la ressource.</td></tr>
+          <tr><td><code>301</code> / <code>302</code></td><td>La page a déménagé. Va ailleurs.</td></tr>
+          <tr><td><code>403</code></td><td>Interdit. Tu n’as pas le droit.</td></tr>
+          <tr><td><code>404</code></td><td>Cette ressource n’existe pas chez moi.</td></tr>
+          <tr><td><code>500</code></td><td>Le serveur a un problème interne.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>HTTPS : le même envoi, dans une enveloppe</h3>
+      <p>
+        HTTPS = HTTP + chiffrement (souvent via TLS). Le S veut dire
+        <em>secure</em>. Le dialogue est le même (GET, 200, 404), mais
+        un regard sur le wifi du café ne lit pas le contenu en clair.
+      </p>
+      <ul>
+        <li>HTTP voyage souvent sur le <strong>port 80</strong>.</li>
+        <li>HTTPS voyage sur le <strong>port 443</strong>.</li>
+        <li>Un port, c’est la « porte » du serveur : l’IP est l’immeuble, le port est l’appartement.</li>
+      </ul>
+      <div class="ok">
+        <span class="label">Règle du bootcamp</span>
+        Pour une vitrine et un lien WhatsApp, on écrit toujours
+        <code>https://</code>. On ne met jamais un mot de passe dans une page.
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <h3>L’URL : protocole + domaine + ressource</h3>
+      <p>L’URL assemble tout ce qu’on vient de voir. Exemple :</p>
+      <p><code>https://wa.me/22890123456?text=Bonjour</code></p>
+      <table>
+        <thead><tr><th>Morceau</th><th>Exemple</th><th>Rôle</th></tr></thead>
+        <tbody>
+          <tr><td>Protocole d’envoi</td><td><code>https://</code></td><td>Comment on parle au serveur (ici : HTTP chiffré).</td></tr>
+          <tr><td>Nom de domaine</td><td><code>wa.me</code></td><td>Le nom. Le DNS le transforme en IP.</td></tr>
+          <tr><td>Chemin</td><td><code>/22890123456</code></td><td>Quelle ressource précise on GET.</td></tr>
+          <tr><td>Requête</td><td><code>?text=Bonjour</code></td><td>Un paramètre. Ici, le message prérempli.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Le voyage complet, dans l’ordre</h3>
+      <div class="flow">
+        <span>1. Nom tapé</span>
+        <span>2. DNS → IP</span>
+        <span>3. TCP + HTTPS</span>
+        <span>4. GET / réponse</span>
+        <span>5. Page dessinée</span>
+      </div>
+      <ol>
+        <li>Tu saisis le nom de domaine (ou tu cliques un lien).</li>
+        <li>Le DNS donne l’adresse IP du serveur.</li>
+        <li>TCP ouvre la connexion. HTTPS chiffre l’échange.</li>
+        <li>Le client (navigateur) envoie un GET. Le serveur répond 200 + HTML, puis CSS, images.</li>
+        <li>Le navigateur assemble et affiche. Toi tu vois « la page », pas l’IP.</li>
+      </ol>
+      <div class="tip">
+        <span class="label">Aujourd’hui</span>
+        Ta vitrine vivra d’abord <strong>sur ton ordinateur</strong> (un fichier).
+        Client et serveur sont la même machine. Le modèle reste le même.
+        On n’héberge pas encore en ligne.
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">À toi</p>
+      <h2>Exercices · réseaux</h2>
+      <p>Écris tes réponses ici. On corrige ensemble pendant la séance.</p>
+
+      <div class="exo">
+        <span class="label">Exercice 1 · Client ou serveur ?</span>
+        <p>Pour chaque situation : <strong>client</strong>, <strong>serveur</strong>, ou <strong>les deux</strong>.</p>
+        <ol>
+          <li>Chrome, quand tu ouvres YouTube. <div class="blank"></div></li>
+          <li>L’ordinateur de YouTube qui envoie la vidéo. <div class="blank"></div></li>
+          <li>WhatsApp sur ton téléphone, quand tu envoies « salut ». <div class="blank"></div></li>
+          <li>La machine de WhatsApp qui transmet le message. <div class="blank"></div></li>
+          <li>Toi, quand tu ouvres ton fichier <code>index.html</code> dans le navigateur. <div class="blank"></div></li>
+        </ol>
+      </div>
+
+      <div class="exo">
+        <span class="label">Exercice 2 · Lire un nom de domaine</span>
+        <p>Pour <code>www.koffiedev.com</code> :</p>
+        <ol>
+          <li>Sous-domaine : <div class="blank"></div></li>
+          <li>Nom de domaine : <div class="blank"></div></li>
+          <li>Extension (TLD) : <div class="blank"></div></li>
+          <li>Qui transforme ce nom en IP ? <div class="blank"></div></li>
+        </ol>
+      </div>
+
+      <div class="exo">
+        <span class="label">Exercice 3 · Protocoles d’envoi</span>
+        <p>Relie ou écris le bon protocole : <strong>DNS</strong> · <strong>TCP</strong> · <strong>HTTP</strong> · <strong>HTTPS</strong>.</p>
+        <ol>
+          <li>Chiffrer l’échange pour que le wifi du café ne lise pas la page. <div class="blank"></div></li>
+          <li>Trouver l’IP de <code>wa.me</code>. <div class="blank"></div></li>
+          <li>Dire « GET /index.html » et recevoir le HTML. <div class="blank"></div></li>
+          <li>Transporter les données sans les perdre, une fois l’IP connue. <div class="blank"></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <div class="exo">
+        <span class="label">Exercice 4 · Décortiquer l’URL</span>
+        <p><code>https://wa.me/22890123456?text=Bonjour</code></p>
+        <ol>
+          <li>Protocole d’envoi : <div class="blank"></div></li>
+          <li>Nom de domaine : <div class="blank"></div></li>
+          <li>Chemin (le numéro) : <div class="blank"></div></li>
+          <li>Pourquoi il y a un <code>s</code> dans https ? <div class="blank"></div></li>
+          <li>Le client envoie plutôt un GET ou un « like » ? <div class="blank"></div></li>
+        </ol>
+      </div>
+
+      <div class="exo">
+        <span class="label">Exercice 5 · Remettre dans l’ordre</span>
+        <p>Numérote de 1 à 6.</p>
+        <ul>
+          <li>___ Le serveur répond <code>200</code> et envoie le HTML.</li>
+          <li>___ Tu tapes le nom de domaine dans Chrome.</li>
+          <li>___ HTTPS chiffre la connexion (port 443).</li>
+          <li>___ Le DNS donne l’adresse IP.</li>
+          <li>___ Le navigateur dessine la page à l’écran.</li>
+          <li>___ Le client envoie un GET au serveur.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">Partie 2 · Cours</p>
+      <h2>Écrire une page HTML et un peu de CSS</h2>
+      <p>
+        Une fois la page <em>arrivée</em>, encore faut-il la <em>écrire</em>.
+        <strong>HTML</strong> = la structure (murs et pièces).
+        <strong>CSS</strong> = l’apparence (peinture et rideaux).
+      </p>
+
+      <h3>Une balise</h3>
+      <pre>&lt;p&gt;Ceci est un paragraphe.&lt;/p&gt;</pre>
+      <ul>
+        <li><code>&lt;p&gt;</code> ouvre. <code>&lt;/p&gt;</code> ferme. Le slash ferme.</li>
+        <li>Ce qu’il y a au milieu s’affiche à l’écran.</li>
+        <li>Écris les noms de balises en minuscules.</li>
+      </ul>
+
+      <h3>Le squelette de toute page</h3>
+      <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;title&gt;Ma vitrine&lt;/title&gt;
+    &lt;style&gt;
+      /* le CSS viendra ici */
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Mon prénom&lt;/h1&gt;
+    &lt;p&gt;Une phrase sur moi.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+      <table>
+        <thead><tr><th>Ligne</th><th>À quoi elle sert</th></tr></thead>
+        <tbody>
+          <tr><td><code>&lt;!DOCTYPE html&gt;</code></td><td>Dit au navigateur : c’est du HTML moderne.</td></tr>
+          <tr><td><code>lang="fr"</code></td><td>Page en français.</td></tr>
+          <tr><td><code>&lt;head&gt;</code></td><td>Infos pour le navigateur, pas le texte principal.</td></tr>
+          <tr><td><code>charset="UTF-8"</code></td><td>Sans ça, les accents cassent.</td></tr>
+          <tr><td><code>&lt;title&gt;</code></td><td>Le nom de l’onglet.</td></tr>
+          <tr><td><code>&lt;body&gt;</code></td><td>Ce que tu vois.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="wrap page">
+      <h3>Les balises du jour</h3>
+      <table>
+        <thead><tr><th>Balise</th><th>Rôle</th><th>Chez toi</th></tr></thead>
+        <tbody>
+          <tr><td><code>&lt;h1&gt;</code></td><td>Titre principal (une fois)</td><td>Ton prénom</td></tr>
+          <tr><td><code>&lt;h2&gt;</code></td><td>Sous-titre</td><td>« Ce que je fais »</td></tr>
+          <tr><td><code>&lt;p&gt;</code></td><td>Paragraphe</td><td>2 ou 3 phrases</td></tr>
+          <tr><td><code>&lt;a&gt;</code></td><td>Lien</td><td>WhatsApp</td></tr>
+          <tr><td><code>&lt;ul&gt;</code> / <code>&lt;li&gt;</code></td><td>Liste</td><td>3 envies de la semaine</td></tr>
+          <tr><td><code>&lt;strong&gt;</code></td><td>Important</td><td>Un mot clé</td></tr>
+          <tr><td><code>&lt;img&gt;</code></td><td>Image</td><td>Photo, optionnelle</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Le lien WhatsApp (une URL https)</h3>
+      <pre>&lt;a href="https://wa.me/22890123456"&gt;Écrire sur WhatsApp&lt;/a&gt;</pre>
+      <ul>
+        <li>Protocole : <code>https</code>, envoi chiffré.</li>
+        <li>Domaine : <code>wa.me</code>. Le DNS trouvera l’IP de WhatsApp.</li>
+        <li>Numéro = indicatif pays + numéro, <strong>sans + et sans espaces</strong>.</li>
+        <li>Togo 228 · Bénin 229 · Burkina 226 · Côte d’Ivoire 225 · Sénégal 221 · Mali 223</li>
+        <li>Message prérempli : <code>?text=Bonjour</code> (un espace s’écrit <code>%20</code>).</li>
+      </ul>
+      <p>Ton numéro, déjà au bon format :</p>
+      <div class="blank"></div>
+
+      <h3>Un peu de CSS</h3>
+      <p>Une règle : <strong>qui</strong> (sélecteur), <strong>quoi</strong> (propriété), <strong>combien</strong> (valeur).</p>
+      <pre>body {
+  font-family: sans-serif;
+  background: #efe6d6;
+  color: #1a1612;
+}
+
+h1 {
+  color: #c64520;
+}
+
+a {
+  background: #167a39;
+  color: white;
+  text-decoration: none;
+  padding: 12px 18px;
+}</pre>
+      <table>
+        <thead><tr><th>Propriété</th><th>Effet</th></tr></thead>
+        <tbody>
+          <tr><td><code>color</code></td><td>Couleur du texte</td></tr>
+          <tr><td><code>background</code></td><td>Couleur de fond</td></tr>
+          <tr><td><code>font-family</code></td><td>La police</td></tr>
+          <tr><td><code>padding</code></td><td>Espace intérieur (bouton plus large)</td></tr>
+          <tr><td><code>text-decoration: none</code></td><td>Enlève le soulignement du lien</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">À toi</p>
+      <h2>Exercices · HTML</h2>
+
+      <div class="exo">
+        <span class="label">Exercice 6 · Relier</span>
+        <p>Relie chaque besoin à la bonne balise.</p>
+        <table>
+          <thead><tr><th>Besoin</th><th>Ta réponse</th></tr></thead>
+          <tbody>
+            <tr><td>Nom de l’onglet</td><td></td></tr>
+            <tr><td>Texte du bouton WhatsApp</td><td></td></tr>
+            <tr><td>Une photo</td><td></td></tr>
+            <tr><td>Liste de 3 compétences</td><td></td></tr>
+            <tr><td>Phrase d’intro</td><td></td></tr>
+          </tbody>
+        </table>
+        <p>Choix : <code>title</code> · <code>a</code> · <code>img</code> · <code>ul/li</code> · <code>p</code></p>
+      </div>
+
+      <div class="exo">
+        <span class="label">Exercice 7 · Page cassée</span>
+        <p>Cette page a <strong>cinq</strong> erreurs. Entoure-les, puis réécris la version correcte.</p>
+        <pre>&lt;html lang="fr"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ma vitrine
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Awa&lt;h1&gt;
+    &lt;p&gt;Je découvre le web.
+    &lt;a href="https://wa.me/+228 90 12 34 56"&gt;WhatsApp&lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+        <p>Version corrigée :</p>
+        <div class="blank"></div>
+        <div class="blank"></div>
+        <div class="blank"></div>
+        <div class="blank"></div>
+        <div class="blank"></div>
+        <div class="blank"></div>
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">Partie 3 · Mini-projet</p>
+      <h2>Ta vitrine, avec un lien WhatsApp</h2>
+      <p>
+        Tu construis <strong>ta</strong> page. Fichier :
+        <code>vitrine/index.html</code>. En l’ouvrant, ton navigateur est le client.
+      </p>
+
+      <h3>À avoir pour valider</h3>
+      <ul class="check">
+        <li>Un fichier nommé <code>index.html</code> (pas <code>.txt</code>).</li>
+        <li>Un <code>&lt;h1&gt;</code> avec ton prénom (ou un pseudo).</li>
+        <li>Un paragraphe : qui tu es, en 2 ou 3 phrases.</li>
+        <li>Une liste : 3 choses que tu veux apprendre cette semaine.</li>
+        <li>Un lien <code>https://wa.me/...</code> vers <strong>ton</strong> numéro, texte : <code>Bonjour, je viens de ta vitrine KoffieDev</code>.</li>
+        <li>Au moins 3 règles CSS : fond, texte, bouton.</li>
+      </ul>
+
+      <h3>Si tu as le temps</h3>
+      <ul>
+        <li>Une photo <code>photo.jpg</code> dans le même dossier, avec un <code>alt</code>.</li>
+        <li>Un sous-titre <code>&lt;h2&gt;</code> « Me contacter ».</li>
+      </ul>
+
+      <h3>Colle ça, en changeant le numéro</h3>
+      <pre>https://wa.me/228VOTRENUMERO?text=Bonjour%2C%20je%20viens%20de%20ta%20vitrine%20KoffieDev</pre>
+      <p>Exemple : 90 12 34 56 au Togo → <code>22890123456</code>.</p>
+
+      <div class="warn">
+        <span class="label">Si ça ne s’affiche pas</span>
+        <ul>
+          <li>Le fichier s’appelle <code>index.html.txt</code> → affiche les extensions dans l’explorateur Windows.</li>
+          <li>Word s’ouvre au lieu de Chrome → clic droit, ouvrir avec le navigateur.</li>
+          <li>Accents bizarres → il manque <code>charset="UTF-8"</code>.</li>
+          <li>WhatsApp n’ouvre rien → enlève le + et les espaces du numéro.</li>
+          <li>Tu as modifié le fichier mais l’écran n’a pas bougé → enregistre, puis F5.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">Si tu bloques</p>
+      <h2>Modèle à adapter (prénom + numéro)</h2>
+      <p>Copie uniquement si tu n’as plus de temps. Change Awa et le numéro. C’est <em>ta</em> page.</p>
+      <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;title&gt;Vitrine de Awa&lt;/title&gt;
+    &lt;style&gt;
+      body {
+        font-family: sans-serif;
+        background: #efe6d6;
+        color: #1a1612;
+        max-width: 640px;
+        margin: 40px auto;
+        padding: 24px;
+        line-height: 1.5;
+      }
+      h1 { color: #c64520; }
+      a.whatsapp {
+        display: inline-block;
+        background: #167a39;
+        color: white;
+        text-decoration: none;
+        padding: 12px 18px;
+        border-radius: 999px;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Awa Koffi&lt;/h1&gt;
+    &lt;p&gt;Je découvre l’informatique avec le bootcamp KoffieDev.
+    Aujourd’hui j’ai compris client, serveur, domaine et HTTPS.&lt;/p&gt;
+    &lt;h2&gt;Cette semaine je veux&lt;/h2&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Mieux comprendre Internet&lt;/li&gt;
+      &lt;li&gt;Écrire du Python&lt;/li&gt;
+      &lt;li&gt;Savoir me protéger en ligne&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;
+      &lt;a class="whatsapp"
+         href="https://wa.me/22890123456?text=Bonjour%2C%20je%20viens%20de%20ta%20vitrine%20KoffieDev"&gt;
+        Écrire sur WhatsApp
+      &lt;/a&gt;
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">À garder</p>
+      <h2>Glossaire du jour</h2>
+      <table>
+        <tbody>
+          <tr><th>Mot</th><th>En une phrase</th></tr>
+          <tr><td>Client</td><td>Le programme qui demande (navigateur, app).</td></tr>
+          <tr><td>Serveur</td><td>Le programme qui attend et répond.</td></tr>
+          <tr><td>Requête / réponse</td><td>Le dialogue : le client demande, le serveur envoie.</td></tr>
+          <tr><td>IP</td><td>L’adresse numérique d’une machine.</td></tr>
+          <tr><td>Nom de domaine</td><td>Le nom lisible d’un site.</td></tr>
+          <tr><td>TLD</td><td>L’extension : <code>.com</code>, <code>.ci</code>…</td></tr>
+          <tr><td>DNS</td><td>L’annuaire qui transforme le nom en IP.</td></tr>
+          <tr><td>Protocole</td><td>Les règles du dialogue sur le réseau.</td></tr>
+          <tr><td>TCP</td><td>Le transport fiable des données.</td></tr>
+          <tr><td>HTTP</td><td>Le protocole d’envoi des pages web (GET, codes 200, 404).</td></tr>
+          <tr><td>HTTPS</td><td>HTTP chiffré, port 443, cadenas.</td></tr>
+          <tr><td>Port</td><td>La « porte » du serveur (80 ou 443 pour le web).</td></tr>
+          <tr><td>GET</td><td>La requête HTTP : « donne-moi cette ressource ».</td></tr>
+          <tr><td>URL</td><td>Protocole + domaine + chemin, en une adresse.</td></tr>
+          <tr><td>HTML</td><td>Le langage de structure d’une page.</td></tr>
+          <tr><td>CSS</td><td>Le langage d’apparence.</td></tr>
+          <tr><td>404</td><td>Le serveur n’a pas ce fichier.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Checklist avant d’envoyer ton fichier</h3>
+      <ul class="check">
+        <li>Le fichier s’appelle <code>index.html</code>.</li>
+        <li>La première ligne est <code>&lt;!DOCTYPE html&gt;</code>.</li>
+        <li>Le lien WhatsApp commence par <code>https://</code>.</li>
+        <li>Le prénom s’affiche dans le navigateur.</li>
+        <li>Le bouton ouvre une conversation vers toi.</li>
+        <li>Tu as enregistré, puis rechargé avec F5.</li>
+      </ul>
+
+      <div class="exo">
+        <span class="label">Mini-exo de fin de séance</span>
+        <p>
+          Dépose ta vitrine sur MyHub, espace étudiant.
+          Inscription : prénom, nom, numéro de téléphone.
+          Connexion : prénom et numéro de téléphone.
+        </p>
+        <p>
+          Tu y télécharges aussi ce support, tu suis ta progression,
+          et tu soumets le fichier <code>index.html</code>.
+        </p>
+      </div>
+
+      <div class="ok">
+        <span class="label">Pour le jour 2 · Python</span>
+        Ne jette pas le dossier <code>vitrine</code>. On reprend la même page :
+        un script écrira le texte à ta place. Même heure, même visio, ordinateur encore obligatoire.
+      </div>
+      <p class="footer-note">Bootcamp KoffieDev · Jour 1 · Support de cours</p>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#efe6d6" />
+    <title>Connexion · Espace étudiant · MyHub</title>
+    <meta
+      name="description"
+      content="Connexion à l’espace étudiant MyHub : prénom et numéro de téléphone."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#contenu">Aller au contenu</a>
+
+    <header class="top">
+      <a class="mark" href="index.html">MyHub</a>
+      <nav class="nav nav-bar" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="bootcamp.html">Bootcamp</a>
+        <a href="etudiant.html" aria-current="page">Espace étudiant</a>
+      </nav>
+    </header>
+
+    <main class="studio" id="contenu" tabindex="-1">
+      <section class="studio-card">
+        <p class="stamp">Connexion</p>
+        <h1>Entre dans ton espace</h1>
+        <p>
+          Déjà inscrit ? Prénom et téléphone suffisent. Tes exos et ta
+          progression t’attendent.
+        </p>
+
+        <form class="coords-form" id="login-form" novalidate>
+          <div class="field">
+            <label for="log-prenom">Prénom</label>
+            <input
+              id="log-prenom"
+              name="prenom"
+              type="text"
+              autocomplete="given-name"
+              autocapitalize="words"
+              spellcheck="false"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="log-phone">Numéro de téléphone</label>
+            <input
+              id="log-phone"
+              name="phone"
+              type="tel"
+              inputmode="tel"
+              autocomplete="tel"
+              required
+            />
+          </div>
+          <p class="form-error" id="login-error" hidden aria-live="polite"></p>
+          <button class="btn btn-primary" type="submit">Entrer</button>
+        </form>
+
+        <p class="auth-alt">
+          Pas encore de compte ?
+          <a href="inscription.html">Créer un espace</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p>MyHub, espace étudiant du bootcamp.</p>
+      <nav class="foot-nav" aria-label="Pied de page">
+        <a href="index.html">Accueil</a>
+        <a href="inscription.html">Inscription</a>
+        <a href="etudiant.html" aria-current="page">Connexion</a>
+      </nav>
+    </footer>
+
+    <script src="studio-api.js"></script>
+    <script src="connexion.js"></script>
+  </body>
+</html>

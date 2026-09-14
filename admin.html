@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#efe6d6" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <title>Admin · MyHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="atelier">
+    <section class="gate" id="gate">
+      <p class="stamp">Admin</p>
+      <h1>Espace admin</h1>
+      <p>Cours, devoirs et copies des étudiants. Même mot de passe que l’atelier.</p>
+      <form id="admin-login">
+        <label for="admin-pass">Mot de passe</label>
+        <input
+          id="admin-pass"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          required
+        />
+        <button class="btn btn-primary" type="submit">Entrer</button>
+        <p class="gate-error" id="admin-error" hidden aria-live="polite"></p>
+      </form>
+    </section>
+
+    <div id="desk" hidden>
+      <header class="top">
+        <a class="mark" href="index.html">MyHub</a>
+        <nav class="nav nav-bar" aria-label="Navigation admin">
+          <a href="atelier.html">Fréquentation</a>
+          <a href="admin.html" aria-current="page">Admin</a>
+          <button class="nav-ext" type="button" id="admin-logout">Sortir</button>
+        </nav>
+      </header>
+
+      <main class="studio" id="contenu" tabindex="-1">
+        <section class="studio-board dash">
+          <header class="studio-hello">
+            <div>
+              <p class="stamp">Admin</p>
+              <h1>Bootcamp, en coulisses</h1>
+              <p id="admin-stats"></p>
+            </div>
+          </header>
+
+          <div class="dash-tabs" role="tablist" aria-label="Sections admin">
+            <button type="button" role="tab" id="tab-cours" data-tab="cours" aria-controls="panel-cours" aria-selected="true">Cours</button>
+            <button type="button" role="tab" id="tab-devoirs" data-tab="devoirs" aria-controls="panel-devoirs" aria-selected="false" tabindex="-1">Devoirs</button>
+            <button type="button" role="tab" id="tab-copies" data-tab="copies" aria-controls="panel-copies" aria-selected="false" tabindex="-1">Copies</button>
+            <button type="button" role="tab" id="tab-etudiants" data-tab="etudiants" aria-controls="panel-etudiants" aria-selected="false" tabindex="-1">Étudiants</button>
+          </div>
+
+          <section class="studio-block" id="panel-cours" data-panel="cours" role="tabpanel" aria-labelledby="tab-cours">
+            <h2>Créer un cours</h2>
+            <form class="coords-form" id="course-form">
+              <div class="field">
+                <label for="course-title">Titre</label>
+                <input id="course-title" name="title" type="text" required />
+              </div>
+              <div class="field">
+                <label for="course-summary">Résumé</label>
+                <textarea id="course-summary" name="summary" rows="3"></textarea>
+              </div>
+              <div class="field">
+                <label for="course-support">Lien du support (PDF ou page)</label>
+                <input id="course-support" name="support" type="text" placeholder="supports/jour-1-apprenants.pdf" />
+              </div>
+              <label class="check-line">
+                <input id="course-published" name="published" type="checkbox" checked />
+                Visible pour les étudiants
+              </label>
+              <p class="form-error" id="course-error" hidden aria-live="polite"></p>
+              <button class="btn btn-primary" type="submit">Publier le cours</button>
+            </form>
+            <h3 class="works-title">Cours déjà créés</h3>
+            <div id="course-list"></div>
+          </section>
+
+          <section class="studio-block" id="panel-devoirs" data-panel="devoirs" role="tabpanel" aria-labelledby="tab-devoirs" hidden>
+            <h2>Créer un devoir</h2>
+            <form class="coords-form" id="work-form">
+              <div class="field">
+                <label for="work-course">Cours lié</label>
+                <select id="work-course" name="courseId" required></select>
+              </div>
+              <div class="field">
+                <label for="work-title">Titre du devoir</label>
+                <input id="work-title" name="title" type="text" required />
+              </div>
+              <div class="field">
+                <label for="work-brief">Consigne</label>
+                <textarea id="work-brief" name="brief" rows="4"></textarea>
+              </div>
+              <p class="form-error" id="work-error" hidden aria-live="polite"></p>
+              <button class="btn btn-primary" type="submit">Ajouter le devoir</button>
+            </form>
+            <h3 class="works-title">Devoirs déjà créés</h3>
+            <div id="work-list"></div>
+          </section>
+
+          <section class="studio-block" id="panel-copies" data-panel="copies" role="tabpanel" aria-labelledby="tab-copies" hidden>
+            <h2>Copies déposées</h2>
+            <p>Ouvre une copie pour lire le rendu et le télécharger.</p>
+            <div id="copy-list"></div>
+          </section>
+
+          <section class="studio-block" id="panel-etudiants" data-panel="etudiants" role="tabpanel" aria-labelledby="tab-etudiants" hidden>
+            <h2>Étudiants inscrits</h2>
+            <div id="student-list"></div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <dialog class="full-dialog" id="copy-dialog" aria-labelledby="copy-dialog-title">
+      <div class="full-dialog-inner copy-dialog-inner">
+        <p class="stamp">Copie</p>
+        <h2 id="copy-dialog-title">Rendu</h2>
+        <p id="copy-dialog-meta"></p>
+        <pre id="copy-dialog-code" class="copy-code"></pre>
+        <iframe id="copy-dialog-frame" class="copy-frame" title="Aperçu du rendu" sandbox hidden></iframe>
+        <p id="copy-dialog-link"></p>
+        <div class="full-dialog-actions">
+          <button class="btn btn-primary" type="button" id="copy-download">Télécharger</button>
+          <form method="dialog">
+            <button class="btn btn-ghost" type="submit">Fermer</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="studio-api.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>

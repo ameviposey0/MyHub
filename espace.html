@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#efe6d6" />
+    <title>Tableau de bord · MyHub</title>
+    <meta
+      name="description"
+      content="Tableau de bord étudiant MyHub : cours, devoirs, supports et dépôt des exercices."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#contenu">Aller au contenu</a>
+
+    <header class="top">
+      <a class="mark" href="index.html">MyHub</a>
+      <nav class="nav nav-bar" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="bootcamp.html">Bootcamp</a>
+        <a href="espace.html" aria-current="page">Espace étudiant</a>
+      </nav>
+    </header>
+
+    <main class="studio" id="contenu" tabindex="-1">
+      <section class="studio-board dash">
+        <header class="studio-hello">
+          <div>
+            <p class="stamp">Tableau de bord</p>
+            <h1 id="hello-title">Bonjour</h1>
+            <p id="hello-meta"></p>
+          </div>
+          <button class="btn btn-ghost" type="button" id="logout-student">
+            Sortir
+          </button>
+        </header>
+
+        <section class="studio-block" aria-labelledby="progress-title">
+          <h2 id="progress-title">Ta progression</h2>
+          <p id="progress-copy">Chargement…</p>
+          <p class="progress-meter" id="progress-meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="progress-title">
+            <span id="progress-fill"></span>
+          </p>
+        </section>
+
+        <section aria-labelledby="courses-title">
+          <h2 class="dash-title" id="courses-title">Tes cours</h2>
+          <div id="courses-root"></div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p>MyHub, espace étudiant du bootcamp.</p>
+      <nav class="foot-nav" aria-label="Pied de page">
+        <a href="index.html">Accueil</a>
+        <a href="bootcamp.html">Bootcamp</a>
+        <a href="espace.html" aria-current="page">Espace étudiant</a>
+      </nav>
+    </footer>
+
+    <script src="studio-api.js"></script>
+    <script src="espace.js"></script>
+  </body>
+</html>
