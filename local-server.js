@@ -1,7 +1,7 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
-const api = require("./api/[...slug].js");
+const api = require("./lib/router").dispatch;
 
 const PORT = 4173;
 const ROOT = process.cwd();

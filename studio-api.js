@@ -5,7 +5,13 @@ const api = async (path, options = {}) => {
     headers: options.body ? { "Content-Type": "application/json" } : undefined,
     body: options.body ? JSON.stringify(options.body) : undefined,
   });
-  const data = await response.json().catch(() => ({}));
+  const text = await response.text();
+  let data = {};
+  try {
+    data = text ? JSON.parse(text) : {};
+  } catch {
+    data = { error: text.slice(0, 160) || "Une erreur est survenue." };
+  }
   if (!response.ok) {
     throw new Error(data.error || "Une erreur est survenue.");
   }
