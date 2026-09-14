@@ -52,15 +52,24 @@ const whenDay = (value) => {
 };
 
 const bindDrawer = (toggle, backdrop) => {
+  const side = document.getElementById("hub-side");
+  const desktop = window.matchMedia("(min-width: 48rem)");
+  const isDesktopHub = () => desktop.matches;
+
   const close = () => {
     document.body.classList.remove("hub-open");
     if (backdrop) backdrop.hidden = true;
     toggle?.setAttribute("aria-expanded", "false");
+    toggle?.setAttribute("aria-label", "Ouvrir le menu");
+    if (side) side.inert = !isDesktopHub();
   };
   const open = () => {
+    if (isDesktopHub()) return;
     document.body.classList.add("hub-open");
     if (backdrop) backdrop.hidden = false;
     toggle?.setAttribute("aria-expanded", "true");
+    toggle?.setAttribute("aria-label", "Fermer le menu");
+    if (side) side.inert = false;
   };
   toggle?.addEventListener("click", () => {
     if (document.body.classList.contains("hub-open")) close();
@@ -70,6 +79,12 @@ const bindDrawer = (toggle, backdrop) => {
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") close();
   });
+  if (typeof desktop.addEventListener === "function") {
+    desktop.addEventListener("change", close);
+  } else if (typeof desktop.addListener === "function") {
+    desktop.addListener(close);
+  }
+  close();
   return { close, open };
 };
 

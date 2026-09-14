@@ -45,6 +45,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -105,13 +106,23 @@ img {
   z-index: 20;
   display: flex;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 0.65rem;
   min-height: 3.75rem;
   padding: 0.45rem var(--gutter);
   background: color-mix(in srgb, var(--paper) 90%, transparent);
   border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(1rem);
   transition: box-shadow 0.2s ease;
+}
+
+.top::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  backdrop-filter: blur(1rem);
+  content: "";
+  pointer-events: none;
 }
 
 .top.is-stuck {
@@ -133,35 +144,46 @@ img {
 }
 
 .nav-toggle {
+  position: relative;
+  z-index: 21;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   width: var(--touch);
   height: var(--touch);
+  margin-left: auto;
   padding: 0;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   background: var(--card);
   cursor: pointer;
+  touch-action: manipulation;
+}
+
+.top-cta + .nav-toggle {
+  margin-left: 0;
+}
+
+.nav-toggle-bars,
+.nav-toggle-bars::before,
+.nav-toggle-bars::after {
+  display: block;
+  width: 1.15rem;
+  height: 0.125rem;
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  transition: transform 0.2s ease, top 0.2s ease, background 0.2s ease;
 }
 
 .nav-toggle-bars {
   position: relative;
-  display: block;
-  width: 1.15rem;
-  height: 0.125rem;
-  background: var(--ink);
-  border-radius: var(--radius-pill);
 }
 
 .nav-toggle-bars::before,
 .nav-toggle-bars::after {
   position: absolute;
   left: 0;
-  width: 1.15rem;
-  height: 0.125rem;
-  background: var(--ink);
-  border-radius: var(--radius-pill);
   content: "";
 }
 
@@ -173,41 +195,54 @@ img {
   top: 0.38rem;
 }
 
-body.nav-open .nav-toggle-bars {
+body.nav-open .nav-toggle-bars,
+body.hub-open .nav-toggle-bars {
   background: transparent;
 }
 
-body.nav-open .nav-toggle-bars::before {
+body.nav-open .nav-toggle-bars::before,
+body.hub-open .nav-toggle-bars::before {
   top: 0;
   transform: rotate(45deg);
 }
 
-body.nav-open .nav-toggle-bars::after {
+body.nav-open .nav-toggle-bars::after,
+body.hub-open .nav-toggle-bars::after {
   top: 0;
   transform: rotate(-45deg);
 }
 
 .nav-backdrop {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
   z-index: 18;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   background: var(--overlay);
 }
 
 .nav-panel {
   position: fixed;
-  inset: 0 0 0 auto;
+  top: 0;
+  right: 0;
   z-index: 19;
   display: flex;
   flex-direction: column;
   gap: 1.4rem;
   width: min(22rem, 88vw);
+  height: 100vh;
+  height: 100dvh;
   padding: 5.2rem 1.4rem 1.8rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   background: var(--paper);
   border-left: 1px solid var(--line);
   box-shadow: var(--shadow);
-  transform: translateX(100%);
+  transform: translateX(110%);
   visibility: hidden;
+  pointer-events: none;
   transition: transform 0.25s ease, visibility 0.25s ease;
 }
 
@@ -218,6 +253,7 @@ body.nav-open {
 body.nav-open .nav-panel {
   transform: translateX(0);
   visibility: visible;
+  pointer-events: auto;
 }
 
 .nav {
@@ -1490,13 +1526,16 @@ body.nav-open .nav-panel {
     inset: auto;
     order: 2;
     width: auto;
+    height: auto;
     margin-left: auto;
     padding: 0;
+    overflow: visible;
     background: transparent;
     border: 0;
     box-shadow: none;
     transform: none;
     visibility: visible;
+    pointer-events: auto;
     flex-direction: row;
     align-items: center;
     gap: 1rem;
@@ -1559,26 +1598,36 @@ body.nav-open .nav-panel {
   top: 0.75rem;
   left: 0.75rem;
   z-index: 22;
+  margin-left: 0;
 }
 
 .hub-side {
   position: fixed;
-  inset: 0 auto 0 0;
+  top: 0;
+  left: 0;
   z-index: 21;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   width: min(20rem, 88vw);
+  height: 100vh;
+  height: 100dvh;
   padding: 4.5rem 1.1rem 1.4rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   background: var(--paper);
   border-right: 1px solid var(--line);
   box-shadow: var(--shadow);
   transform: translateX(-110%);
-  transition: transform 0.2s ease;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.2s ease, visibility 0.2s ease;
 }
 
 body.hub-open .hub-side {
   transform: none;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 body.hub-open {
@@ -1820,7 +1869,10 @@ body.hub-open {
     width: 16.5rem;
     height: 100dvh;
     padding-top: 1.5rem;
+    overflow: auto;
     transform: none;
+    visibility: visible;
+    pointer-events: auto;
     box-shadow: none;
   }
 

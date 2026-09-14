@@ -4,43 +4,6 @@ const KEYS = {
   bootcamp: "myhub.bootcamp",
 };
 
-const DESKTOP_NAV = window.matchMedia("(min-width: 64rem)");
-const header = document.querySelector(".top");
-const toggle = document.querySelector(".nav-toggle");
-const panel = document.getElementById("menu");
-const backdrop = document.getElementById("nav-backdrop");
-
-const isDesktopNav = () => DESKTOP_NAV.matches;
-
-const setMenuOpen = (open) => {
-  const next = open && !isDesktopNav();
-  document.body.classList.toggle("nav-open", next);
-  toggle?.setAttribute("aria-expanded", String(next));
-  toggle?.setAttribute("aria-label", next ? "Fermer le menu" : "Ouvrir le menu");
-  if (backdrop) backdrop.hidden = !next;
-  if (panel) panel.inert = !isDesktopNav() && !next;
-};
-
-toggle?.addEventListener("click", () => {
-  setMenuOpen(!document.body.classList.contains("nav-open"));
-});
-
-backdrop?.addEventListener("click", () => setMenuOpen(false));
-
-panel?.querySelectorAll("a, button").forEach((item) => {
-  item.addEventListener("click", () => setMenuOpen(false));
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key !== "Escape") return;
-  if (!document.body.classList.contains("nav-open")) return;
-  setMenuOpen(false);
-  toggle?.focus();
-});
-
-DESKTOP_NAV.addEventListener("change", () => setMenuOpen(false));
-setMenuOpen(false);
-
 const navLinks = document.querySelectorAll('.nav a[href^="#"]');
 const sections = [...navLinks]
   .map((link) => document.querySelector(link.getAttribute("href")))
@@ -64,21 +27,8 @@ const markCurrent = () => {
   });
 };
 
-const markStuck = () => {
-  header?.classList.toggle("is-stuck", window.scrollY > 8);
-};
-
-window.addEventListener(
-  "scroll",
-  () => {
-    markCurrent();
-    markStuck();
-  },
-  { passive: true },
-);
-
+window.addEventListener("scroll", markCurrent, { passive: true });
 markCurrent();
-markStuck();
 
 const once = (storageKey) => {
   try {
@@ -122,7 +72,7 @@ document.addEventListener("click", (event) => {
 
   event.preventDefault();
   trackUnique("bootcamp").catch(() => {});
-  setMenuOpen(false);
+  if (typeof setMenuOpen === "function") setMenuOpen(false);
   fullDialog?.showModal();
 });
 
