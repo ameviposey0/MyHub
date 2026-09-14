@@ -1,6 +1,6 @@
 const TITLES = {
-  accueil: { title: "Accueil", lead: "Ta progression, le prochain devoir, les annonces." },
-  cours: { title: "Cours", lead: "Supports et séances du bootcamp." },
+  accueil: { title: "Tableau de bord", lead: "Ta progression, tes cours, tes prochains devoirs." },
+  cours: { title: "Cours", lead: "Tes séances, supports et avancement par cours." },
   devoirs: { title: "Devoirs", lead: "Dépose tes exos, cours par cours." },
   copies: { title: "Mes copies", lead: "Tes dépôts et le retour du formateur." },
   infos: { title: "Infos", lead: "Meet, horaires, contact." },
@@ -133,13 +133,41 @@ const assignmentCard = (work) => {
 };
 
 const paintHome = (data) => {
+  const { student, done, total, reviewed } = data;
+  const percent = total ? Math.round((done / total) * 100) : 0;
+  const leftover = data.assignments.filter((item) => !item.submitted).length;
+
+  document.getElementById("home-hello").textContent =
+    `Bonjour ${student.prenom}, voici où tu en es.`;
+
+  document.getElementById("progress-copy").textContent = total
+    ? `${done} devoir${done > 1 ? "s" : ""} déposé${done > 1 ? "s" : ""} sur ${total} (${percent} %).`
+    : "Les devoirs apparaîtront ici dès qu’un cours sera publié.";
+  document.getElementById("progress-fill").style.width = `${percent}%`;
+  document.getElementById("progress-meter").setAttribute("aria-valuenow", String(percent));
+
+  const courseProgress = document.getElementById("home-course-progress");
+  courseProgress.replaceChildren();
+  if (data.courses.length) {
+    const list = el("ul", "home-course-list");
+    data.courses.forEach((course) => {
+      const item = document.createElement("li");
+      const open = course.total
+        ? `${course.done} / ${course.total} devoir${course.total > 1 ? "s" : ""}`
+        : "Pas de devoir";
+      item.append(el("strong", "", course.title), el("span", "", open));
+      list.append(item);
+    });
+    courseProgress.append(list);
+  }
+
   const stats = document.getElementById("home-stats");
   stats.replaceChildren();
   [
     [`${data.courses.length}`, "Cours ouverts"],
-    [`${data.done}/${data.total || 0}`, "Devoirs déposés"],
-    [`${data.reviewed}`, "Copies corrigées"],
-    [`${data.assignments.filter((item) => !item.submitted).length}`, "Encore à faire"],
+    [`${done}/${total || 0}`, "Devoirs déposés"],
+    [`${reviewed}`, "Copies corrigées"],
+    [`${leftover}`, "Encore à faire"],
   ].forEach(([value, label]) => {
     const card = el("article", "stat-card");
     card.append(el("b", "", value), el("span", "", label));
@@ -155,7 +183,7 @@ const paintHome = (data) => {
     next.append(el("h3", "", data.nextWork.title));
     next.append(el("p", "", data.nextWork.courseTitle));
     next.append(el("p", "", data.nextWork.brief || ""));
-    const button = el("button", "btn btn-primary", "Aller au devoir");
+    const button = el("button", "btn btn-primary", "Ouvrir la page Devoirs");
     button.type = "button";
     button.addEventListener("click", () => go("devoirs"));
     next.append(button);

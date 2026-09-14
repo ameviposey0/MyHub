@@ -36,9 +36,11 @@
       <a class="mark" href="index.html">MyHub</a>
       <p class="hub-who" id="hub-who">Espace étudiant</p>
       <nav class="hub-nav" aria-label="Espace étudiant">
-        <button type="button" data-go="accueil" aria-current="page">Accueil</button>
+        <p class="hub-nav-label">Pages</p>
+        <button type="button" data-go="accueil" aria-current="page">Tableau de bord</button>
         <button type="button" data-go="cours">Cours</button>
         <button type="button" data-go="devoirs">Devoirs</button>
+        <p class="hub-nav-label">Compte</p>
         <button type="button" data-go="copies">Mes copies</button>
         <button type="button" data-go="infos">Infos</button>
         <button type="button" data-go="profil">Profil</button>
@@ -51,14 +53,42 @@
     <div class="hub-wrap">
       <header class="hub-head">
         <p class="stamp">Espace étudiant</p>
-        <h1 id="hub-title">Accueil</h1>
-        <p id="hub-lead">Tes cours, tes devoirs, tes copies.</p>
+        <h1 id="hub-title">Tableau de bord</h1>
+        <p id="hub-lead">Ta progression et tes prochains devoirs.</p>
       </header>
+
+      <nav class="hub-tabs" aria-label="Pages principales">
+        <button type="button" data-go="accueil" aria-current="page">Tableau de bord</button>
+        <button type="button" data-go="cours">Cours</button>
+        <button type="button" data-go="devoirs">Devoirs</button>
+      </nav>
 
       <main id="contenu" tabindex="-1">
         <section data-view="accueil">
+          <p class="hub-hello" id="home-hello">Bonjour</p>
+          <article class="hub-card" aria-labelledby="progress-title">
+            <h2 id="progress-title">Ta progression</h2>
+            <p id="progress-copy">Chargement…</p>
+            <p
+              class="progress-meter"
+              id="progress-meter"
+              role="progressbar"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+              aria-labelledby="progress-title"
+            >
+              <span id="progress-fill"></span>
+            </p>
+            <div id="home-course-progress"></div>
+          </article>
           <div class="stat-grid" id="home-stats"></div>
           <article class="hub-card" id="home-next"></article>
+          <article class="hub-card" id="home-session">
+            <h2>Séance</h2>
+            <p>Google Meet, lundi à vendredi, 12 h GMT.</p>
+            <p>Le lien arrive 15 min avant. Les devoirs se déposent ici, pas sur WhatsApp.</p>
+          </article>
           <section class="hub-card" aria-labelledby="home-news-title">
             <h2 id="home-news-title">Annonces</h2>
             <div id="home-news"></div>
