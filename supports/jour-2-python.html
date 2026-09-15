@@ -295,22 +295,22 @@
         </thead>
         <tbody>
           <tr><td>0:00 à 0:08</td><td>Accueil</td><td>Règles, objectif, matériel. Annonce : sujet nouveau.</td></tr>
-          <tr><td>0:08 à 0:42</td><td>Pseudo-code</td><td>Algorithme, mots du soir, 2 programmes légers. Pas de Python.</td></tr>
+          <tr><td>0:08 à 0:42</td><td>Pseudo-code</td><td>4 gestes : afficher, variable, saisie, condition. Puis 2 programmes.</td></tr>
           <tr><td>0:42 à 0:47</td><td>Pause</td><td>5 minutes. Ils restent connectés.</td></tr>
-          <tr><td>0:47 à 1:22</td><td>Traduction Python</td><td>Table de correspondance + live coding + 3 exercices.</td></tr>
+          <tr><td>0:47 à 1:22</td><td>Python · la suite</td><td>Les mêmes 4 gestes, dans le même ordre. Puis les 2 programmes en Python.</td></tr>
           <tr><td>1:22 à 1:52</td><td>Mini-projet</td><td><code>decision.py</code> : assez pour payer ?</td></tr>
           <tr><td>1:52 à 2:00</td><td>Bilan</td><td>3 points, dépôt MyHub, teaser jour 3 data.</td></tr>
         </tbody>
       </table>
       <p>
-        Si tu prends du retard : coupe l’exercice 2.3, pas le mini-projet.
+        Si tu prends du retard : coupe un des deux programmes Python, pas le mini-projet.
         La recette + le fichier qui décide, c’est le souvenir du soir.
       </p>
 
       <h3>Ce qu’ils savent faire à 14 h GMT</h3>
       <ol>
-        <li>Écrire deux petits programmes en pseudo-code : un accueil, une décision de note.</li>
-        <li>Le traduire en Python : <code>print</code>, <code>input</code>, <code>int</code>, <code>if</code>.</li>
+        <li>Les quatre gestes en pseudo-code, puis les mêmes en Python.</li>
+        <li>Les deux programmes (accueil, note) écrits deux fois : recette, puis code.</li>
         <li>Lancer un programme qui compare un prix et une somme, et le déposer sur MyHub.</li>
       </ol>
     </main>
@@ -341,51 +341,68 @@
       </ol>
       <div class="say">
         <span class="label">Promesse du soir · à répéter</span>
-        « Ce soir tu écris la recette en français, puis Python l’exécute. »
+        « Ce soir : quatre gestes en français, puis les mêmes quatre en Python. »
       </div>
     </section>
 
     <section class="wrap page">
-      <p class="stamp">0:08 · Partie 1</p>
-      <h2>Un algorithme, c’est une recette</h2>
+      <p class="stamp">0:08 · Partie 1 · Pseudo-code</p>
+      <h2>Quatre gestes, dans cet ordre</h2>
       <div class="say">
         <span class="label">À dire</span>
         <p>
-          Recette de cuisine : l’ordre compte. L’ordinateur n’a pas d’intention.
-          Pseudo-code = français structuré, lisible par un humain.
-          Programme = la même recette pour la machine. On ne code pas avant la recette.
+          Recette de cuisine : l’ordre compte. Pseudo-code = français structuré.
+          Quatre gestes : afficher, déclarer une variable, lire (input), condition.
+          Python reprendra exactement les quatre, dans le même ordre. On ne code pas encore.
         </p>
       </div>
+
+      <h3>Geste 1 · Afficher du texte</h3>
       <div class="show">
-        <span class="label">À montrer · au tableau / éditeur, encore sans Python</span>
+        <span class="label">À montrer</span>
 <pre>DEBUT
   AFFICHER "Bonjour"
   AFFICHER "On commence."
 FIN</pre>
-        « Deux lignes, dans cet ordre. Si j’inverse, le message change. L’ordre est le métier. »
+        « Guillemets = texte. Sans guillemets = nom de variable. L’ordre des lignes est l’ordre à l’écran. »
       </div>
 
-      <h3>Les mots du soir</h3>
-      <p><code>DEBUT</code> <code>FIN</code> · <code>AFFICHER</code> · <code>LIRE</code> · <code>←</code> · <code>SI ALORS</code> · <code>SINON</code> · <code>FIN SI</code>.</p>
-      <div class="show">
-        <span class="label">À montrer · variable, puis lecture</span>
-<pre>prenom ← "Awa"
-AFFICHER prenom</pre>
-        Puis :
-<pre>AFFICHER "Ton prénom ?"
-LIRE prenom
-AFFICHER prenom</pre>
-        « LIRE s’arrête. Comme quelqu’un qui attend que tu parles. »
-      </div>
-
-      <h3>SI / SINON</h3>
+      <h3>Geste 2 · Déclarer une variable</h3>
       <div class="say">
         <span class="label">À dire</span>
-        Feu tricolore. Une branche à la fois. <code>FIN SI</code> ferme la décision.
-        Sans ça, on ne sait plus où la recette reprend.
+        Déclarer = créer la boîte et lui donner une valeur. <code>←</code> range.
+        <code>prenom ← "Awa"</code> puis <code>AFFICHER prenom</code> montre le contenu, pas le mot prenom.
       </div>
       <div class="show">
         <span class="label">À montrer</span>
+<pre>prenom ← "Awa"
+age ← 20
+AFFICHER prenom
+AFFICHER age</pre>
+        Noms : pas d’accent, pas d’espace, ne commence pas par un chiffre.
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">0:08 · Partie 1 · suite</p>
+      <h2>Saisie, puis condition</h2>
+      <h3>Geste 3 · LIRE (input)</h3>
+      <div class="show">
+        <span class="label">À montrer</span>
+<pre>AFFICHER "Ton prénom ?"
+LIRE prenom
+AFFICHER "Bonjour"
+AFFICHER prenom</pre>
+        « LIRE s’arrête. La valeur n’est plus collée dans la recette. »
+      </div>
+
+      <h3>Geste 4 · SI / SINON</h3>
+      <div class="say">
+        <span class="label">À dire</span>
+        Feu tricolore. Une branche à la fois. <code>FIN SI</code> ferme. Sans ça, on ne sait plus où ça reprend.
+      </div>
+      <div class="show">
+        <span class="label">À montrer · 16 puis 20, à voix haute</span>
 <pre>DEBUT
   AFFICHER "Ton âge ?"
   LIRE age
@@ -395,7 +412,7 @@ AFFICHER prenom</pre>
     AFFICHER "Pas encore."
   FIN SI
 FIN</pre>
-        Parcours à voix haute avec 16, puis avec 20. Ne traduis pas encore en Python.
+        Ne traduis pas encore en Python.
       </div>
     </section>
 
@@ -447,74 +464,88 @@ FIN</pre>
       <h2>Cinq minutes, on reste connectés</h2>
       <div class="say">
         <span class="label">À dire</span>
-        « Pause. Ne quittez pas. Ensuite : on traduit la recette en Python. Toujours la recette d’abord. »
+        « Pause. Ne quittez pas. Ensuite : partie Python, les mêmes quatre gestes. »
       </div>
 
-      <p class="stamp">0:47 · Partie 2</p>
-      <h2>Python, c’est la traduction</h2>
-      <div class="show">
-        <span class="label">À montrer · table, puis live</span>
-        <p><code>AFFICHER</code> → <code>print</code> · <code>←</code> → <code>=</code> · <code>LIRE</code> → <code>input</code> · <code>SI</code> → <code>if:</code> · <code>SINON</code> → <code>else:</code> · <code>FIN SI</code> → fin du retrait.</p>
-      </div>
+      <p class="stamp">0:47 · Partie 2 · Python</p>
+      <h2>Les mêmes quatre gestes, dans le même ordre</h2>
       <div class="say">
         <span class="label">À dire</span>
-        Guillemets = texte. Sans guillemets = variable.
-        <code>=</code> range, <code>==</code> pose la question.
-        <code>input</code> rend toujours un texte : pour un prix, <code>int(...)</code>.
+        « Partie réservée à Python. Ce n’est pas un autre cours. On reprend
+        afficher, variable, saisie, condition. Tu traduis, tu ne devines pas. »
       </div>
       <div class="show">
-        <span class="label">À montrer · casse volontairement</span>
-        <code>print(Bonjour)</code> → lis le <code>NameError</code>.
-        Puis le couple recette / code de l’âge, côte à côte.
-        Enlève l’indentation sous le <code>if</code> : lis <code>IndentationError</code>.
+        <span class="label">À montrer · table, à laisser à l’écran</span>
+        <p><code>AFFICHER</code> → <code>print</code> · <code>←</code> → <code>=</code> · <code>LIRE</code> → <code>input</code> · <code>SI / FIN SI</code> → <code>if:</code> + le retrait.</p>
       </div>
       <div class="show">
-        <span class="label">Côte à côte · à laisser à l’écran</span>
+        <span class="label">Geste 1 · même exemple</span>
+<pre>print("Bonjour")
+print("On commence.")</pre>
+        Casse : <code>print(Bonjour)</code> → lis le <code>NameError</code>.
+      </div>
+      <div class="show">
+        <span class="label">Geste 2 · même exemple</span>
+<pre>prenom = "Awa"
+age = 20
+print(prenom)
+print(age)</pre>
+        « <code>=</code> déclare et range. Ce n’est pas l’égal des maths. »
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">0:47 · Partie 2 · suite</p>
+      <h2>input, puis if</h2>
+      <div class="show">
+        <span class="label">Geste 3 · même accueil</span>
+<pre>prenom = input("Ton prénom ? ")
+print("Bonjour")
+print(prenom)</pre>
+        « input rend toujours un texte. Pour un âge : int(...). »
+      </div>
+      <div class="show">
+        <span class="label">Geste 4 · même âge, 16 puis 20</span>
 <pre>age = int(input("Ton âge ? "))
 if age >= 18:
-    print("Majeur")
+    print("Tu peux voter.")
 else:
-    print("Mineur")</pre>
-        Lance 16, puis 20. « Même recette qu’avant la pause. Python exécute. »
+    print("Pas encore.")</pre>
+        Enlève l’indentation : lis <code>IndentationError</code>.
+        <code>=</code> range, <code>==</code> pose la question.
       </div>
     </section>
 
     <section class="wrap page">
       <p class="stamp">À toi · 16 minutes</p>
-      <h2>Trois exercices traduction</h2>
-
-      <div class="exo">
-        <span class="label">2.1 · 5 min · Traduis</span>
-        <code>AFFICHER "Ville ?"</code> · <code>LIRE ville</code> · <code>AFFICHER ville</code>
-      </div>
-      <div class="corrige">
-        <span class="label">Corrigé 2.1</span>
-<pre>ville = input("Ville ? ")
-print(ville)</pre>
-        <code>int</code> inutile : une ville n’est pas un nombre.
+      <h2>Suite : les deux mêmes programmes, en Python</h2>
+      <div class="warn">
+        <span class="label">Pendant qu’ils cherchent</span>
+        Ils traduisent leurs recettes, ils n’inventent pas un troisième sujet.
+        Aide d’abord ceux qui n’ont pas encore un <code>input</code> pour l’accueil.
       </div>
 
       <div class="exo">
-        <span class="label">2.2 · 5 min · On tape 16</span>
-        Programme majeur / mineur.
+        <span class="label">Programme 1 · Python · Accueil</span>
+        Demander le prénom, afficher « Bonjour » suivi de ce prénom.
       </div>
       <div class="corrige">
-        <span class="label">Corrigé 2.2</span>
-        Affiche <code>Mineur</code>. Branche <code>else</code>.
+        <span class="label">Corrigé programme 1</span>
+<pre>prenom = input("Ton prénom ? ")
+print("Bonjour", prenom)</pre>
       </div>
 
       <div class="exo">
-        <span class="label">2.3 · 6 min · Répare</span>
-<pre>ville = input("Ville : ")
-if ville = "Lomé"
-print("On est au Togo.")</pre>
+        <span class="label">Programme 2 · Python · Admis ou pas</span>
+        Note sur 20. SI &gt;= 10 → Admis. SINON → Ajourné. <code>int</code> obligatoire.
       </div>
       <div class="corrige">
-        <span class="label">Corrigé 2.3</span>
-        <code>==</code>, deux-points, retrait sous le <code>if</code>.
-<pre>ville = input("Ville : ")
-if ville == "Lomé":
-    print("On est au Togo.")</pre>
+        <span class="label">Corrigé programme 2</span>
+<pre>note = int(input("Ta note sur 20 ? "))
+if note >= 10:
+    print("Admis")
+else:
+    print("Ajourné")</pre>
       </div>
     </section>
 
@@ -578,8 +609,8 @@ else:
       <div class="say">
         <span class="label">À dire</span>
         <ol>
-          <li>« Un algorithme, c’est une recette. Le pseudo-code la pose en français. »</li>
-          <li>« Python traduit : <code>print</code> affiche, <code>input</code> lit, <code>if</code> décide. »</li>
+          <li>« Quatre gestes en pseudo-code : afficher, variable, saisie, condition. »</li>
+          <li>« Python reprend les quatre : <code>print</code>, <code>=</code>, <code>input</code>, <code>if</code>. »</li>
           <li>« Ton <code>decision.py</code> compare un prix et une somme. Recette d’abord, code ensuite. »</li>
         </ol>
       </div>
