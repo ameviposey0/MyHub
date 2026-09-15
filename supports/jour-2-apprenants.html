@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <title>Jour 2 · Programmation Python · Bootcamp MyHub</title>
+    <title>Jour 2 · Pseudo-code et Python · Bootcamp MyHub</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -218,7 +218,7 @@
     <section class="cover">
       <div>
         <p class="kicker">Bootcamp MyHub · Support de cours</p>
-        <h1>Jour 2. Programmation Python.</h1>
+        <h1>Jour 2. Pseudo-code et Python.</h1>
         <p class="lead">
           Support de cours à lire, annoter et garder. Imprime-le ou
           suis-le à l’écran. Les corrigés se font ensemble, pendant la séance.
@@ -233,11 +233,10 @@
       <div>
         <p class="kicker">Aujourd’hui tu repars avec</p>
         <p>
-          Un premier script Python : variables, <code>print</code>,
-          <code>input</code>, décisions <code>if</code>, et un fichier
-          qui écrit le texte de ta vitrine.
+          Une façon d’écrire un algorithme en français (le pseudo-code),
+          puis sa traduction en Python : un petit programme qui décide.
         </p>
-        <p class="footer-note">Garde ce support et le dossier <code>vitrine</code> du jour 1.</p>
+        <p class="footer-note">Sujet nouveau. On ne reprend pas le travail d’un autre soir.</p>
       </div>
     </section>
 
@@ -246,21 +245,22 @@
       <h2>Prépare ça, rien de plus</h2>
       <ul class="check">
         <li>Un ordinateur (le téléphone seul ne suffit pas pour coder).</li>
-        <li>Le dossier <code>vitrine</code> du jour 1, avec <code>index.html</code>.</li>
+        <li>Un dossier vide sur le Bureau, nommé <code>python</code>.</li>
         <li>Python installé, ou un onglet prêt : <strong>https://www.online-python.com/</strong>.</li>
         <li>Un éditeur : VS Code, Bloc-notes, ou l’éditeur du site en ligne.</li>
+        <li>De quoi écrire : papier, ou un fichier <code>notes.txt</code>.</li>
       </ul>
       <div class="tip">
         <span class="label">Pas de Python sur la machine ?</span>
         On code dans le navigateur sur
         <strong>https://www.online-python.com/</strong>.
         Même exercice, zéro install. À la fin, tu copies le code dans un fichier
-        <code>bio.py</code> pour le déposer sur MyHub.
+        <code>decision.py</code> pour le déposer sur MyHub.
       </div>
       <div class="ok">
         <span class="label">Objectif du jour</span>
-        Faire parler l’ordinateur en Python, puis lui faire écrire
-        le texte de ta vitrine. Pas besoin d’avoir déjà programmé.
+        Penser l’algorithme en français, puis le faire exécuter par Python.
+        Pas besoin d’avoir déjà programmé.
       </div>
 
       <h3>Les trois temps du jour</h3>
@@ -271,18 +271,18 @@
         <tbody>
           <tr>
             <td>1</td>
-            <td><code>print</code>, variables, types</td>
-            <td>Python parle, tu donnes un nom aux valeurs</td>
+            <td>Pseudo-code</td>
+            <td>La recette d’un algorithme, en français</td>
           </tr>
           <tr>
             <td>2</td>
-            <td><code>input</code> et <code>if</code></td>
-            <td>Un script qui écoute et décide</td>
+            <td>Traduction en Python</td>
+            <td><code>print</code>, variables, <code>input</code>, <code>if</code></td>
           </tr>
           <tr>
             <td>3</td>
-            <td>Mini-projet bio</td>
-            <td>Ton fichier <code>bio.py</code> + le texte de la vitrine</td>
+            <td>Mini-projet décision</td>
+            <td>Ton fichier <code>decision.py</code></td>
           </tr>
         </tbody>
       </table>
@@ -290,272 +290,279 @@
 
     <section class="wrap page">
       <p class="stamp">Partie 1 · Cours</p>
-      <h2>1. Un programme, c’est une recette</h2>
+      <h2>1. Un algorithme, c’est une recette</h2>
       <p>
-        Hier, tu as écrit du <strong>HTML</strong> : la structure d’une page.
-        Aujourd’hui, tu écris des <strong>instructions</strong> : l’ordinateur
-        les lit, dans l’ordre, et les exécute. C’est un <strong>programme</strong>.
+        Un <strong>algorithme</strong>, c’est une suite d’étapes claires pour
+        résoudre un problème. Comme une recette de cuisine : dans l’ordre,
+        sans sauter une ligne, jusqu’au résultat.
       </p>
       <p>
-        Analogie cuisine : la recette n’est pas le plat. Python, c’est la langue
-        de la recette. L’<strong>interpréteur</strong> Python, c’est le cuisinier
-        qui lit et exécute, ligne par ligne.
+        L’ordinateur ne « comprend » pas tes intentions. Il exécute
+        exactement ce qui est écrit. Si la recette est floue, le plat est raté.
       </p>
 
       <div class="two">
         <div class="box">
-          <h4>Le fichier</h4>
+          <h4>Le pseudo-code</h4>
           <p>
-            On enregistre le programme dans un fichier qui finit par
-            <code>.py</code>. Exemple : <code>bio.py</code>.
-            C’est du texte, comme <code>index.html</code> hier.
+            La recette écrite en <strong>français structuré</strong>.
+            Pas encore un langage de machine. Toi, un collègue, ou toi
+            dans six mois : vous devez pouvoir la suivre.
           </p>
         </div>
         <div class="box">
-          <h4>L’exécution</h4>
+          <h4>Le programme</h4>
           <p>
-            Python lit le fichier du haut vers le bas. S’il bute sur une ligne,
-            il s’arrête et affiche une <strong>erreur</strong>. Ce n’est pas
-            toi qui es « nul » : c’est la recette qui est floue.
+            La même recette, traduite dans un langage que la machine
+            exécute. Ce soir : <strong>Python</strong>. On ne code pas
+            avant d’avoir la recette.
           </p>
         </div>
       </div>
 
-      <h3>Le premier mot : <code>print</code></h3>
-      <p>
-        <code>print</code> fait parler l’ordinateur. Il affiche quelque chose
-        à l’écran. Le texte va entre guillemets.
-      </p>
-<pre>print("Bonjour")
-print("Je m'appelle Awa")</pre>
-      <p>À l’écran, tu vois :</p>
-<pre>Bonjour
-Je m'appelle Awa</pre>
-      <ul>
-        <li>Les guillemets <code>"</code> ou <code>'</code> entourent un <strong>texte</strong>.</li>
-        <li>Sans guillemets, Python cherche un <strong>nom</strong> (une variable).</li>
-        <li>Chaque <code>print</code> passe à la ligne suivante.</li>
-      </ul>
       <div class="warn">
-        <span class="label">Piège du soir</span>
-        <code>print(Bonjour)</code> sans guillemets → erreur
-        <code>NameError</code>. Python cherche une variable appelée Bonjour.
-        Le texte, lui, vit entre guillemets.
+        <span class="label">La règle du soir</span>
+        D’abord le pseudo-code. Ensuite Python. Si tu tapes du code
+        sans recette, tu improvises — et tu te perds dès que ça se complique.
       </div>
+
+      <h3>Les mots du pseudo-code, ce soir</h3>
+      <table>
+        <thead><tr><th>Mot</th><th>Sens</th></tr></thead>
+        <tbody>
+          <tr><td><code>DEBUT</code> / <code>FIN</code></td><td>On ouvre et on ferme la recette.</td></tr>
+          <tr><td><code>AFFICHER</code></td><td>Montrer un message à l’écran.</td></tr>
+          <tr><td><code>LIRE</code></td><td>Demander une valeur et la ranger.</td></tr>
+          <tr><td><code>←</code></td><td>Ranger une valeur dans une boîte (une variable).</td></tr>
+          <tr><td><code>SI … ALORS</code></td><td>Si c’est vrai, faire ceci.</td></tr>
+          <tr><td><code>SINON</code></td><td>Sinon, faire cela.</td></tr>
+          <tr><td><code>FIN SI</code></td><td>La décision est terminée.</td></tr>
+        </tbody>
+      </table>
     </section>
 
     <section class="wrap page">
       <p class="stamp">Partie 1 · Cours</p>
-      <h2>2. Une variable, c’est une boîte avec un nom</h2>
+      <h2>2. Dans l’ordre, une étape après l’autre</h2>
       <p>
-        Au lieu de réécrire « Awa » partout, tu ranges la valeur dans une
-        <strong>variable</strong>. Tu colles une étiquette sur une boîte.
+        Analogie thé : tu ne verses pas l’eau avant d’avoir l’eau.
+        Un algorithme avance <strong>ligne par ligne</strong>.
       </p>
-<pre>prenom = "Awa"
-print(prenom)
-print("Bonjour", prenom)</pre>
-      <p>À l’écran :</p>
-<pre>Awa
-Bonjour Awa</pre>
+<pre>DEBUT
+  AFFICHER "Bonjour"
+  AFFICHER "On commence."
+FIN</pre>
+      <p>Résultat, dans cet ordre : d’abord Bonjour, ensuite On commence.</p>
+
+      <h3>Ranger dans une boîte</h3>
       <p>
-        Le signe <code>=</code> n’est pas « égal » comme en maths.
-        Il <strong>range</strong> : « mets "Awa" dans la boîte <code>prenom</code> ».
+        Une <strong>variable</strong>, c’est une boîte avec un nom.
+        En pseudo-code, on écrit souvent <code>prenom ← "Awa"</code> :
+        « mets Awa dans la boîte prenom ».
+      </p>
+<pre>DEBUT
+  prenom ← "Awa"
+  AFFICHER prenom
+FIN</pre>
+      <p>
+        On affiche le <em>contenu</em> de la boîte, pas le mot « prenom ».
+        À l’écran : <code>Awa</code>.
       </p>
 
-      <h3>Règles pour nommer</h3>
-      <table>
-        <thead><tr><th>OK</th><th>Pas OK</th><th>Pourquoi</th></tr></thead>
-        <tbody>
-          <tr><td><code>prenom</code></td><td><code>prénom</code></td><td>Pas d’accent dans le nom.</td></tr>
-          <tr><td><code>age</code></td><td><code>2age</code></td><td>Ne commence pas par un chiffre.</td></tr>
-          <tr><td><code>envie_1</code></td><td><code>envie 1</code></td><td>Pas d’espace : utilise <code>_</code>.</td></tr>
-          <tr><td><code>message</code></td><td><code>print</code></td><td>N’écrase pas un mot de Python.</td></tr>
-        </tbody>
-      </table>
+      <h3>Lire, c’est écouter</h3>
+<pre>DEBUT
+  AFFICHER "Ton prénom ?"
+  LIRE prenom
+  AFFICHER "Bonjour"
+  AFFICHER prenom
+FIN</pre>
+      <p>
+        <code>LIRE</code> s’arrête et attend que quelqu’un tape une réponse.
+        Ensuite seulement, on continue.
+      </p>
+
+      <h3>Décider : SI / SINON</h3>
+      <p>Analogie feu : vert tu avances, rouge tu t’arrêtes. Une seule branche à la fois.</p>
+<pre>DEBUT
+  AFFICHER "Ton âge ?"
+  LIRE age
+  SI age >= 18 ALORS
+    AFFICHER "Tu peux voter."
+  SINON
+    AFFICHER "Pas encore."
+  FIN SI
+FIN</pre>
       <div class="tip">
-        <span class="label">Convention du soir</span>
-        Minuscules, mots collés avec un tiret bas :
-        <code>prenom</code>, <code>phrase</code>, <code>envie_1</code>.
-        Un nom dit ce qu’il y a dans la boîte.
-      </div>
-
-      <h3>Deux types pour commencer</h3>
-      <div class="two">
-        <div class="box">
-          <h4>Texte · <code>str</code></h4>
-          <p>
-            Entre guillemets. <code>"Awa"</code>, <code>"20"</code>.
-            On peut coller deux textes avec <code>+</code>.
-          </p>
-        </div>
-        <div class="box">
-          <h4>Nombre entier · <code>int</code></h4>
-          <p>
-            Sans guillemets. <code>20</code>, <code>12</code>.
-            On peut additionner : <code>20 + 2</code> donne <code>22</code>.
-          </p>
-        </div>
-      </div>
-<pre>prenom = "Awa"
-age = 20
-print(prenom + " a " + str(age) + " ans")
-print(age + 1)</pre>
-      <p>
-        <code>str(age)</code> transforme le nombre en texte, pour pouvoir
-        le coller. <code>age + 1</code> calcule : 21.
-      </p>
-      <div class="warn">
-        <span class="label">"20" n’est pas 20</span>
-        <code>"20" + "1"</code> donne <code>"201"</code> (collage de textes).
-        <code>20 + 1</code> donne <code>21</code> (calcul).
-        Les guillemets changent le métier de la valeur.
+        <span class="label">À bien verrouiller</span>
+        Le <code>SI</code> pose une question (vrai ou faux).
+        Ce qui est indenté (en retrait) appartient à cette branche.
+        <code>FIN SI</code> ferme la décision. Sans ça, on ne sait plus
+        où la recette reprend.
       </div>
     </section>
 
     <section class="wrap page">
       <p class="stamp">Partie 1 · À toi</p>
-      <h2>Exercices 1 · print et variables</h2>
-      <p>Écris tes réponses au crayon, ou dans un fichier <code>exos.py</code>. On corrige ensemble.</p>
+      <h2>Exercices 1 · pseudo-code</h2>
+      <p>Au crayon ou dans <code>notes.txt</code>. On corrige ensemble. Pas de Python encore.</p>
 
       <div class="exo">
-        <span class="label">1.1 · 4 min · Qu’est-ce qui s’affiche ?</span>
-        <p>Sans lancer le programme, prédis l’écran :</p>
-<pre>ville = "Lomé"
-print("J'habite à")
-print(ville)</pre>
-        <div class="blank"></div>
-        <div class="blank"></div>
+        <span class="label">1.1 · 4 min · Remettre dans l’ordre</span>
+        <p>Voici des étapes mélangées pour « faire du thé ». Numérote-les 1 à 5.</p>
+        <ul>
+          <li>Verser l’eau dans la tasse. <div class="blank"></div></li>
+          <li>Attendre que l’eau bouille. <div class="blank"></div></li>
+          <li>Allumer le feu sous la casserole. <div class="blank"></div></li>
+          <li>Mettre de l’eau dans la casserole. <div class="blank"></div></li>
+          <li>Ajouter le sachet de thé. <div class="blank"></div></li>
+        </ul>
       </div>
 
       <div class="exo">
-        <span class="label">1.2 · 4 min · Répare</span>
-        <p>Chaque ligne a un problème. Corrige-les :</p>
-<pre>print(Bonjour)
-prenom = Awa
-print prenom
-1ville = "Lomé"</pre>
-        <ol>
-          <li>Ligne 1 : <div class="blank"></div></li>
-          <li>Ligne 2 : <div class="blank"></div></li>
-          <li>Ligne 3 : <div class="blank"></div></li>
-          <li>Ligne 4 : <div class="blank"></div></li>
-        </ol>
-      </div>
-
-      <div class="exo">
-        <span class="label">1.3 · 4 min · Ta carte d’identité</span>
+        <span class="label">1.2 · 4 min · Écrire un SI</span>
         <p>
-          Écris 4 lignes : une variable <code>prenom</code>, une variable
-          <code>ville</code>, puis deux <code>print</code> qui affichent
-          « Je m’appelle … » et « J’habite à … ».
+          En pseudo-code : si la réponse à « Est-ce qu’il pleut ? » est
+          <code>oui</code>, afficher « Prends le parapluie. »
+          Sinon, afficher « Pas besoin. »
         </p>
         <div class="blank"></div>
         <div class="blank"></div>
         <div class="blank"></div>
         <div class="blank"></div>
+        <div class="blank"></div>
+      </div>
+
+      <div class="exo">
+        <span class="label">1.3 · 4 min · Répare la recette</span>
+        <p>Deux problèmes au moins. Note-les.</p>
+<pre>DEBUT
+  AFFICHER "Ville ?"
+  LIRE ville
+  SI ville = "Lomé"
+    AFFICHER "On est au Togo."
+FIN</pre>
+        <ol>
+          <li><div class="blank"></div></li>
+          <li><div class="blank"></div></li>
+        </ol>
       </div>
     </section>
 
     <section class="wrap page">
       <p class="stamp">Partie 2 · Cours</p>
-      <h2>3. <code>input</code> : l’ordinateur écoute</h2>
+      <h2>3. Python, c’est la traduction</h2>
       <p>
-        Jusqu’ici, c’est toi qui as collé « Awa » dans le code.
-        Avec <code>input</code>, le programme <strong>demande</strong>
-        et attend que tu tapes une réponse.
-      </p>
-<pre>prenom = input("Ton prénom : ")
-print("Bonjour", prenom)</pre>
-      <p>
-        L’ordinateur affiche <code>Ton prénom :</code>, tu tapes, tu valides
-        avec Entrée, puis il dit bonjour.
-      </p>
-      <div class="ok">
-        <span class="label">À retenir</span>
-        <code>input</code> rend <strong>toujours un texte</strong> (<code>str</code>),
-        même si tu tapes <code>20</code>. Pour calculer avec un âge, tu convertis :
-        <code>age = int(input("Ton âge : "))</code>.
-      </div>
-
-      <h3>4. <code>if</code> : une décision</h3>
-      <p>
-        Un programme qui fait toujours la même chose, ce n’est pas encore
-        très vivant. <code>if</code> veut dire : « si c’est vrai, fais ceci ».
-      </p>
-<pre>age = int(input("Ton âge : "))
-if age >= 18:
-    print("Tu peux voter.")
-else:
-    print("Pas encore.")</pre>
-      <p>
-        Analogie feu : vert → tu avances. Rouge → tu t’arrêtes.
-        Le <code>if</code> choisit la branche.
-      </p>
-
-      <h3>L’indentation, c’est le bloc</h3>
-      <p>
-        En Python, les espaces en début de ligne <strong>comptent</strong>.
-        Ce qui est en retrait sous le <code>if</code> appartient au « si ».
-        On aligne avec 4 espaces (la touche Tab, souvent).
+        Chaque mot du pseudo-code a un équivalent Python.
+        Tu ne « devines » pas le code : tu traduis la recette.
       </p>
       <table>
-        <thead><tr><th>Comparaison</th><th>Sens</th></tr></thead>
+        <thead><tr><th>Pseudo-code</th><th>Python</th></tr></thead>
         <tbody>
-          <tr><td><code>==</code></td><td>Est-ce égal ? (question)</td></tr>
-          <tr><td><code>=</code></td><td>Range dans la boîte (ordre)</td></tr>
-          <tr><td><code>!=</code></td><td>Est-ce différent ?</td></tr>
-          <tr><td><code>&gt;</code> <code>&lt;</code> <code>&gt;=</code> <code>&lt;=</code></td><td>Plus grand / plus petit</td></tr>
+          <tr><td><code>AFFICHER "Bonjour"</code></td><td><code>print("Bonjour")</code></td></tr>
+          <tr><td><code>prenom ← "Awa"</code></td><td><code>prenom = "Awa"</code></td></tr>
+          <tr><td><code>LIRE prenom</code></td><td><code>prenom = input("…")</code></td></tr>
+          <tr><td><code>SI age &gt;= 18 ALORS</code></td><td><code>if age &gt;= 18:</code></td></tr>
+          <tr><td><code>SINON</code></td><td><code>else:</code></td></tr>
+          <tr><td><code>FIN SI</code></td><td>le retrait s’arrête (plus de <code>FIN SI</code>)</td></tr>
         </tbody>
       </table>
-      <div class="warn">
-        <span class="label">= n’est pas ==</span>
-        <code>prenom = "Awa"</code> range. <code>prenom == "Awa"</code> pose
-        la question. Si tu écris <code>if prenom = "Awa":</code>, Python refuse.
-      </div>
 
-      <h3>Un troisième chemin : <code>elif</code></h3>
-<pre>reponse = input("Tu as déjà codé ? (oui/non) : ")
-if reponse == "oui":
-    print("Bienvenue, on accélère un peu.")
-elif reponse == "non":
-    print("Parfait, c’est le public du soir.")
-else:
-    print("Réponds par oui ou non.")</pre>
+      <h3>Le premier mot : <code>print</code></h3>
+<pre>print("Bonjour")
+print("On commence.")</pre>
+      <ul>
+        <li>Les guillemets entourent un <strong>texte</strong>.</li>
+        <li>Sans guillemets, Python cherche une <strong>variable</strong>.</li>
+        <li><code>print(Bonjour)</code> → erreur <code>NameError</code>.</li>
+      </ul>
+
+      <h3>Le <code>=</code> range, le <code>==</code> pose la question</h3>
+<pre>prenom = "Awa"
+print("Bonjour", prenom)</pre>
+      <p>
+        En maths, <code>=</code> veut dire « égal ». En Python,
+        <code>=</code> veut dire « mets ça dans la boîte ».
+        Pour comparer : <code>==</code>.
+      </p>
+
+      <h3>Deux types pour commencer</h3>
+      <div class="two">
+        <div class="box">
+          <h4>Texte · <code>str</code></h4>
+          <p>Guillemets. <code>"20" + "1"</code> donne <code>"201"</code> (collage).</p>
+        </div>
+        <div class="box">
+          <h4>Nombre · <code>int</code></h4>
+          <p>Sans guillemets. <code>20 + 1</code> donne <code>21</code> (calcul).</p>
+        </div>
+      </div>
+      <div class="ok">
+        <span class="label">À retenir</span>
+        <code>input</code> rend <strong>toujours un texte</strong>.
+        Pour calculer un prix : <code>prix = int(input("Prix ? "))</code>.
+      </div>
     </section>
 
     <section class="wrap page">
       <p class="stamp">Partie 2 · Cours</p>
-      <h2>Les quatre erreurs du soir</h2>
-      <p>Quand Python s’arrête, lis la <strong>dernière ligne</strong> du message. C’est souvent suffisant.</p>
+      <h2>4. De la recette au code, ligne à ligne</h2>
+      <p>Même algorithme, deux écritures. Lis-les l’une sous l’autre.</p>
+      <div class="two">
+        <div class="box">
+          <h4>Pseudo-code</h4>
+<pre>DEBUT
+  AFFICHER "Ton âge ?"
+  LIRE age
+  SI age >= 18 ALORS
+    AFFICHER "Majeur"
+  SINON
+    AFFICHER "Mineur"
+  FIN SI
+FIN</pre>
+        </div>
+        <div class="box">
+          <h4>Python</h4>
+<pre>age = int(input("Ton âge ? "))
+if age >= 18:
+    print("Majeur")
+else:
+    print("Mineur")</pre>
+        </div>
+      </div>
+      <p>
+        Les deux-points <code>:</code> ouvrent le bloc.
+        Ce qui est en retrait (4 espaces) appartient au <code>if</code>
+        ou au <code>else</code>. C’est le <code>FIN SI</code> de Python :
+        quand le retrait s’arrête, la décision est finie.
+      </p>
+
+      <h3>Les quatre erreurs du soir</h3>
       <table>
-        <thead><tr><th>Erreur</th><th>Ça veut dire</th><th>Réflexe</th></tr></thead>
+        <thead><tr><th>Erreur</th><th>Réflexe</th></tr></thead>
         <tbody>
-          <tr>
-            <td><code>SyntaxError</code></td>
-            <td>La phrase est mal formée : parenthèse, deux-points, guillemet.</td>
-            <td>Compte les <code>(</code> et les <code>"</code>.</td>
-          </tr>
-          <tr>
-            <td><code>NameError</code></td>
-            <td>Python ne connaît pas ce nom.</td>
-            <td>Variable oubliée, ou texte sans guillemets.</td>
-          </tr>
-          <tr>
-            <td><code>IndentationError</code></td>
-            <td>Le retrait sous le <code>if</code> manque ou dépasse.</td>
-            <td>Aligne avec 4 espaces.</td>
-          </tr>
-          <tr>
-            <td><code>ValueError</code></td>
-            <td><code>int("Awa")</code> : on ne peut pas transformer ça en nombre.</td>
-            <td>Vérifie ce que tu tapes dans <code>input</code>.</td>
-          </tr>
+          <tr><td><code>SyntaxError</code></td><td>Parenthèse, deux-points ou guillemet manquant.</td></tr>
+          <tr><td><code>NameError</code></td><td>Variable oubliée, ou texte sans guillemets.</td></tr>
+          <tr><td><code>IndentationError</code></td><td>Le retrait sous le <code>if</code> manque.</td></tr>
+          <tr><td><code>ValueError</code></td><td><code>int("Awa")</code> : ce n’est pas un nombre.</td></tr>
         </tbody>
       </table>
 
       <div class="exo">
-        <span class="label">2.1 · 5 min · Qu’est-ce qui s’affiche ?</span>
-        <p>Si tu tapes <code>16</code> puis Entrée :</p>
+        <span class="label">2.1 · 5 min · Traduis</span>
+        <p>Écris le Python de ce pseudo-code :</p>
+<pre>DEBUT
+  AFFICHER "Ville ?"
+  LIRE ville
+  AFFICHER ville
+FIN</pre>
+        <div class="blank"></div>
+        <div class="blank"></div>
+        <div class="blank"></div>
+      </div>
+
+      <div class="exo">
+        <span class="label">2.2 · 5 min · Qu’est-ce qui s’affiche ?</span>
+        <p>On tape <code>16</code> puis Entrée.</p>
 <pre>age = int(input("Âge : "))
 if age >= 18:
     print("Majeur")
@@ -565,81 +572,73 @@ else:
       </div>
 
       <div class="exo">
-        <span class="label">2.2 · 5 min · Répare</span>
+        <span class="label">2.3 · 6 min · Répare</span>
 <pre>ville = input("Ville : ")
 if ville = "Lomé"
 print("On est au Togo.")</pre>
-        <p>Deux problèmes au moins. Note-les :</p>
         <ol>
           <li><div class="blank"></div></li>
           <li><div class="blank"></div></li>
         </ol>
       </div>
-
-      <div class="exo">
-        <span class="label">2.3 · 6 min · Un accueil qui décide</span>
-        <p>
-          Demande le prénom. Si c’est le tien, affiche « C’est moi ! ».
-          Sinon, affiche « Enchanté, » suivi du prénom tapé.
-        </p>
-        <div class="blank"></div>
-        <div class="blank"></div>
-        <div class="blank"></div>
-        <div class="blank"></div>
-      </div>
     </section>
 
     <section class="wrap page">
       <p class="stamp">Partie 3 · Mini-projet</p>
-      <h2>Un script écrit le texte de ta vitrine</h2>
+      <h2>Assez pour payer ?</h2>
       <p>
-        Hier, tu as tapé le texte à la main dans <code>index.html</code>.
-        Ce soir, Python le compose. Tu le recopieras ensuite dans ta page —
-        même vitrine, autre métier.
+        Un problème du quotidien. D’abord la recette, ensuite le code.
+        Fichier : <code>python/decision.py</code>.
       </p>
-      <div class="ok">
-        <span class="label">Fichier à créer</span>
-        Dans le dossier <code>vitrine</code> : <code>bio.py</code>
-        (pas <code>.txt</code>, pas <code>.html</code>).
-      </div>
 
-      <h3>Cahier des charges · non négociable</h3>
-      <ul class="check">
-        <li>Le fichier s’appelle <code>bio.py</code>.</li>
-        <li>Il demande ton prénom avec <code>input</code>.</li>
-        <li>Il demande une phrase sur toi (2 ou 3 phrases collées, ou une seule).</li>
-        <li>Il demande 3 envies pour la semaine.</li>
-        <li>Il affiche un texte propre, prêt à coller dans la vitrine.</li>
-        <li>Si le prénom est vide, il dit « Il me faut un prénom. » et s’arrête.</li>
-      </ul>
+      <h3>Le problème</h3>
+      <p>
+        On demande le <strong>prix</strong> d’un article, puis la
+        <strong>somme</strong> que tu as. Si tu as assez, le programme
+        affiche le reste. Sinon, il affiche ce qui manque.
+      </p>
 
-      <h3>Modèle à adapter (change Awa)</h3>
-      <p>Tape-le, ne le copie pas en silence. Remplace les exemples par tes réponses en live.</p>
-<pre>prenom = input("Ton prénom : ")
+      <h3>Étape A · le pseudo-code (non négociable)</h3>
+      <p>Écris-le en commentaires en haut du fichier, avec <code>#</code>.</p>
+<pre># DEBUT
+#   AFFICHER "Prix de l'article ?"
+#   LIRE prix
+#   AFFICHER "Tu as combien ?"
+#   LIRE argent
+#   SI argent >= prix ALORS
+#     reste ← argent - prix
+#     AFFICHER "C'est bon. Il te reste :"
+#     AFFICHER reste
+#   SINON
+#     manque ← prix - argent
+#     AFFICHER "Pas assez. Il manque :"
+#     AFFICHER manque
+#   FIN SI
+# FIN</pre>
 
-if prenom == "":
-    print("Il me faut un prénom.")
+      <h3>Étape B · la traduction Python</h3>
+<pre>prix = int(input("Prix de l'article ? "))
+argent = int(input("Tu as combien ? "))
+
+if argent >= prix:
+    reste = argent - prix
+    print("C'est bon. Il te reste :", reste)
 else:
-    phrase = input("Une phrase sur toi : ")
-    envie_1 = input("Envie 1 : ")
-    envie_2 = input("Envie 2 : ")
-    envie_3 = input("Envie 3 : ")
+    manque = prix - argent
+    print("Pas assez. Il manque :", manque)</pre>
 
-    print()
-    print("--- Texte pour ta vitrine ---")
-    print(prenom)
-    print(phrase)
-    print("Cette semaine je veux :")
-    print("-", envie_1)
-    print("-", envie_2)
-    print("-", envie_3)</pre>
-
+      <h3>Cahier des charges</h3>
+      <ul class="check">
+        <li>Le fichier s’appelle <code>decision.py</code>.</li>
+        <li>Le pseudo-code est en commentaires en haut du fichier.</li>
+        <li>Deux <code>input</code> convertis avec <code>int</code> : prix et argent.</li>
+        <li>Un <code>if</code> / <code>else</code> : assez, ou pas assez.</li>
+        <li>Tu l’as lancé au moins deux fois : une fois « assez », une fois « pas assez ».</li>
+      </ul>
       <div class="tip">
-        <span class="label">Ensuite, dans index.html</span>
-        Copie le texte affiché : le <code>&lt;h1&gt;</code> reçoit le prénom,
-        le <code>&lt;p&gt;</code> reçoit la phrase, la liste reçoit les 3 envies.
-        Tu n’es pas obligé de tout recoller ce soir : le script qui marche
-        suffit pour valider. Recoller, c’est le bonus.
+        <span class="label">Exemple pour tester</span>
+        Prix 1500, argent 2000 → reste 500.
+        Prix 1500, argent 800 → il manque 700.
       </div>
     </section>
 
@@ -650,44 +649,42 @@ else:
         <thead><tr><th>Symptôme</th><th>Réflexe</th></tr></thead>
         <tbody>
           <tr>
-            <td>Le fichier s’appelle <code>bio.py.txt</code></td>
+            <td>Le fichier s’appelle <code>decision.py.txt</code></td>
             <td>Affiche les extensions dans l’explorateur Windows.</td>
           </tr>
           <tr>
             <td>« python n’est pas reconnu »</td>
-            <td>Passe sur <strong>online-python.com</strong>. On installe plus tard.</td>
+            <td>Passe sur <strong>online-python.com</strong>.</td>
           </tr>
           <tr>
-            <td>Rien ne s’affiche, le curseur clignote</td>
-            <td>Le programme attend <code>input</code>. Tape une réponse, Entrée.</td>
+            <td>Le curseur clignote, rien ne s’affiche</td>
+            <td>Le programme attend <code>input</code>. Tape un nombre, Entrée.</td>
+          </tr>
+          <tr>
+            <td><code>ValueError</code></td>
+            <td>Tape un nombre, pas un mot. Pas d’espace bizarre.</td>
           </tr>
           <tr>
             <td><code>IndentationError</code></td>
-            <td>Tout ce qui est sous <code>else:</code> est en retrait, aligné.</td>
-          </tr>
-          <tr>
-            <td>Les accents cassent dans le Bloc-notes</td>
-            <td>Enregistre en UTF-8, ou code en ligne.</td>
+            <td>Tout ce qui est sous <code>if</code> / <code>else</code> est en retrait.</td>
           </tr>
         </tbody>
       </table>
 
       <h3>Comment lancer le fichier (si Python est installé)</h3>
       <ol>
-        <li>Ouvre un terminal dans le dossier <code>vitrine</code>.</li>
-        <li>Tape <code>python bio.py</code> (parfois <code>py bio.py</code> sous Windows).</li>
-        <li>Réponds aux questions, Entrée après chaque ligne.</li>
+        <li>Ouvre un terminal dans le dossier <code>python</code>.</li>
+        <li>Tape <code>python decision.py</code> (parfois <code>py decision.py</code> sous Windows).</li>
+        <li>Réponds aux deux questions, Entrée après chaque ligne.</li>
       </ol>
 
       <div class="exo">
         <span class="label">Mini-exo de fin de séance</span>
         <p>
-          Dépose <code>bio.py</code> sur MyHub, espace étudiant, devoir du jour 2.
+          Dépose <code>decision.py</code> sur MyHub, espace étudiant, devoir du jour 2.
           Tu peux coller le code si le fichier refuse de partir.
         </p>
-        <p>
-          Inscription : prénom, nom, téléphone. Connexion : prénom + téléphone.
-        </p>
+        <p>Inscription : prénom, nom, téléphone. Connexion : prénom + téléphone.</p>
       </div>
     </section>
 
@@ -697,36 +694,35 @@ else:
       <table>
         <tbody>
           <tr><th>Mot</th><th>En une phrase</th></tr>
-          <tr><td>Programme</td><td>Une liste d’instructions exécutées dans l’ordre.</td></tr>
-          <tr><td>Python</td><td>Le langage de ces instructions, ce soir.</td></tr>
-          <tr><td>Interpréteur</td><td>Le programme qui lit et exécute le fichier <code>.py</code>.</td></tr>
-          <tr><td><code>print</code></td><td>Affiche un message à l’écran.</td></tr>
+          <tr><td>Algorithme</td><td>Une suite d’étapes pour résoudre un problème.</td></tr>
+          <tr><td>Pseudo-code</td><td>L’algorithme écrit en français structuré.</td></tr>
+          <tr><td>Programme</td><td>La même recette, dans un langage exécutable.</td></tr>
+          <tr><td>Python</td><td>Le langage de ce soir.</td></tr>
           <tr><td>Variable</td><td>Une boîte nommée qui range une valeur.</td></tr>
-          <tr><td><code>=</code></td><td>Range une valeur dans une variable.</td></tr>
-          <tr><td><code>str</code></td><td>Un texte, entre guillemets.</td></tr>
-          <tr><td><code>int</code></td><td>Un nombre entier, sans guillemets.</td></tr>
-          <tr><td><code>input</code></td><td>Demande une réponse ; rend toujours un texte.</td></tr>
-          <tr><td><code>if</code> / <code>else</code></td><td>Choisit une branche selon une condition.</td></tr>
-          <tr><td><code>==</code></td><td>Compare : est-ce égal ?</td></tr>
+          <tr><td><code>AFFICHER</code> / <code>print</code></td><td>Montrer un message.</td></tr>
+          <tr><td><code>LIRE</code> / <code>input</code></td><td>Demander une réponse.</td></tr>
+          <tr><td><code>←</code> / <code>=</code></td><td>Ranger dans une variable.</td></tr>
+          <tr><td><code>==</code></td><td>Comparer : est-ce égal ?</td></tr>
+          <tr><td><code>SI</code> / <code>if</code></td><td>Choisir une branche si c’est vrai.</td></tr>
           <tr><td>Indentation</td><td>Le retrait qui marque le bloc sous un <code>if</code>.</td></tr>
-          <tr><td>Erreur</td><td>Python s’arrête et explique, souvent à la dernière ligne.</td></tr>
+          <tr><td><code>int</code></td><td>Un nombre entier, pour calculer.</td></tr>
+          <tr><td><code>str</code></td><td>Un texte, entre guillemets.</td></tr>
         </tbody>
       </table>
 
       <h3>Checklist avant d’envoyer ton fichier</h3>
       <ul class="check">
-        <li>Le fichier s’appelle <code>bio.py</code>.</li>
-        <li>Il y a au moins un <code>input</code> pour le prénom.</li>
-        <li>Il y a un <code>if</code> (prénom vide, ou un autre choix clair).</li>
-        <li>Tu l’as lancé une fois : le texte s’affiche.</li>
-        <li>Les 3 envies apparaissent à l’écran.</li>
+        <li>Le fichier s’appelle <code>decision.py</code>.</li>
+        <li>Le pseudo-code est en commentaires (<code>#</code>) en haut.</li>
+        <li>Le Python en dessous traduit bien cette recette.</li>
+        <li>Deux tests : assez d’argent, et pas assez.</li>
         <li>Tu déposes sur MyHub, pas sur WhatsApp.</li>
       </ul>
 
       <div class="ok">
         <span class="label">Pour le jour 3 · Data</span>
-        Ne jette ni <code>vitrine</code> ni <code>bio.py</code>. Demain, un invité
-        collera 3 chiffres sur ta page. Même heure, même visio, ordinateur encore obligatoire.
+        Nouveau sujet encore. Demain, un invité. Même heure, même visio,
+        ordinateur encore obligatoire.
       </div>
       <p class="footer-note">Bootcamp MyHub · Jour 2 · Support de cours</p>
     </section>
