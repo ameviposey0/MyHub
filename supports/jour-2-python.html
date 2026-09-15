@@ -295,7 +295,7 @@
         </thead>
         <tbody>
           <tr><td>0:00 à 0:08</td><td>Accueil</td><td>Règles, objectif, matériel. Annonce : sujet nouveau.</td></tr>
-          <tr><td>0:08 à 0:42</td><td>Pseudo-code</td><td>Algorithme, mots du soir, 3 exercices. Pas de Python.</td></tr>
+          <tr><td>0:08 à 0:42</td><td>Pseudo-code</td><td>Algorithme, mots du soir, 2 programmes légers. Pas de Python.</td></tr>
           <tr><td>0:42 à 0:47</td><td>Pause</td><td>5 minutes. Ils restent connectés.</td></tr>
           <tr><td>0:47 à 1:22</td><td>Traduction Python</td><td>Table de correspondance + live coding + 3 exercices.</td></tr>
           <tr><td>1:22 à 1:52</td><td>Mini-projet</td><td><code>decision.py</code> : assez pour payer ?</td></tr>
@@ -309,7 +309,7 @@
 
       <h3>Ce qu’ils savent faire à 14 h GMT</h3>
       <ol>
-        <li>Écrire un algorithme simple en pseudo-code : séquence, lecture, SI / SINON.</li>
+        <li>Écrire deux petits programmes en pseudo-code : un accueil, une décision de note.</li>
         <li>Le traduire en Python : <code>print</code>, <code>input</code>, <code>int</code>, <code>if</code>.</li>
         <li>Lancer un programme qui compare un prix et une somme, et le déposer sur MyHub.</li>
       </ol>
@@ -401,57 +401,44 @@ FIN</pre>
 
     <section class="wrap page">
       <p class="stamp">À toi · 12 minutes · papier ou chat</p>
-      <h2>Trois exercices pseudo-code</h2>
+      <h2>Deux programmes légers en pseudo-code</h2>
       <div class="warn">
         <span class="label">Pendant qu’ils cherchent</span>
-        Pas de Python. Pas de corrigé à l’écran. Aide d’abord ceux qui n’ont
-        pas encore numéroté l’exercice 1.1.
+        Pas de Python. Pas de corrigé à l’écran. Ils écrivent les deux recettes
+        eux-mêmes. Aide d’abord ceux qui n’ont pas encore un <code>DEBUT</code>
+        pour le programme 1.
       </div>
 
       <div class="exo">
-        <span class="label">1.1 · 4 min · Ordre du thé</span>
-        Verser / attendre que ça bouille / allumer / mettre l’eau / ajouter le sachet.
+        <span class="label">Programme 1 · 6 min · Accueil</span>
+        Demander le prénom, afficher « Bonjour » suivi de ce prénom.
       </div>
       <div class="corrige">
-        <span class="label">Corrigé 1.1</span>
-        1 mettre l’eau · 2 allumer · 3 attendre que ça bouille · 4 verser · 5 ajouter le sachet.
-        (Allumer avant l’eau est discutable : accepte « allumer puis eau » si l’ordre reste logique.
-        L’idée : on ne verse pas avant d’avoir de l’eau chaude.)
-      </div>
-
-      <div class="exo">
-        <span class="label">1.2 · 4 min · Parapluie</span>
-        SI réponse = oui → parapluie. SINON → pas besoin.
-      </div>
-      <div class="corrige">
-        <span class="label">Corrigé 1.2</span>
+        <span class="label">Corrigé programme 1</span>
 <pre>DEBUT
-  AFFICHER "Est-ce qu'il pleut ?"
-  LIRE reponse
-  SI reponse = "oui" ALORS
-    AFFICHER "Prends le parapluie."
+  AFFICHER "Ton prénom ?"
+  LIRE prenom
+  AFFICHER "Bonjour"
+  AFFICHER prenom
+FIN</pre>
+        Accepte aussi une seule ligne du type <code>AFFICHER "Bonjour " + prenom</code>.
+      </div>
+
+      <div class="exo">
+        <span class="label">Programme 2 · 6 min · Admis ou pas</span>
+        Demander une note sur 20. SI note &gt;= 10 → « Admis ». SINON → « Ajourné ».
+      </div>
+      <div class="corrige">
+        <span class="label">Corrigé programme 2</span>
+<pre>DEBUT
+  AFFICHER "Ta note sur 20 ?"
+  LIRE note
+  SI note >= 10 ALORS
+    AFFICHER "Admis"
   SINON
-    AFFICHER "Pas besoin."
+    AFFICHER "Ajourné"
   FIN SI
 FIN</pre>
-      </div>
-
-      <div class="exo">
-        <span class="label">1.3 · 4 min · Recette cassée</span>
-<pre>DEBUT
-  AFFICHER "Ville ?"
-  LIRE ville
-  SI ville = "Lomé"
-    AFFICHER "On est au Togo."
-FIN</pre>
-      </div>
-      <div class="corrige">
-        <span class="label">Corrigé 1.3</span>
-        <ol>
-          <li>Il manque <code>ALORS</code> (et les deux-points plus tard en Python).</li>
-          <li>Il manque <code>FIN SI</code> avant <code>FIN</code>.</li>
-        </ol>
-        Version propre : <code>SI ville = "Lomé" ALORS</code> … <code>FIN SI</code> … <code>FIN</code>.
       </div>
     </section>
 
