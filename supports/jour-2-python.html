@@ -295,9 +295,9 @@
         </thead>
         <tbody>
           <tr><td>0:00 à 0:08</td><td>Accueil</td><td>Règles, objectif, matériel. Annonce : sujet nouveau.</td></tr>
-          <tr><td>0:08 à 0:42</td><td>Pseudo-code</td><td>4 gestes : afficher, variable, saisie, condition. Puis 2 programmes.</td></tr>
+          <tr><td>0:08 à 0:42</td><td>Pseudo-code</td><td>5 gestes : afficher, variable, concaténer, saisie, condition. Puis 2 programmes.</td></tr>
           <tr><td>0:42 à 0:47</td><td>Pause</td><td>5 minutes. Ils restent connectés.</td></tr>
-          <tr><td>0:47 à 1:22</td><td>Python · la suite</td><td>Les mêmes 4 gestes, dans le même ordre. Puis les 2 programmes en Python.</td></tr>
+          <tr><td>0:47 à 1:22</td><td>Python · la suite</td><td>Les mêmes 5 gestes, dans le même ordre. Puis les 2 programmes en Python.</td></tr>
           <tr><td>1:22 à 1:52</td><td>Mini-projet</td><td><code>decision.py</code> : assez pour payer ?</td></tr>
           <tr><td>1:52 à 2:00</td><td>Bilan</td><td>3 points, dépôt MyHub, teaser jour 3 data.</td></tr>
         </tbody>
@@ -309,7 +309,7 @@
 
       <h3>Ce qu’ils savent faire à 14 h GMT</h3>
       <ol>
-        <li>Les quatre gestes en pseudo-code, puis les mêmes en Python.</li>
+        <li>Les cinq gestes en pseudo-code, puis les mêmes en Python.</li>
         <li>Les deux programmes (accueil, note) écrits deux fois : recette, puis code.</li>
         <li>Lancer un programme qui compare un prix et une somme, et le déposer sur MyHub.</li>
       </ol>
@@ -341,19 +341,19 @@
       </ol>
       <div class="say">
         <span class="label">Promesse du soir · à répéter</span>
-        « Ce soir : quatre gestes en français, puis les mêmes quatre en Python. »
+        « Ce soir : cinq gestes en français, puis les mêmes cinq en Python. »
       </div>
     </section>
 
     <section class="wrap page">
       <p class="stamp">0:08 · Partie 1 · Pseudo-code</p>
-      <h2>Quatre gestes, dans cet ordre</h2>
+      <h2>Cinq gestes, dans cet ordre</h2>
       <div class="say">
         <span class="label">À dire</span>
         <p>
           Recette de cuisine : l’ordre compte. Pseudo-code = français structuré.
-          Quatre gestes : afficher, déclarer une variable, lire (input), condition.
-          Python reprendra exactement les quatre, dans le même ordre. On ne code pas encore.
+          Cinq gestes : afficher, déclarer une variable, concaténer, lire (input), condition.
+          Python reprendra exactement les cinq, dans le même ordre. On ne code pas encore.
         </p>
       </div>
 
@@ -385,18 +385,32 @@ AFFICHER age</pre>
 
     <section class="wrap page">
       <p class="stamp">0:08 · Partie 1 · suite</p>
-      <h2>Saisie, puis condition</h2>
-      <h3>Geste 3 · LIRE (input)</h3>
+      <h2>Concaténer, saisir, décider</h2>
+      <h3>Geste 3 · Concaténer</h3>
+      <div class="say">
+        <span class="label">À dire</span>
+        Coller des textes avec <code>+</code>. Espace dans les guillemets, sinon
+        <code>BonjourAwa</code>. On peut ranger le résultat dans <code>message</code>.
+      </div>
+      <div class="show">
+        <span class="label">À montrer</span>
+<pre>prenom ← "Awa"
+AFFICHER "Bonjour " + prenom
+message ← "Je m'appelle " + prenom
+AFFICHER message</pre>
+        « Plus tard, en Python, un nombre ne se colle pas tout seul : il faudra str(). »
+      </div>
+
+      <h3>Geste 4 · LIRE (input)</h3>
       <div class="show">
         <span class="label">À montrer</span>
 <pre>AFFICHER "Ton prénom ?"
 LIRE prenom
-AFFICHER "Bonjour"
-AFFICHER prenom</pre>
-        « LIRE s’arrête. La valeur n’est plus collée dans la recette. »
+AFFICHER "Bonjour " + prenom</pre>
+        « LIRE s’arrête. Une seule ligne à l’écran grâce au +. »
       </div>
 
-      <h3>Geste 4 · SI / SINON</h3>
+      <h3>Geste 5 · SI / SINON</h3>
       <div class="say">
         <span class="label">À dire</span>
         Feu tricolore. Une branche à la fois. <code>FIN SI</code> ferme. Sans ça, on ne sait plus où ça reprend.
@@ -428,17 +442,15 @@ FIN</pre>
 
       <div class="exo">
         <span class="label">Programme 1 · 6 min · Accueil</span>
-        Demander le prénom, afficher « Bonjour » suivi de ce prénom.
+        Demander le prénom, afficher <strong>une seule ligne</strong> avec <code>+</code> : « Bonjour » collé au prénom.
       </div>
       <div class="corrige">
         <span class="label">Corrigé programme 1</span>
 <pre>DEBUT
   AFFICHER "Ton prénom ?"
   LIRE prenom
-  AFFICHER "Bonjour"
-  AFFICHER prenom
+  AFFICHER "Bonjour " + prenom
 FIN</pre>
-        Accepte aussi une seule ligne du type <code>AFFICHER "Bonjour " + prenom</code>.
       </div>
 
       <div class="exo">
@@ -464,19 +476,19 @@ FIN</pre>
       <h2>Cinq minutes, on reste connectés</h2>
       <div class="say">
         <span class="label">À dire</span>
-        « Pause. Ne quittez pas. Ensuite : partie Python, les mêmes quatre gestes. »
+        « Pause. Ne quittez pas. Ensuite : partie Python, les mêmes cinq gestes. »
       </div>
 
       <p class="stamp">0:47 · Partie 2 · Python</p>
-      <h2>Les mêmes quatre gestes, dans le même ordre</h2>
+      <h2>Les mêmes cinq gestes, dans le même ordre</h2>
       <div class="say">
         <span class="label">À dire</span>
         « Partie réservée à Python. Ce n’est pas un autre cours. On reprend
-        afficher, variable, saisie, condition. Tu traduis, tu ne devines pas. »
+        afficher, variable, concaténer, saisie, condition. Tu traduis, tu ne devines pas. »
       </div>
       <div class="show">
         <span class="label">À montrer · table, à laisser à l’écran</span>
-        <p><code>AFFICHER</code> → <code>print</code> · <code>←</code> → <code>=</code> · <code>LIRE</code> → <code>input</code> · <code>SI / FIN SI</code> → <code>if:</code> + le retrait.</p>
+        <p><code>AFFICHER</code> → <code>print</code> · <code>←</code> → <code>=</code> · <code>+</code> → <code>+</code> · <code>LIRE</code> → <code>input</code> · <code>SI / FIN SI</code> → <code>if:</code> + le retrait.</p>
       </div>
       <div class="show">
         <span class="label">Geste 1 · même exemple</span>
@@ -496,16 +508,23 @@ print(age)</pre>
 
     <section class="wrap page">
       <p class="stamp">0:47 · Partie 2 · suite</p>
-      <h2>input, puis if</h2>
+      <h2>Concaténer, input, if</h2>
       <div class="show">
-        <span class="label">Geste 3 · même accueil</span>
+        <span class="label">Geste 3 · même collage</span>
+<pre>prenom = "Awa"
+print("Bonjour " + prenom)
+message = "Je m'appelle " + prenom
+print(message)</pre>
+        Casse : <code>print("Tu as " + 20)</code> → TypeError. Montre <code>str(20)</code>.
+      </div>
+      <div class="show">
+        <span class="label">Geste 4 · même accueil, une ligne</span>
 <pre>prenom = input("Ton prénom ? ")
-print("Bonjour")
-print(prenom)</pre>
+print("Bonjour " + prenom)</pre>
         « input rend toujours un texte. Pour un âge : int(...). »
       </div>
       <div class="show">
-        <span class="label">Geste 4 · même âge, 16 puis 20</span>
+        <span class="label">Geste 5 · même âge, 16 puis 20</span>
 <pre>age = int(input("Ton âge ? "))
 if age >= 18:
     print("Tu peux voter.")
@@ -527,12 +546,12 @@ else:
 
       <div class="exo">
         <span class="label">Programme 1 · Python · Accueil</span>
-        Demander le prénom, afficher « Bonjour » suivi de ce prénom.
+        Demander le prénom, afficher une seule ligne avec <code>+</code>.
       </div>
       <div class="corrige">
         <span class="label">Corrigé programme 1</span>
 <pre>prenom = input("Ton prénom ? ")
-print("Bonjour", prenom)</pre>
+print("Bonjour " + prenom)</pre>
       </div>
 
       <div class="exo">
@@ -573,9 +592,9 @@ else:
 #   LIRE prix
 #   LIRE argent
 #   SI argent >= prix ALORS
-#     AFFICHER le reste
+#     AFFICHER "C'est bon. Il te reste : " + reste
 #   SINON
-#     AFFICHER ce qui manque
+#     AFFICHER "Pas assez. Il manque : " + manque
 #   FIN SI
 # FIN
 
@@ -584,10 +603,10 @@ argent = int(input("Tu as combien ? "))
 
 if argent >= prix:
     reste = argent - prix
-    print("C'est bon. Il te reste :", reste)
+    print("C'est bon. Il te reste : " + str(reste))
 else:
     manque = prix - argent
-    print("Pas assez. Il manque :", manque)</pre>
+    print("Pas assez. Il manque : " + str(manque))</pre>
       </div>
       <div class="tip">
         <span class="label">Checkpoints</span>
@@ -609,8 +628,8 @@ else:
       <div class="say">
         <span class="label">À dire</span>
         <ol>
-          <li>« Quatre gestes en pseudo-code : afficher, variable, saisie, condition. »</li>
-          <li>« Python reprend les quatre : <code>print</code>, <code>=</code>, <code>input</code>, <code>if</code>. »</li>
+          <li>« Cinq gestes en pseudo-code : afficher, variable, concaténer, saisie, condition. »</li>
+          <li>« Python reprend les cinq : <code>print</code>, <code>=</code>, <code>+</code>, <code>input</code>, <code>if</code>. »</li>
           <li>« Ton <code>decision.py</code> compare un prix et une somme. Recette d’abord, code ensuite. »</li>
         </ol>
       </div>

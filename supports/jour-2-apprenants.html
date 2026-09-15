@@ -272,12 +272,12 @@
           <tr>
             <td>1</td>
             <td>Pseudo-code</td>
-            <td>Afficher, déclarer une variable, saisir, décider</td>
+            <td>Afficher, variable, concaténer, saisir, décider</td>
           </tr>
           <tr>
             <td>2</td>
             <td>Python · la suite</td>
-            <td>Les mêmes quatre gestes, dans le même ordre</td>
+            <td>Les mêmes cinq gestes, dans le même ordre</td>
           </tr>
           <tr>
             <td>3</td>
@@ -301,10 +301,11 @@
         dans l’ordre. Le <strong>pseudo-code</strong>, c’est cette recette
         écrite en français structuré. Python viendra après, pour la même recette.
       </p>
-      <p>Quatre gestes ce soir, toujours dans cet ordre :</p>
+      <p>Cinq gestes ce soir, toujours dans cet ordre :</p>
       <ol>
         <li>Afficher du texte.</li>
         <li>Déclarer une variable.</li>
+        <li>Concaténer du texte.</li>
         <li>Lire une saisie (input).</li>
         <li>Faire une condition.</li>
       </ol>
@@ -374,6 +375,36 @@ FIN</pre>
 
     <section class="wrap page">
       <p class="stamp">Partie 1 · Pseudo-code · Geste 3</p>
+      <h2>Concaténer du texte</h2>
+      <p>
+        <strong>Concaténer</strong>, c’est coller des morceaux de texte
+        bout à bout, pour n’en faire qu’un. Le signe <code>+</code> colle.
+        Pense à un espace dans les guillemets, sinon les mots se collent.
+      </p>
+<pre>DEBUT
+  prenom ← "Awa"
+  AFFICHER "Bonjour " + prenom
+  message ← "Je m'appelle " + prenom
+  AFFICHER message
+FIN</pre>
+      <p>À l’écran :</p>
+<pre>Bonjour Awa
+Je m'appelle Awa</pre>
+      <ul>
+        <li><code>"Bonjour " + prenom</code> : texte fixe + contenu de la boîte.</li>
+        <li>Sans l’espace après Bonjour : <code>BonjourAwa</code>.</li>
+        <li>On peut ranger le résultat dans une nouvelle variable (<code>message</code>).</li>
+      </ul>
+      <div class="warn">
+        <span class="label">Piège</span>
+        <code>+</code> entre deux textes = collage.
+        <code>+</code> entre deux nombres = calcul (<code>20 + 1</code> → <code>21</code>).
+        On ne mélange pas texte et nombre sans conversion : ça, Python le refusera.
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">Partie 1 · Pseudo-code · Geste 4</p>
       <h2>Lire une saisie (input)</h2>
       <p>
         Jusqu’ici, c’est toi qui as collé « Awa » dans la recette.
@@ -384,13 +415,12 @@ FIN</pre>
 <pre>DEBUT
   AFFICHER "Ton prénom ?"
   LIRE prenom
-  AFFICHER "Bonjour"
-  AFFICHER prenom
+  AFFICHER "Bonjour " + prenom
 FIN</pre>
       <ol>
         <li>On affiche la question.</li>
         <li><code>LIRE prenom</code> déclare (ou remplit) la variable avec ce qui est tapé.</li>
-        <li>On affiche « Bonjour », puis le contenu de <code>prenom</code>.</li>
+        <li>On affiche une seule ligne : « Bonjour » collé au prénom.</li>
       </ol>
       <div class="ok">
         <span class="label">À retenir</span>
@@ -400,7 +430,7 @@ FIN</pre>
     </section>
 
     <section class="wrap page">
-      <p class="stamp">Partie 1 · Pseudo-code · Geste 4</p>
+      <p class="stamp">Partie 1 · Pseudo-code · Geste 5</p>
       <h2>Faire une condition</h2>
       <p>
         Analogie feu : vert tu avances, rouge tu t’arrêtes.
@@ -437,12 +467,12 @@ FIN</pre>
       <h2>Écris deux programmes légers</h2>
       <p>
         Au crayon ou dans <code>notes.txt</code>. Deux petits programmes
-        qui utilisent les quatre gestes. Pas de Python encore.
+        qui utilisent les cinq gestes. Pas de Python encore.
       </p>
       <div class="tip">
         <span class="label">Tu as le droit d’utiliser</span>
         <code>DEBUT</code> <code>FIN</code> · <code>AFFICHER</code> ·
-        <code>LIRE</code> · <code>←</code> · <code>SI … ALORS</code> ·
+        <code>LIRE</code> · <code>←</code> · <code>+</code> · <code>SI … ALORS</code> ·
         <code>SINON</code> · <code>FIN SI</code>.
       </div>
 
@@ -450,7 +480,8 @@ FIN</pre>
         <span class="label">Programme 1 · 6 min · Accueil</span>
         <p>
           Écris un programme qui demande le prénom, puis affiche
-          « Bonjour » suivi de ce prénom.
+          <strong>une seule ligne</strong> « Bonjour » collé au prénom,
+          avec <code>+</code>.
         </p>
         <div class="blank"></div>
         <div class="blank"></div>
@@ -480,7 +511,7 @@ FIN</pre>
 
     <section class="wrap page">
       <p class="stamp">Partie 2 · Python</p>
-      <h2>Même quatre gestes, dans le même ordre</h2>
+      <h2>Même cinq gestes, dans le même ordre</h2>
       <p>
         Cette partie est <strong>réservée à Python</strong>. Ce n’est pas
         un autre sujet : c’est la suite. On reprend exactement ce qu’on
@@ -491,6 +522,7 @@ FIN</pre>
         <tbody>
           <tr><td>Afficher du texte · <code>AFFICHER</code></td><td><code>print</code></td></tr>
           <tr><td>Déclarer une variable · <code>←</code></td><td><code>=</code></td></tr>
+          <tr><td>Concaténer · <code>+</code></td><td><code>+</code> (textes uniquement)</td></tr>
           <tr><td>Lire une saisie · <code>LIRE</code></td><td><code>input</code></td></tr>
           <tr><td>Condition · <code>SI / SINON / FIN SI</code></td><td><code>if / else</code> + le retrait</td></tr>
         </tbody>
@@ -559,21 +591,47 @@ print(age)</pre>
 
     <section class="wrap page">
       <p class="stamp">Partie 2 · Python · Geste 3</p>
+      <h2>Concaténer du texte · <code>+</code></h2>
+      <p>Même collage qu’en pseudo-code. <code>+</code> entre deux textes.</p>
+      <div class="two">
+        <div class="box">
+          <h4>Pseudo-code</h4>
+<pre>prenom ← "Awa"
+AFFICHER "Bonjour " + prenom
+message ← "Je m'appelle " + prenom
+AFFICHER message</pre>
+        </div>
+        <div class="box">
+          <h4>Python</h4>
+<pre>prenom = "Awa"
+print("Bonjour " + prenom)
+message = "Je m'appelle " + prenom
+print(message)</pre>
+        </div>
+      </div>
+      <div class="warn">
+        <span class="label">Nombre + texte = erreur</span>
+        <code>"Tu as " + 20</code> plante. Il faut transformer le nombre :
+        <code>print("Tu as " + str(20) + " ans")</code>.
+        <code>str(...)</code> = « rends-moi ça en texte ».
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">Partie 2 · Python · Geste 4</p>
       <h2>Lire une saisie · <code>input</code></h2>
-      <p>Même accueil qu’en pseudo-code. <code>input</code> = <code>LIRE</code>.</p>
+      <p>Même accueil. Cette fois, une seule ligne grâce au <code>+</code>.</p>
       <div class="two">
         <div class="box">
           <h4>Pseudo-code</h4>
 <pre>AFFICHER "Ton prénom ?"
 LIRE prenom
-AFFICHER "Bonjour"
-AFFICHER prenom</pre>
+AFFICHER "Bonjour " + prenom</pre>
         </div>
         <div class="box">
           <h4>Python</h4>
 <pre>prenom = input("Ton prénom ? ")
-print("Bonjour")
-print(prenom)</pre>
+print("Bonjour " + prenom)</pre>
         </div>
       </div>
       <div class="ok">
@@ -585,7 +643,7 @@ print(prenom)</pre>
     </section>
 
     <section class="wrap page">
-      <p class="stamp">Partie 2 · Python · Geste 4</p>
+      <p class="stamp">Partie 2 · Python · Geste 5</p>
       <h2>Faire une condition · <code>if</code> / <code>else</code></h2>
       <p>Même décision d’âge. Plus de <code>FIN SI</code> : le retrait ferme le bloc.</p>
       <div class="two">
@@ -635,7 +693,8 @@ else:
         <span class="label">Programme 1 · en Python · Accueil</span>
         <p>
           Traduis ta recette : demander le prénom, afficher
-          « Bonjour » suivi de ce prénom.
+          <strong>une seule ligne</strong> avec <code>+</code> :
+          « Bonjour » collé au prénom.
         </p>
         <div class="blank"></div>
         <div class="blank"></div>
@@ -683,12 +742,10 @@ else:
 #   LIRE argent
 #   SI argent >= prix ALORS
 #     reste ← argent - prix
-#     AFFICHER "C'est bon. Il te reste :"
-#     AFFICHER reste
+#     AFFICHER "C'est bon. Il te reste : " + reste
 #   SINON
 #     manque ← prix - argent
-#     AFFICHER "Pas assez. Il manque :"
-#     AFFICHER manque
+#     AFFICHER "Pas assez. Il manque : " + manque
 #   FIN SI
 # FIN</pre>
 
@@ -698,10 +755,10 @@ argent = int(input("Tu as combien ? "))
 
 if argent >= prix:
     reste = argent - prix
-    print("C'est bon. Il te reste :", reste)
+    print("C'est bon. Il te reste : " + str(reste))
 else:
     manque = prix - argent
-    print("Pas assez. Il manque :", manque)</pre>
+    print("Pas assez. Il manque : " + str(manque))</pre>
 
       <h3>Cahier des charges</h3>
       <ul class="check">
@@ -782,7 +839,8 @@ else:
           <tr><td><code>SI</code> / <code>if</code></td><td>Choisir une branche si c’est vrai.</td></tr>
           <tr><td>Indentation</td><td>Le retrait qui marque le bloc sous un <code>if</code>.</td></tr>
           <tr><td><code>int</code></td><td>Un nombre entier, pour calculer.</td></tr>
-          <tr><td><code>str</code></td><td>Un texte, entre guillemets.</td></tr>
+          <tr><td>Concaténation</td><td>Coller des textes avec <code>+</code>.</td></tr>
+          <tr><td><code>str</code></td><td>Transformer un nombre en texte, pour pouvoir le coller.</td></tr>
         </tbody>
       </table>
 
