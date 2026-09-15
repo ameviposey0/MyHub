@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Jour 2 · Programmation Python · Bootcamp MyHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Code+Pro:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #efe6d6;
+        --card: #fffdf8;
+        --ink: #1a1612;
+        --muted: #5a534b;
+        --line: #e2d6c4;
+        --accent: #c64520;
+        --accent-deep: #9e3416;
+        --sun: #8a6414;
+        --whatsapp: #167a39;
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        color: var(--ink);
+        background: var(--bg);
+        font-family: Figtree, "Segoe UI", sans-serif;
+        font-size: 11pt;
+        line-height: 1.5;
+      }
+
+      @page { size: A4; margin: 14mm 13mm 16mm; }
+
+      .cover {
+        min-height: 260mm;
+        padding: 18mm 14mm;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background:
+          radial-gradient(28rem 16rem at 100% -8%, rgba(198, 69, 32, 0.16), transparent 55%),
+          radial-gradient(22rem 14rem at -8% 10%, rgba(232, 184, 74, 0.28), transparent 52%),
+          var(--bg);
+        page-break-after: always;
+      }
+
+      .kicker {
+        margin: 0 0 0.4rem;
+        color: var(--accent);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+      }
+
+      h1, h2, h3, h4 {
+        font-family: "Bricolage Grotesque", Georgia, serif;
+        line-height: 1.15;
+        margin: 0 0 0.55rem;
+      }
+
+      .cover h1 {
+        font-size: 2.45rem;
+        font-weight: 800;
+        max-width: 16ch;
+      }
+
+      .cover .lead {
+        font-size: 1.12rem;
+        max-width: 40ch;
+        color: var(--muted);
+      }
+
+      .pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        padding: 0;
+        margin: 1rem 0 0;
+        list-style: none;
+      }
+
+      .pills li {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.22rem 0.7rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+
+      .wrap { padding: 0 1mm 4mm; }
+
+      h2 {
+        font-size: 1.45rem;
+        margin-top: 0;
+        padding-bottom: 0.35rem;
+        border-bottom: 2px solid var(--accent);
+      }
+
+      h3 { font-size: 1.12rem; margin-top: 1.1rem; color: var(--accent-deep); }
+      h4 { font-size: 1rem; margin-top: 0.85rem; }
+
+      p { margin: 0 0 0.65rem; }
+      ul, ol { margin: 0 0 0.75rem; padding-left: 1.2rem; }
+      li { margin: 0.18rem 0; }
+
+      .stamp {
+        display: inline-block;
+        margin: 0 0 0.45rem;
+        color: var(--sun);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .box, .exo, .tip, .warn, .ok {
+        border-radius: 0.75rem;
+        padding: 0.75rem 0.9rem;
+        margin: 0.7rem 0;
+        border: 1px solid var(--line);
+        background: var(--card);
+        break-inside: avoid;
+      }
+
+      .exo { border-left: 4px solid #2c5aa0; background: #f3f7fd; }
+      .tip { border-left: 4px solid var(--sun); background: #fff8e8; }
+      .warn { border-left: 4px solid var(--accent); background: #fdf3ee; }
+      .ok { border-left: 4px solid var(--whatsapp); background: #f1f8f3; }
+
+      .label {
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 0.28rem;
+      }
+
+      .exo .label { color: #2c5aa0; }
+      .tip .label { color: var(--sun); }
+      .warn .label { color: var(--accent-deep); }
+      .ok .label { color: var(--whatsapp); }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0.6rem 0 1rem;
+        font-size: 0.95rem;
+        background: var(--card);
+      }
+
+      th, td {
+        border: 1px solid var(--line);
+        padding: 0.42rem 0.55rem;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: #f3eadc;
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      pre, code { font-family: "Source Code Pro", Consolas, monospace; }
+
+      code {
+        font-size: 0.86em;
+        background: #f3eadc;
+        padding: 0.05rem 0.28rem;
+        border-radius: 0.25rem;
+      }
+
+      pre {
+        background: #1a1612;
+        color: #faf6ef;
+        padding: 0.8rem 0.9rem;
+        border-radius: 0.7rem;
+        font-size: 0.78rem;
+        line-height: 1.45;
+        white-space: pre-wrap;
+        break-inside: avoid;
+      }
+
+      .two {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.7rem;
+      }
+
+      .blank {
+        border-bottom: 1px dotted #8a7d6d;
+        min-height: 1.2rem;
+        margin: 0.28rem 0 0.5rem;
+      }
+
+      .page { page-break-before: always; padding-top: 1mm; }
+
+      .check li { list-style: none; margin-left: -1.2rem; }
+      .check li::before { content: "☐  "; }
+
+      .footer-note {
+        margin-top: 1.2rem;
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="cover">
+      <div>
+        <p class="kicker">Bootcamp MyHub · Support de cours</p>
+        <h1>Jour 2. Programmation Python.</h1>
+        <p class="lead">
+          Support de cours à lire, annoter et garder. Imprime-le ou
+          suis-le à l’écran. Les corrigés se font ensemble, pendant la séance.
+        </p>
+        <ul class="pills">
+          <li>Gratuit</li>
+          <li>Jour 2 · 2 h</li>
+          <li>Débutant bienvenu</li>
+          <li>En visio · 12 h GMT</li>
+        </ul>
+      </div>
+      <div>
+        <p class="kicker">Aujourd’hui tu repars avec</p>
+        <p>
+          Un premier script Python : variables, <code>print</code>,
+          <code>input</code>, décisions <code>if</code>, et un fichier
+          qui écrit le texte de ta vitrine.
+        </p>
+        <p class="footer-note">Garde ce support et le dossier <code>vitrine</code> du jour 1.</p>
+      </div>
+    </section>
+
+    <main class="wrap">
+      <p class="stamp">Avant la séance</p>
+      <h2>Prépare ça, rien de plus</h2>
+      <ul class="check">
+        <li>Un ordinateur (le téléphone seul ne suffit pas pour coder).</li>
+        <li>Le dossier <code>vitrine</code> du jour 1, avec <code>index.html</code>.</li>
+        <li>Python installé, ou un onglet prêt : <strong>https://www.online-python.com/</strong>.</li>
+        <li>Un éditeur : VS Code, Bloc-notes, ou l’éditeur du site en ligne.</li>
+      </ul>
+      <div class="tip">
+        <span class="label">Pas de Python sur la machine ?</span>
+        On code dans le navigateur sur
+        <strong>https://www.online-python.com/</strong>.
+        Même exercice, zéro install. À la fin, tu copies le code dans un fichier
+        <code>bio.py</code> pour le déposer sur MyHub.
+      </div>
+      <div class="ok">
+        <span class="label">Objectif du jour</span>
+        Faire parler l’ordinateur en Python, puis lui faire écrire
+        le texte de ta vitrine. Pas besoin d’avoir déjà programmé.
+      </div>
+
+      <h3>Les trois temps du jour</h3>
+      <table>
+        <thead>
+          <tr><th></th><th>On travaille</th><th>Tu repars avec</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><code>print</code>, variables, types</td>
+            <td>Python parle, tu donnes un nom aux valeurs</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><code>input</code> et <code>if</code></td>
+            <td>Un script qui écoute et décide</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Mini-projet bio</td>
+            <td>Ton fichier <code>bio.py</code> + le texte de la vitrine</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+
+    <section class="wrap page">
+      <p class="stamp">Partie 1 · Cours</p>
+      <h2>1. Un programme, c’est une recette</h2>
+      <p>
+        Hier, tu as écrit du <strong>HTML</strong> : la structure d’une page.
+        Aujourd’hui, tu écris des <strong>instructions</strong> : l’ordinateur
+        les lit, dans l’ordre, et les exécute. C’est un <strong>programme</strong>.
+      </p>
+      <p>
+        Analogie cuisine : la recette n’est pas le plat. Python, c’est la langue
+        de la recette. L’<strong>interpréteur</strong> Python, c’est le cuisinier
+        qui lit et exécute, ligne par ligne.
+      </p>
+
+      <div class="two">
+        <div class="box">
+          <h4>Le fichier</h4>
+          <p>
+            On enregistre le programme dans un fichier qui finit par
+            <code>.py</code>. Exemple : <code>bio.py</code>.
+            C’est du texte, comme <code>index.html</code> hier.
+          </p>
+        </div>
+        <div class="box">
+          <h4>L’exécution</h4>
+          <p>
+            Python lit le fichier du haut vers le bas. S’il bute sur une ligne,
+            il s’arrête et affiche une <strong>erreur</strong>. Ce n’est pas
+            toi qui es « nul » : c’est la recette qui est floue.
+          </p>
+        </div>
+      </div>
+
+      <h3>Le premier mot : <code>print</code></h3>
+      <p>
+        <code>print</code> fait parler l’ordinateur. Il affiche quelque chose
+        à l’écran. Le texte va entre guillemets.
+      </p>
+<pre>print("Bonjour")
+print("Je m'appelle Awa")</pre>
+      <p>À l’écran, tu vois :</p>
+<pre>Bonjour
+Je m'appelle Awa</pre>
+      <ul>
+        <li>Les guillemets <code>"</code> ou <code>'</code> entourent un <strong>texte</strong>.</li>
+        <li>Sans guillemets, Python cherche un <strong>nom</strong> (une variable).</li>
+        <li>Chaque <code>print</code> passe à la ligne suivante.</li>
+      </ul>
+      <div class="warn">
+        <span class="label">Piège du soir</span>
+        <code>print(Bonjour)</code> sans guillemets → erreur
+        <code>NameError</code>. Python cherche une variable appelée Bonjour.
+        Le texte, lui, vit entre guillemets.
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">Partie 1 · Cours</p>
+      <h2>2. Une variable, c’est une boîte avec un nom</h2>
+      <p>
+        Au lieu de réécrire « Awa » partout, tu ranges la valeur dans une
+        <strong>variable</strong>. Tu colles une étiquette sur une boîte.
+      </p>
+<pre>prenom = "Awa"
+print(prenom)
+print("Bonjour", prenom)</pre>
+      <p>À l’écran :</p>
+<pre>Awa
+Bonjour Awa</pre>
+      <p>
+        Le signe <code>=</code> n’est pas « égal » comme en maths.
+        Il <strong>range</strong> : « mets "Awa" dans la boîte <code>prenom</code> ».
+      </p>
+
+      <h3>Règles pour nommer</h3>
+      <table>
+        <thead><tr><th>OK</th><th>Pas OK</th><th>Pourquoi</th></tr></thead>
+        <tbody>
+          <tr><td><code>prenom</code></td><td><code>prénom</code></td><td>Pas d’accent dans le nom.</td></tr>
+          <tr><td><code>age</code></td><td><code>2age</code></td><td>Ne commence pas par un chiffre.</td></tr>
+          <tr><td><code>envie_1</code></td><td><code>envie 1</code></td><td>Pas d’espace : utilise <code>_</code>.</td></tr>
+          <tr><td><code>message</code></td><td><code>print</code></td><td>N’écrase pas un mot de Python.</td></tr>
+        </tbody>
+      </table>
+      <div class="tip">
+        <span class="label">Convention du soir</span>
+        Minuscules, mots collés avec un tiret bas :
+        <code>prenom</code>, <code>phrase</code>, <code>envie_1</code>.
+        Un nom dit ce qu’il y a dans la boîte.
+      </div>
+
+      <h3>Deux types pour commencer</h3>
+      <div class="two">
+        <div class="box">
+          <h4>Texte · <code>str</code></h4>
+          <p>
+            Entre guillemets. <code>"Awa"</code>, <code>"20"</code>.
+            On peut coller deux textes avec <code>+</code>.
+          </p>
+        </div>
+        <div class="box">
+          <h4>Nombre entier · <code>int</code></h4>
+          <p>
+            Sans guillemets. <code>20</code>, <code>12</code>.
+            On peut additionner : <code>20 + 2</code> donne <code>22</code>.
+          </p>
+        </div>
+      </div>
+<pre>prenom = "Awa"
+age = 20
+print(prenom + " a " + str(age) + " ans")
+print(age + 1)</pre>
+      <p>
+        <code>str(age)</code> transforme le nombre en texte, pour pouvoir
+        le coller. <code>age + 1</code> calcule : 21.
+      </p>
+      <div class="warn">
+        <span class="label">"20" n’est pas 20</span>
+        <code>"20" + "1"</code> donne <code>"201"</code> (collage de textes).
+        <code>20 + 1</code> donne <code>21</code> (calcul).
+        Les guillemets changent le métier de la valeur.
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">Partie 1 · À toi</p>
+      <h2>Exercices 1 · print et variables</h2>
+      <p>Écris tes réponses au crayon, ou dans un fichier <code>exos.py</code>. On corrige ensemble.</p>
+
+      <div class="exo">
+        <span class="label">1.1 · 4 min · Qu’est-ce qui s’affiche ?</span>
+        <p>Sans lancer le programme, prédis l’écran :</p>
+<pre>ville = "Lomé"
+print("J'habite à")
+print(ville)</pre>
+        <div class="blank"></div>
+        <div class="blank"></div>
+      </div>
+
+      <div class="exo">
+        <span class="label">1.2 · 4 min · Répare</span>
+        <p>Chaque ligne a un problème. Corrige-les :</p>
+<pre>print(Bonjour)
+prenom = Awa
+print prenom
+1ville = "Lomé"</pre>
+        <ol>
+          <li>Ligne 1 : <div class="blank"></div></li>
+          <li>Ligne 2 : <div class="blank"></div></li>
+          <li>Ligne 3 : <div class="blank"></div></li>
+          <li>Ligne 4 : <div class="blank"></div></li>
+        </ol>
+      </div>
+
+      <div class="exo">
+        <span class="label">1.3 · 4 min · Ta carte d’identité</span>
+        <p>
+          Écris 4 lignes : une variable <code>prenom</code>, une variable
+          <code>ville</code>, puis deux <code>print</code> qui affichent
+          « Je m’appelle … » et « J’habite à … ».
+        </p>
+        <div class="blank"></div>
+        <div class="blank"></div>
+        <div class="blank"></div>
+        <div class="blank"></div>
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">Partie 2 · Cours</p>
+      <h2>3. <code>input</code> : l’ordinateur écoute</h2>
+      <p>
+        Jusqu’ici, c’est toi qui as collé « Awa » dans le code.
+        Avec <code>input</code>, le programme <strong>demande</strong>
+        et attend que tu tapes une réponse.
+      </p>
+<pre>prenom = input("Ton prénom : ")
+print("Bonjour", prenom)</pre>
+      <p>
+        L’ordinateur affiche <code>Ton prénom :</code>, tu tapes, tu valides
+        avec Entrée, puis il dit bonjour.
+      </p>
+      <div class="ok">
+        <span class="label">À retenir</span>
+        <code>input</code> rend <strong>toujours un texte</strong> (<code>str</code>),
+        même si tu tapes <code>20</code>. Pour calculer avec un âge, tu convertis :
+        <code>age = int(input("Ton âge : "))</code>.
+      </div>
+
+      <h3>4. <code>if</code> : une décision</h3>
+      <p>
+        Un programme qui fait toujours la même chose, ce n’est pas encore
+        très vivant. <code>if</code> veut dire : « si c’est vrai, fais ceci ».
+      </p>
+<pre>age = int(input("Ton âge : "))
+if age >= 18:
+    print("Tu peux voter.")
+else:
+    print("Pas encore.")</pre>
+      <p>
+        Analogie feu : vert → tu avances. Rouge → tu t’arrêtes.
+        Le <code>if</code> choisit la branche.
+      </p>
+
+      <h3>L’indentation, c’est le bloc</h3>
+      <p>
+        En Python, les espaces en début de ligne <strong>comptent</strong>.
+        Ce qui est en retrait sous le <code>if</code> appartient au « si ».
+        On aligne avec 4 espaces (la touche Tab, souvent).
+      </p>
+      <table>
+        <thead><tr><th>Comparaison</th><th>Sens</th></tr></thead>
+        <tbody>
+          <tr><td><code>==</code></td><td>Est-ce égal ? (question)</td></tr>
+          <tr><td><code>=</code></td><td>Range dans la boîte (ordre)</td></tr>
+          <tr><td><code>!=</code></td><td>Est-ce différent ?</td></tr>
+          <tr><td><code>&gt;</code> <code>&lt;</code> <code>&gt;=</code> <code>&lt;=</code></td><td>Plus grand / plus petit</td></tr>
+        </tbody>
+      </table>
+      <div class="warn">
+        <span class="label">= n’est pas ==</span>
+        <code>prenom = "Awa"</code> range. <code>prenom == "Awa"</code> pose
+        la question. Si tu écris <code>if prenom = "Awa":</code>, Python refuse.
+      </div>
+
+      <h3>Un troisième chemin : <code>elif</code></h3>
+<pre>reponse = input("Tu as déjà codé ? (oui/non) : ")
+if reponse == "oui":
+    print("Bienvenue, on accélère un peu.")
+elif reponse == "non":
+    print("Parfait, c’est le public du soir.")
+else:
+    print("Réponds par oui ou non.")</pre>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">Partie 2 · Cours</p>
+      <h2>Les quatre erreurs du soir</h2>
+      <p>Quand Python s’arrête, lis la <strong>dernière ligne</strong> du message. C’est souvent suffisant.</p>
+      <table>
+        <thead><tr><th>Erreur</th><th>Ça veut dire</th><th>Réflexe</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>SyntaxError</code></td>
+            <td>La phrase est mal formée : parenthèse, deux-points, guillemet.</td>
+            <td>Compte les <code>(</code> et les <code>"</code>.</td>
+          </tr>
+          <tr>
+            <td><code>NameError</code></td>
+            <td>Python ne connaît pas ce nom.</td>
+            <td>Variable oubliée, ou texte sans guillemets.</td>
+          </tr>
+          <tr>
+            <td><code>IndentationError</code></td>
+            <td>Le retrait sous le <code>if</code> manque ou dépasse.</td>
+            <td>Aligne avec 4 espaces.</td>
+          </tr>
+          <tr>
+            <td><code>ValueError</code></td>
+            <td><code>int("Awa")</code> : on ne peut pas transformer ça en nombre.</td>
+            <td>Vérifie ce que tu tapes dans <code>input</code>.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="exo">
+        <span class="label">2.1 · 5 min · Qu’est-ce qui s’affiche ?</span>
+        <p>Si tu tapes <code>16</code> puis Entrée :</p>
+<pre>age = int(input("Âge : "))
+if age >= 18:
+    print("Majeur")
+else:
+    print("Mineur")</pre>
+        <div class="blank"></div>
+      </div>
+
+      <div class="exo">
+        <span class="label">2.2 · 5 min · Répare</span>
+<pre>ville = input("Ville : ")
+if ville = "Lomé"
+print("On est au Togo.")</pre>
+        <p>Deux problèmes au moins. Note-les :</p>
+        <ol>
+          <li><div class="blank"></div></li>
+          <li><div class="blank"></div></li>
+        </ol>
+      </div>
+
+      <div class="exo">
+        <span class="label">2.3 · 6 min · Un accueil qui décide</span>
+        <p>
+          Demande le prénom. Si c’est le tien, affiche « C’est moi ! ».
+          Sinon, affiche « Enchanté, » suivi du prénom tapé.
+        </p>
+        <div class="blank"></div>
+        <div class="blank"></div>
+        <div class="blank"></div>
+        <div class="blank"></div>
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">Partie 3 · Mini-projet</p>
+      <h2>Un script écrit le texte de ta vitrine</h2>
+      <p>
+        Hier, tu as tapé le texte à la main dans <code>index.html</code>.
+        Ce soir, Python le compose. Tu le recopieras ensuite dans ta page —
+        même vitrine, autre métier.
+      </p>
+      <div class="ok">
+        <span class="label">Fichier à créer</span>
+        Dans le dossier <code>vitrine</code> : <code>bio.py</code>
+        (pas <code>.txt</code>, pas <code>.html</code>).
+      </div>
+
+      <h3>Cahier des charges · non négociable</h3>
+      <ul class="check">
+        <li>Le fichier s’appelle <code>bio.py</code>.</li>
+        <li>Il demande ton prénom avec <code>input</code>.</li>
+        <li>Il demande une phrase sur toi (2 ou 3 phrases collées, ou une seule).</li>
+        <li>Il demande 3 envies pour la semaine.</li>
+        <li>Il affiche un texte propre, prêt à coller dans la vitrine.</li>
+        <li>Si le prénom est vide, il dit « Il me faut un prénom. » et s’arrête.</li>
+      </ul>
+
+      <h3>Modèle à adapter (change Awa)</h3>
+      <p>Tape-le, ne le copie pas en silence. Remplace les exemples par tes réponses en live.</p>
+<pre>prenom = input("Ton prénom : ")
+
+if prenom == "":
+    print("Il me faut un prénom.")
+else:
+    phrase = input("Une phrase sur toi : ")
+    envie_1 = input("Envie 1 : ")
+    envie_2 = input("Envie 2 : ")
+    envie_3 = input("Envie 3 : ")
+
+    print()
+    print("--- Texte pour ta vitrine ---")
+    print(prenom)
+    print(phrase)
+    print("Cette semaine je veux :")
+    print("-", envie_1)
+    print("-", envie_2)
+    print("-", envie_3)</pre>
+
+      <div class="tip">
+        <span class="label">Ensuite, dans index.html</span>
+        Copie le texte affiché : le <code>&lt;h1&gt;</code> reçoit le prénom,
+        le <code>&lt;p&gt;</code> reçoit la phrase, la liste reçoit les 3 envies.
+        Tu n’es pas obligé de tout recoller ce soir : le script qui marche
+        suffit pour valider. Recoller, c’est le bonus.
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">Si tu bloques</p>
+      <h2>Les cinq blocages classiques</h2>
+      <table>
+        <thead><tr><th>Symptôme</th><th>Réflexe</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Le fichier s’appelle <code>bio.py.txt</code></td>
+            <td>Affiche les extensions dans l’explorateur Windows.</td>
+          </tr>
+          <tr>
+            <td>« python n’est pas reconnu »</td>
+            <td>Passe sur <strong>online-python.com</strong>. On installe plus tard.</td>
+          </tr>
+          <tr>
+            <td>Rien ne s’affiche, le curseur clignote</td>
+            <td>Le programme attend <code>input</code>. Tape une réponse, Entrée.</td>
+          </tr>
+          <tr>
+            <td><code>IndentationError</code></td>
+            <td>Tout ce qui est sous <code>else:</code> est en retrait, aligné.</td>
+          </tr>
+          <tr>
+            <td>Les accents cassent dans le Bloc-notes</td>
+            <td>Enregistre en UTF-8, ou code en ligne.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Comment lancer le fichier (si Python est installé)</h3>
+      <ol>
+        <li>Ouvre un terminal dans le dossier <code>vitrine</code>.</li>
+        <li>Tape <code>python bio.py</code> (parfois <code>py bio.py</code> sous Windows).</li>
+        <li>Réponds aux questions, Entrée après chaque ligne.</li>
+      </ol>
+
+      <div class="exo">
+        <span class="label">Mini-exo de fin de séance</span>
+        <p>
+          Dépose <code>bio.py</code> sur MyHub, espace étudiant, devoir du jour 2.
+          Tu peux coller le code si le fichier refuse de partir.
+        </p>
+        <p>
+          Inscription : prénom, nom, téléphone. Connexion : prénom + téléphone.
+        </p>
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">À garder</p>
+      <h2>Glossaire du jour</h2>
+      <table>
+        <tbody>
+          <tr><th>Mot</th><th>En une phrase</th></tr>
+          <tr><td>Programme</td><td>Une liste d’instructions exécutées dans l’ordre.</td></tr>
+          <tr><td>Python</td><td>Le langage de ces instructions, ce soir.</td></tr>
+          <tr><td>Interpréteur</td><td>Le programme qui lit et exécute le fichier <code>.py</code>.</td></tr>
+          <tr><td><code>print</code></td><td>Affiche un message à l’écran.</td></tr>
+          <tr><td>Variable</td><td>Une boîte nommée qui range une valeur.</td></tr>
+          <tr><td><code>=</code></td><td>Range une valeur dans une variable.</td></tr>
+          <tr><td><code>str</code></td><td>Un texte, entre guillemets.</td></tr>
+          <tr><td><code>int</code></td><td>Un nombre entier, sans guillemets.</td></tr>
+          <tr><td><code>input</code></td><td>Demande une réponse ; rend toujours un texte.</td></tr>
+          <tr><td><code>if</code> / <code>else</code></td><td>Choisit une branche selon une condition.</td></tr>
+          <tr><td><code>==</code></td><td>Compare : est-ce égal ?</td></tr>
+          <tr><td>Indentation</td><td>Le retrait qui marque le bloc sous un <code>if</code>.</td></tr>
+          <tr><td>Erreur</td><td>Python s’arrête et explique, souvent à la dernière ligne.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Checklist avant d’envoyer ton fichier</h3>
+      <ul class="check">
+        <li>Le fichier s’appelle <code>bio.py</code>.</li>
+        <li>Il y a au moins un <code>input</code> pour le prénom.</li>
+        <li>Il y a un <code>if</code> (prénom vide, ou un autre choix clair).</li>
+        <li>Tu l’as lancé une fois : le texte s’affiche.</li>
+        <li>Les 3 envies apparaissent à l’écran.</li>
+        <li>Tu déposes sur MyHub, pas sur WhatsApp.</li>
+      </ul>
+
+      <div class="ok">
+        <span class="label">Pour le jour 3 · Data</span>
+        Ne jette ni <code>vitrine</code> ni <code>bio.py</code>. Demain, un invité
+        collera 3 chiffres sur ta page. Même heure, même visio, ordinateur encore obligatoire.
+      </div>
+      <p class="footer-note">Bootcamp MyHub · Jour 2 · Support de cours</p>
+    </section>
+  </body>
+</html>

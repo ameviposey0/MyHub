@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Jour 2 · Programmation Python · Bootcamp MyHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Code+Pro:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #efe6d6;
+        --paper: #faf6ef;
+        --card: #fffdf8;
+        --ink: #1a1612;
+        --muted: #5a534b;
+        --line: #e2d6c4;
+        --accent: #c64520;
+        --accent-deep: #9e3416;
+        --sun: #8a6414;
+        --sun-bright: #e8b84a;
+        --whatsapp: #167a39;
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        color: var(--ink);
+        background: var(--bg);
+        font-family: Figtree, "Segoe UI", sans-serif;
+        font-size: 11pt;
+        line-height: 1.5;
+      }
+
+      @page {
+        size: A4;
+        margin: 14mm 13mm 16mm;
+      }
+
+      .cover {
+        min-height: 260mm;
+        padding: 18mm 14mm;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background:
+          radial-gradient(28rem 16rem at 100% -8%, rgba(198, 69, 32, 0.16), transparent 55%),
+          radial-gradient(22rem 14rem at -8% 10%, rgba(232, 184, 74, 0.28), transparent 52%),
+          var(--bg);
+        page-break-after: always;
+      }
+
+      .kicker {
+        margin: 0 0 0.4rem;
+        color: var(--accent);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+      }
+
+      h1, h2, h3, h4 {
+        font-family: "Bricolage Grotesque", Georgia, serif;
+        line-height: 1.15;
+        margin: 0 0 0.55rem;
+      }
+
+      .cover h1 {
+        font-size: 2.55rem;
+        font-weight: 800;
+        max-width: 18ch;
+      }
+
+      .cover .lead {
+        font-size: 1.12rem;
+        max-width: 38ch;
+        color: var(--muted);
+      }
+
+      .cover-meta {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 1.25rem;
+        align-items: end;
+      }
+
+      .cover img {
+        width: 118px;
+        height: 148px;
+        object-fit: cover;
+        object-position: 50% 18%;
+        border-radius: 1rem;
+        border: 1px solid var(--line);
+      }
+
+      .pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        padding: 0;
+        margin: 1rem 0 0;
+        list-style: none;
+      }
+
+      .pills li {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.22rem 0.7rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+
+      .wrap { padding: 0 1mm 4mm; }
+
+      h2 {
+        font-size: 1.45rem;
+        margin-top: 0;
+        padding-bottom: 0.35rem;
+        border-bottom: 2px solid var(--accent);
+      }
+
+      h3 { font-size: 1.12rem; margin-top: 1.1rem; color: var(--accent-deep); }
+      h4 { font-size: 1rem; margin-top: 0.85rem; }
+
+      p { margin: 0 0 0.65rem; }
+      ul, ol { margin: 0 0 0.75rem; padding-left: 1.2rem; }
+      li { margin: 0.18rem 0; }
+
+      .stamp {
+        display: inline-block;
+        margin: 0 0 0.45rem;
+        color: var(--sun);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .box, .say, .show, .exo, .corrige, .warn, .tip {
+        border-radius: 0.75rem;
+        padding: 0.75rem 0.9rem;
+        margin: 0.7rem 0;
+        border: 1px solid var(--line);
+        background: var(--card);
+        break-inside: avoid;
+      }
+
+      .say { border-left: 4px solid var(--accent); }
+      .show { border-left: 4px solid var(--sun); background: #fff8e8; }
+      .exo { border-left: 4px solid #2c5aa0; background: #f3f7fd; }
+      .corrige { border-left: 4px solid var(--whatsapp); background: #f1f8f3; }
+      .warn { border-left: 4px solid var(--accent); background: #fdf3ee; }
+      .tip { border-left: 4px solid #5a534b; }
+
+      .label {
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 0.28rem;
+      }
+
+      .say .label { color: var(--accent); }
+      .show .label { color: var(--sun); }
+      .exo .label { color: #2c5aa0; }
+      .corrige .label { color: var(--whatsapp); }
+      .warn .label { color: var(--accent-deep); }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0.6rem 0 1rem;
+        font-size: 0.95rem;
+        background: var(--card);
+      }
+
+      th, td {
+        border: 1px solid var(--line);
+        padding: 0.42rem 0.55rem;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th { background: #f3eadc; font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; }
+
+      pre, code {
+        font-family: "Source Code Pro", Consolas, monospace;
+      }
+
+      code {
+        font-size: 0.86em;
+        background: #f3eadc;
+        padding: 0.05rem 0.28rem;
+        border-radius: 0.25rem;
+      }
+
+      pre {
+        background: #1a1612;
+        color: #faf6ef;
+        padding: 0.8rem 0.9rem;
+        border-radius: 0.7rem;
+        font-size: 0.78rem;
+        line-height: 1.45;
+        overflow: hidden;
+        white-space: pre-wrap;
+        break-inside: avoid;
+      }
+
+      .two {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.7rem;
+      }
+
+      .blank {
+        border-bottom: 1px dotted #8a7d6d;
+        min-height: 1.15rem;
+        margin: 0.25rem 0 0.45rem;
+      }
+
+      .page { page-break-before: always; padding-top: 1mm; }
+
+      .footer-note {
+        margin-top: 1.2rem;
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      .check li { list-style: none; margin-left: -1.2rem; }
+      .check li::before { content: "☐  "; }
+    </style>
+  </head>
+  <body>
+    <section class="cover">
+      <div>
+        <p class="kicker">Bootcamp MyHub · Gratuit · 5 × 2 h</p>
+        <h1>Jour 2. Programmation Python.</h1>
+        <p class="lead">
+          Livret de séance complet : ce que tu dis, ce que tu montres,
+          les exercices, les corrigés, et le mini-projet bio.
+        </p>
+        <ul class="pills">
+          <li>2 heures</li>
+          <li>Débutant</li>
+          <li>En visio · 12 h GMT</li>
+          <li>Toi à l’animation</li>
+        </ul>
+      </div>
+      <div class="cover-meta">
+        <div>
+          <p class="kicker">Objectif du soir</p>
+          <p>
+            Faire parler l’ordinateur en Python, puis lui faire écrire
+            le texte de la vitrine du jour 1.
+          </p>
+          <p class="footer-note">MyHub · Session 1 · Ne pas projeter les corrigés trop tôt.</p>
+        </div>
+        <img src="../mapersonne.jpeg" alt="Intervenant MyHub" />
+      </div>
+    </section>
+
+    <main class="wrap">
+      <p class="stamp">Mode d’emploi</p>
+      <h2>Comment utiliser ce livret</h2>
+      <p>
+        Ce PDF est ton support d’animation. Tu n’as pas besoin d’un autre cours.
+        Les encadrés te disent quoi faire en direct.
+      </p>
+      <div class="two">
+        <div class="say"><span class="label">À dire</span>Le propos, les analogies, les phrases clés.</div>
+        <div class="show"><span class="label">À montrer</span>Démo écran partagé, à faire toi d’abord.</div>
+        <div class="exo"><span class="label">Exercice</span>Ils le font. Tu restes disponible.</div>
+        <div class="corrige"><span class="label">Corrigé</span>Pour toi. Tu le dévoiles après, pas avant.</div>
+      </div>
+      <div class="warn">
+        <span class="label">Ne pas traiter ce soir</span>
+        Fonctions <code>def</code>, listes en profondeur, boucles <code>for</code> / <code>while</code>,
+        fichiers <code>open</code>, pip, classes, Jupyter.
+        Si on te pose la question : « demain data, ce soir on veut un script qui parle ».
+      </div>
+
+      <h3>Matériel à confirmer dès l’ouverture</h3>
+      <ul>
+        <li>Un ordinateur (téléphone seul = trop juste pour coder).</li>
+        <li>Le dossier <code>vitrine</code> du jour 1, si possible.</li>
+        <li>Python installé, <strong>ou</strong> <code>https://www.online-python.com/</code>.</li>
+        <li>Un éditeur : VS Code, Bloc-notes, ou l’éditeur du site en ligne.</li>
+      </ul>
+      <div class="tip">
+        <span class="label">Plan B</span>
+        Si <code>python</code> n’est pas reconnu : envoie-les sur
+        <strong>https://www.online-python.com/</strong>. Même exercice, zéro install.
+        À la fin ils copient le code dans <code>bio.py</code> pour MyHub.
+      </div>
+
+      <p class="stamp">Déroulé</p>
+      <h2>Les 120 minutes</h2>
+      <table>
+        <thead>
+          <tr><th>Temps</th><th>Bloc</th><th>Tu fais</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0:00 à 0:08</td><td>Accueil</td><td>Règles, objectif, matériel, promesse du soir.</td></tr>
+          <tr><td>0:08 à 0:42</td><td>print, variables, types</td><td>Cours + démo + 3 exercices courts.</td></tr>
+          <tr><td>0:42 à 0:47</td><td>Pause</td><td>5 minutes. Ils restent connectés.</td></tr>
+          <tr><td>0:47 à 1:22</td><td>input et if</td><td>Live coding ensemble + 3 exercices.</td></tr>
+          <tr><td>1:22 à 1:52</td><td>Mini-projet bio</td><td>Chacun son <code>bio.py</code>.</td></tr>
+          <tr><td>1:52 à 2:00</td><td>Bilan</td><td>3 points clés, dépôt MyHub, teaser jour 3 data.</td></tr>
+        </tbody>
+      </table>
+      <p>
+        Si tu prends du retard : coupe l’exercice 2.3, pas le mini-projet.
+        Le script qui affiche le texte de la vitrine est le souvenir du soir.
+      </p>
+
+      <h3>Ce qu’ils savent faire à 14 h GMT</h3>
+      <ol>
+        <li>Écrire un fichier <code>.py</code>, lancer <code>print</code>, ranger une valeur dans une variable.</li>
+        <li>Demander une réponse avec <code>input</code> et brancher un <code>if</code> / <code>else</code>.</li>
+        <li>Produire le texte de leur vitrine (prénom, phrase, 3 envies) et le déposer sur MyHub.</li>
+      </ol>
+    </main>
+
+    <section class="wrap page">
+      <p class="stamp">0:00 · Accueil</p>
+      <h2>Les huit premières minutes</h2>
+
+      <div class="say">
+        <span class="label">À dire</span>
+        <p>« Bienvenue. C’est le soir 2, Python. Hier ta vitrine existait : une page, un lien WhatsApp. Aujourd’hui, un script va écrire le texte de cette page. Même projet, autre métier. Data, demain, ce n’est pas moi : un invité. Vendredi, IA, je reviens. »</p>
+      </div>
+      <div class="show">
+        <span class="label">À montrer</span>
+        Écran partagé : <code>bootcamp.html</code> (programme du jour 2). Puis un fichier vide
+        <code>bio.py</code>, ou l’éditeur d’online-python.com. Annonce le livrable :
+        « à la fin tu as un fichier bio.py qui demande ton prénom et affiche le texte de ta vitrine ».
+      </div>
+
+      <h3>Quatre règles, comme hier</h3>
+      <ol>
+        <li>Micro coupé, sauf quand tu parles. Le chat reste ouvert.</li>
+        <li>Questions dans le chat. Tu t’arrêtes toutes les 15 minutes.</li>
+        <li>Jamais trop tard. Ils n’ont jamais programmé ? C’est exactement le public.</li>
+        <li>Un ordinateur. Le téléphone seul ne suffit pas.</li>
+      </ol>
+      <div class="say">
+        <span class="label">Promesse du soir · à répéter</span>
+        « Ce soir tu parles à l’ordinateur en Python, et un script écrit le texte de ta vitrine. »
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">0:08 · Partie 1</p>
+      <h2>Un programme, c’est une recette</h2>
+      <div class="say">
+        <span class="label">À dire</span>
+        <p>
+          HTML = les murs de la page. Python = la langue des instructions.
+          La recette n’est pas le plat. L’interpréteur, c’est le cuisinier
+          qui lit ligne par ligne. S’il bute, il s’arrête et dit pourquoi.
+        </p>
+      </div>
+      <div class="show">
+        <span class="label">À montrer · 2 min</span>
+        Tape et lance, lentement :
+<pre>print("Bonjour")
+print("Je m'appelle Awa")</pre>
+        Puis casse volontairement : <code>print(Bonjour)</code> sans guillemets.
+        Lis le <code>NameError</code> à voix haute : « il cherche une variable Bonjour ».
+      </div>
+
+      <h3>Variables</h3>
+      <div class="say">
+        <span class="label">À dire</span>
+        <p>
+          Une variable, c’est une boîte avec une étiquette. Le <code>=</code>
+          range, il n’est pas « égal » comme en maths.
+          <code>print("Bonjour", prenom)</code> : Python va chercher dans la boîte.
+        </p>
+      </div>
+      <div class="show">
+        <span class="label">À montrer</span>
+<pre>prenom = "Awa"
+print(prenom)
+print("Bonjour", prenom)</pre>
+        Change <code>prenom</code> une fois, relance : toute la suite suit.
+        « C’est pour ça qu’on nomme : on change à un seul endroit. »
+      </div>
+
+      <h3>Types · 4 minutes, pas un cours université</h3>
+      <div class="two">
+        <div class="box">
+          <h4>Texte · str</h4>
+          <p>Guillemets. <code>"20" + "1"</code> → <code>"201"</code>.</p>
+        </div>
+        <div class="box">
+          <h4>Entier · int</h4>
+          <p>Sans guillemets. <code>20 + 1</code> → <code>21</code>.</p>
+        </div>
+      </div>
+      <div class="show">
+        <span class="label">À montrer</span>
+<pre>print("20" + "1")
+print(20 + 1)
+print(int("20") + 1)</pre>
+        Phrase clé : « les guillemets changent le métier de la valeur ».
+      </div>
+      <div class="warn">
+        <span class="label">Noms de variables</span>
+        Pas d’accent (<code>prenom</code> pas <code>prénom</code>), pas d’espace
+        (<code>envie_1</code>), ne commence pas par un chiffre. S’ils demandent
+        les listes : « pas ce soir, trois variables suffisent ».
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">À toi · 12 minutes · chat ou papier</p>
+      <h2>Trois exercices print / variables</h2>
+      <div class="warn">
+        <span class="label">Pendant qu’ils cherchent</span>
+        Ne projette pas les corrigés. Circule dans le chat. Aide d’abord ceux
+        qui n’ont pas encore un <code>print</code> qui s’affiche.
+      </div>
+
+      <div class="exo">
+        <span class="label">1.1 · 4 min · Qu’est-ce qui s’affiche ?</span>
+<pre>ville = "Lomé"
+print("J'habite à")
+print(ville)</pre>
+      </div>
+      <div class="corrige">
+        <span class="label">Corrigé 1.1</span>
+<pre>J'habite à
+Lomé</pre>
+        Deux lignes. <code>ville</code> sans guillemets → contenu de la boîte.
+      </div>
+
+      <div class="exo">
+        <span class="label">1.2 · 4 min · Répare</span>
+<pre>print(Bonjour)
+prenom = Awa
+print prenom
+1ville = "Lomé"</pre>
+      </div>
+      <div class="corrige">
+        <span class="label">Corrigé 1.2</span>
+        <ol>
+          <li><code>print("Bonjour")</code> — texte = guillemets.</li>
+          <li><code>prenom = "Awa"</code> — idem.</li>
+          <li><code>print(prenom)</code> — parenthèses obligatoires.</li>
+          <li><code>ville = "Lomé"</code> — un nom ne commence pas par un chiffre.</li>
+        </ol>
+      </div>
+
+      <div class="exo">
+        <span class="label">1.3 · 4 min · Carte d’identité</span>
+        Variables <code>prenom</code> et <code>ville</code>, deux <code>print</code>.
+      </div>
+      <div class="corrige">
+        <span class="label">Corrigé 1.3 · exemple</span>
+<pre>prenom = "Koffi"
+ville = "Lomé"
+print("Je m'appelle", prenom)
+print("J'habite à", ville)</pre>
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">0:42 · Pause</p>
+      <h2>Cinq minutes, on reste connectés</h2>
+      <div class="say">
+        <span class="label">À dire</span>
+        « Pause. Ne quittez pas la visio. Ensuite : l’ordinateur écoute, puis il décide. »
+      </div>
+      <p>Reviens pile à l’heure. Premier écran au retour : <code>input</code>.</p>
+
+      <p class="stamp">0:47 · Partie 2</p>
+      <h2>input, puis if</h2>
+      <div class="say">
+        <span class="label">À dire</span>
+        <p>
+          Jusqu’ici le prénom était collé dans le code. <code>input</code>,
+          c’est le micro : le programme attend. Toujours un texte, même si
+          tu tapes 20. Pour calculer un âge : <code>int(...)</code>.
+        </p>
+      </div>
+      <div class="show">
+        <span class="label">À montrer · tape avec eux</span>
+<pre>prenom = input("Ton prénom : ")
+print("Bonjour", prenom)</pre>
+        Laisse le curseur clignoter 3 secondes : « il attend. Entrée pour valider. »
+      </div>
+
+      <h3>if : le feu tricolore</h3>
+      <div class="say">
+        <span class="label">À dire</span>
+        Vert tu avances, rouge tu t’arrêtes. <code>=</code> range,
+        <code>==</code> pose la question. L’indentation, c’est le bloc :
+        ce qui est en retrait appartient au si.
+      </div>
+      <div class="show">
+        <span class="label">À montrer</span>
+<pre>age = int(input("Ton âge : "))
+if age >= 18:
+    print("Tu peux voter.")
+else:
+    print("Pas encore.")</pre>
+        Lance une fois avec 16, une fois avec 20. Puis enlève l’indentation
+        sous le <code>if</code> : lis <code>IndentationError</code> à voix haute.
+      </div>
+      <div class="tip">
+        <span class="label">elif, 2 minutes</span>
+        Montre <code>oui</code> / <code>non</code> / autre chose.
+        Ne construis pas un menu à 8 branches. Une décision claire suffit.
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">À toi · 16 minutes</p>
+      <h2>Trois exercices input / if</h2>
+
+      <div class="exo">
+        <span class="label">2.1 · 5 min · On tape 16</span>
+<pre>age = int(input("Âge : "))
+if age >= 18:
+    print("Majeur")
+else:
+    print("Mineur")</pre>
+      </div>
+      <div class="corrige">
+        <span class="label">Corrigé 2.1</span>
+        Affiche <code>Mineur</code>. 16 n’est pas &gt;= 18. Branche <code>else</code>.
+      </div>
+
+      <div class="exo">
+        <span class="label">2.2 · 5 min · Répare</span>
+<pre>ville = input("Ville : ")
+if ville = "Lomé"
+print("On est au Togo.")</pre>
+      </div>
+      <div class="corrige">
+        <span class="label">Corrigé 2.2</span>
+        <ol>
+          <li><code>=</code> → <code>==</code> (question, pas rangement).</li>
+          <li>Deux-points après la condition : <code>if ville == "Lomé":</code></li>
+          <li>Le <code>print</code> en retrait sous le <code>if</code>.</li>
+        </ol>
+<pre>ville = input("Ville : ")
+if ville == "Lomé":
+    print("On est au Togo.")</pre>
+      </div>
+
+      <div class="exo">
+        <span class="label">2.3 · 6 min · Accueil qui décide</span>
+        Si le prénom tapé est le leur → « C’est moi ! ». Sinon → « Enchanté, … ».
+      </div>
+      <div class="corrige">
+        <span class="label">Corrigé 2.3 · exemple</span>
+<pre>prenom = input("Prénom : ")
+if prenom == "Awa":
+    print("C’est moi !")
+else:
+    print("Enchanté,", prenom)</pre>
+        Rappelle : la casse compte. <code>awa</code> n’est pas <code>Awa</code>.
+        Si quelqu’un bloque là-dessus : « ce soir on compare tel quel ».
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">1:22 · Mini-projet</p>
+      <h2>bio.py écrit le texte de la vitrine</h2>
+      <div class="say">
+        <span class="label">À dire</span>
+        <p>
+          Plus de cours. Fichier <code>vitrine/bio.py</code>.
+          Il demande, il décide si le prénom est vide, il affiche un texte
+          prêt à coller dans <code>index.html</code>. Dépôt MyHub à la fin.
+        </p>
+      </div>
+
+      <h3>Cahier des charges · non négociable</h3>
+      <ul class="check">
+        <li>Fichier nommé <code>bio.py</code>.</li>
+        <li><code>input</code> pour le prénom, la phrase, 3 envies.</li>
+        <li>Si prénom vide → « Il me faut un prénom. »</li>
+        <li>Sinon, affichage propre : prénom, phrase, liste des 3 envies.</li>
+      </ul>
+
+      <div class="show">
+        <span class="label">Squelette à taper en live · puis ils adaptent</span>
+<pre>prenom = input("Ton prénom : ")
+
+if prenom == "":
+    print("Il me faut un prénom.")
+else:
+    phrase = input("Une phrase sur toi : ")
+    envie_1 = input("Envie 1 : ")
+    envie_2 = input("Envie 2 : ")
+    envie_3 = input("Envie 3 : ")
+
+    print()
+    print("--- Texte pour ta vitrine ---")
+    print(prenom)
+    print(phrase)
+    print("Cette semaine je veux :")
+    print("-", envie_1)
+    print("-", envie_2)
+    print("-", envie_3)</pre>
+      </div>
+      <div class="tip">
+        <span class="label">Checkpoints toutes les 8 minutes</span>
+        1) Qui a un fichier <code>.py</code> qui se lance ? 2) Qui a le
+        <code>input</code> prénom ? 3) Qui voit les 3 envies à l’écran ?
+        Aide d’abord ceux sans fichier. Recoller dans le HTML est un bonus,
+        pas un critère de validation.
+      </div>
+      <div class="warn">
+        <span class="label">Blocages</span>
+        <code>bio.py.txt</code> → extensions Windows.
+        <code>python</code> introuvable → online-python.com.
+        Curseur qui clignote → il attend l’<code>input</code>.
+        Accents bizarres → UTF-8 ou éditeur en ligne.
+      </div>
+    </section>
+
+    <section class="wrap page">
+      <p class="stamp">1:52 · Bilan</p>
+      <h2>Trois phrases, pas un résumé</h2>
+      <div class="say">
+        <span class="label">À dire</span>
+        <ol>
+          <li>« Un programme, c’est une recette. Python la lit dans l’ordre. <code>print</code> parle, une variable range. »</li>
+          <li>« <code>input</code> écoute, toujours en texte. <code>if</code> décide. L’indentation marque le bloc. »</li>
+          <li>« Ton <code>bio.py</code> écrit le texte de la vitrine. Même page qu’hier, autre métier. »</li>
+        </ol>
+      </div>
+
+      <h3>Avant de quitter la visio</h3>
+      <ol>
+        <li>Garder le dossier <code>vitrine</code> : <code>index.html</code> et <code>bio.py</code>.</li>
+        <li>Lancer le script une dernière fois.</li>
+        <li>Déposer <code>bio.py</code> sur MyHub, espace étudiant, devoir du jour 2.</li>
+        <li>RDV jour 3 : demain, même heure, même visio. Data, un invité. Ordinateur encore obligatoire.</li>
+      </ol>
+      <div class="say">
+        <span class="label">Clôture</span>
+        « Demain : data. Trois chiffres collés sur ta page. Toi tu reviens vendredi pour l’IA. Message groupe après l’appel. »
+      </div>
+      <div class="corrige">
+        <span class="label">Pour toi, après l’appel</span>
+        Félicite le script qui s’exécute, pas le plus joli <code>print</code>.
+        Message groupe : lien espace étudiant + rappel du fichier <code>bio.py</code>.
+        Tu n’as pas à tout savoir de Python. Tu as à faire vivre 120 minutes claires,
+        un fichier qui se lance, un texte de vitrine à l’écran.
+      </div>
+      <p class="footer-note">Bootcamp MyHub · Jour 2 · Livret d’animation</p>
+    </section>
+  </body>
+</html>

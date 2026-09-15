@@ -63,7 +63,7 @@ const assignmentCard = (work) => {
   fileInput.id = fileId;
   fileInput.name = "file";
   fileInput.type = "file";
-  fileInput.accept = ".html,.htm,.txt,.css,.js,.md";
+  fileInput.accept = ".html,.htm,.txt,.css,.js,.md,.py";
   fileField.append(fileLabel, fileInput);
 
   const contentField = el("div", "field");
